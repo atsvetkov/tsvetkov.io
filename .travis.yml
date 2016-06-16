@@ -9,8 +9,8 @@ addons:
 before_script:
   - go get -u -v github.com/spf13/hugo
 
-before_install:
-  - openssl aes-256-cbc -K $encrypted_ed5856d8084c_key -iv $encrypted_ed5856d8084c_iv -in deploy-key.enc -out deploy-key -d
+dd:
+- openssl aes-256-cbc -K $encrypted_b09bc9aa8d76_key -iv $encrypted_b09bc9aa8d76_iv -in deploy-key.enc -out deploy-key -d
 
 script:
   - hugo --theme=hugo_theme_robust

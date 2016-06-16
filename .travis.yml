@@ -16,14 +16,12 @@ install:
   - go get -v -u github.com/spf13/hugo
 
 script:
-  - git clone https://github.com/atsvetkov/tsvetkov.io.git tsvetkov.io
-  - git clone https://github.com/dim0627/hugo_theme_robust.git tsvetkov.io-hugo/themes/hugo_theme_robust
-  - cd tsvetkov.io
+  - git clone https://github.com/dim0627/hugo_theme_robust.git themes/hugo_theme_robust
   - hugo --theme=hugo_theme_robust
 
 after_success:
   - test $TRAVIS_BRANCH == "master"
-  - cd tsvetkov.io/public
+  - cd public
   - git init    
   - git remote add deploy "deploy@tsvetkov.io:/var/www/tsvetkov.io"
   - git config user.name "Travis CI"

@@ -19,8 +19,8 @@ install:
   - go get -v -u github.com/spf13/hugo
 
 script:
-  - git clone https://github.com/dim0627/hugo_theme_robust.git themes/hugo_theme_robust
-  - hugo --theme=hugo_theme_robust
+  - git clone https://github.com/atsvetkov/hugo-cactus-theme.git themes/hugo-cactus-theme
+  - hugo
 
 after_success:
   - test $TRAVIS_BRANCH == "master"

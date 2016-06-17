@@ -1,7 +1,7 @@
 language: go
 
 go:
-  - 1.6.2
+  - tip
 
 os:
   - linux
@@ -10,12 +10,10 @@ addons:
   ssh_known_hosts: tsvetkov.io
 
 before_install:
-  - set -x
-  - openssl aes-256-cbc -K $encrypted_b09bc9aa8d76_key -iv $encrypted_b09bc9aa8d76_iv -in deploy-key.enc -out id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_b09bc9aa8d76_key -iv $encrypted_b09bc9aa8d76_iv -in deploy-key.enc -out deploy-key -d
   - rm deploy-key.enc
-  - chmod 600 id_rsa
-  - eval `ssh-agent -s`
-  - ssh-add id_rsa
+  - chmod 600 deploy-key
+  - mv deploy-key ~/.ssh/id_rsa 
 
 install:
   - go get -v -u github.com/spf13/hugo

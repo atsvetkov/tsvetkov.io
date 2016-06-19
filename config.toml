@@ -5,6 +5,9 @@ theme = "hugo-cactus-theme"
 googleAnalytics = "UA-51668451-2"
 disqusShortname = "tsvetkovio"
 
+[permalinks]
+  	post = "/:year/:month/:title/"
+
 [params]
 	name = "Alexander Tsvetkov"
 	description = ""

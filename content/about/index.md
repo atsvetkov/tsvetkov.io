@@ -5,6 +5,6 @@ title = "About me"
 
 +++
 
-I am a software engineer from Russia, currently living and working in the Netherlands.
+Hi! I am a software engineer from Russia, currently living and working in the Netherlands.
 
 My other passions besides coding are acoustic guitar, electronic music and surfing.

@@ -1,4 +1,4 @@
-baseurl = "http://tsvetkov.io/"
+baseurl = "https://tsvetkov.io/"
 languageCode = "en-us"
 title = "Alexander Tsvetkov's blog"
 theme = "hugo-cactus-theme"

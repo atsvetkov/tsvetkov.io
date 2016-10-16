@@ -3,7 +3,7 @@ date = "2016-06-17T23:00:45+02:00"
 description = "About me"
 title = "About me"
 menu = "main"
-
+hidden = true
 [options]
     hideDate = true
 +++

@@ -11,6 +11,7 @@ disqusShortname = "tsvetkovio"
 [params]
 	name = "Surfing the code"
 	description = "POST /thoughts"
+	disqusShortname = "tsvetkovio"
 	bio = ""
 	
     # Enter optionally your twitter account

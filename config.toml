@@ -1,7 +1,7 @@
 baseurl = "https://tsvetkov.io/"
 languageCode = "en-us"
-title = "Alexander Tsvetkov's blog"
-theme = "hugo-cactus-theme"
+title = "Surfing the code"
+theme = "hyde"
 googleAnalytics = "UA-51668451-2"
 disqusShortname = "tsvetkovio"
 
@@ -9,8 +9,8 @@ disqusShortname = "tsvetkovio"
   	post = "/:year/:month/:title/"
 
 [params]
-	name = "Alexander Tsvetkov"
-	description = ""
+	name = "Surfing the code"
+	description = "POST /thoughts"
 	bio = ""
 	
     # Enter optionally your twitter account
@@ -34,7 +34,7 @@ disqusShortname = "tsvetkovio"
 	olderPosts = ""
 	newerPosts = ""
 	readMore = ""
-	copyright = "Alexander Tsvetkov &copy; 2016"
+	
 	
     # Sharing options and author information in posts
 	aboutAuthor = "Surfing the code"

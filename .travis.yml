@@ -19,7 +19,7 @@ install:
   - go get -v -u github.com/spf13/hugo
 
 script:
-  - git clone https://github.com/atsvetkov/hugo-cactus-theme.git themes/hugo-cactus-theme
+  - git clone https://github.com/atsvetkov/hyde.git themes/hyde
   - hugo
 
 after_success:

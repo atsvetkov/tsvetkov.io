@@ -1,6 +1,6 @@
 +++
 date = "2016-10-16T16:51:55+02:00"
-draft = true
+draft = false
 description = ""
 title = "Staying up-to-date with software development trends"
 tags = ["learning", "tech lead"]
@@ -23,39 +23,39 @@ Now, I was originally going to write only about part #1 in this post, so let's f
 In the previous paragraph I mentioned reading *good* articles. The Internet is big, so searching for good stuff can be a daunting task. Most people end up with a relatively stable list of resources for daily/weekly reading. Here's mine (not claiming to be unique or better than any other list):
 
 ### Newsletters
-* C# Digest: [http://csharpdigest.net/](http://csharpdigest.net/)
-* Elixir Digest: [http://elixirdigest.net/](http://elixirdigest.net/)
-* React Digest: [http://reactdigest.net/](http://reactdigest.net/)
-* F# Weekly: [https://sergeytihon.wordpress.com/](https://sergeytihon.wordpress.com/)
-* DDD Weekly: [http://dddweekly.com/](http://dddweekly.com/)
-* Azure Weekly: [http://azureweekly.info/](http://azureweekly.info/)
-* Elixir Radar: [http://plataformatec.com.br/elixir-radar](http://plataformatec.com.br/elixir-radar)
-* Go Newsletter: [http://golangweekly.com/](http://golangweekly.com/)
-* DevOps Weekly: [http://www.devopsweekly.com/](http://www.devopsweekly.com/)
-* Web Operations Weekly: [http://webopsweekly.com/](http://webopsweekly.com/)
-* Microservice Weekly: [https://microserviceweekly.com/](https://microserviceweekly.com/)
-* Docker Weekly: [https://www.docker.com/newsletter-subscription](https://www.docker.com/newsletter-subscription)
+* [C# Digest](http://csharpdigest.net/)
+* [Elixir Digest](http://elixirdigest.net/)
+* [React Digest](http://reactdigest.net/)
+* [F# Weekly](https://sergeytihon.wordpress.com/)
+* [DDD Weekly](http://dddweekly.com/)
+* [Azure Weekly](http://azureweekly.info/)
+* [Elixir Radar](http://plataformatec.com.br/elixir-radar)
+* [Go Newsletter](http://golangweekly.com/)
+* [DevOps Weekly](http://www.devopsweekly.com/)
+* [Web Operations Weekly](http://webopsweekly.com/)
+* [Microservice Weekly](https://microserviceweekly.com/)
+* [Docker Weekly](https://www.docker.com/newsletter-subscription)
 
 ### Blogs
-* .NET Blog: [https://blogs.msdn.microsoft.com/dotnet/](https://blogs.msdn.microsoft.com/dotnet/)
-* .NET Web Development and Tools Blog: [https://blogs.msdn.microsoft.com/webdev/](https://blogs.msdn.microsoft.com/webdev/)
-* Microsoft Application Lifecycle Management: [https://blogs.msdn.microsoft.com/visualstudioalm/](https://blogs.msdn.microsoft.com/visualstudioalm/)
-* Microsoft Azure Blog: [https://azure.microsoft.com/en-us/blog/](https://azure.microsoft.com/en-us/blog/)
-* The Visual Studio Blog: [https://blogs.msdn.microsoft.com/visualstudio/](https://blogs.msdn.microsoft.com/visualstudio/)
-* Visual Studio Code Blog: [http://code.visualstudio.com/blogs/](http://code.visualstudio.com/blogs/)
-* Scott Hanselman: [http://www.hanselman.com/blog/](http://www.hanselman.com/blog/)
-* Ode to Code (K. Scott Allen): [http://odetocode.com/](http://odetocode.com/)
-* Rick Strahl: [https://weblog.west-wind.com/](https://weblog.west-wind.com/)
-* You've Been Haacked (Phil Haack): [http://haacked.com/](http://haacked.com/)
-* .NET Escapades (Andrew Lock): [http://andrewlock.net/](http://andrewlock.net/)
-* CodeOpinion (Derek Comartin): [http://codeopinion.com/](http://codeopinion.com/)
-* Exception Not Found (Matthew P Jones): [https://www.exceptionnotfound.net/](https://www.exceptionnotfound.net/)
-* Fritz on the Web (Jeffrey Fritz): [http://www.jeffreyfritz.com/](http://www.jeffreyfritz.com/)
-* Kévin Chalet: [http://kevinchalet.com/](http://kevinchalet.com/)
-* Laurent Kempé: [http://laurentkempe.com/](http://laurentkempe.com/)
-* Dominick Baier: [https://leastprivilege.com/](https://leastprivilege.com/)
-* Talking Dotnet: [http://www.talkingdotnet.com/](http://www.talkingdotnet.com/)
-* The Codeface (Mark Rendle): [https://blog.rendle.io/](https://blog.rendle.io/)
+* [.NET Blog](https://blogs.msdn.microsoft.com/dotnet/)
+* [.NET Web Development and Tools Blog](https://blogs.msdn.microsoft.com/webdev/)
+* [Microsoft Application Lifecycle Management](https://blogs.msdn.microsoft.com/visualstudioalm/)
+* [Microsoft Azure Blog](https://azure.microsoft.com/en-us/blog/)
+* [The Visual Studio Blog](https://blogs.msdn.microsoft.com/visualstudio/)
+* [Visual Studio Code Blog](http://code.visualstudio.com/blogs/)
+* [Scott Hanselman](http://www.hanselman.com/blog/)
+* [Ode to Code (K. Scott Allen)](http://odetocode.com/)
+* [Rick Strahl](https://weblog.west-wind.com/)
+* [You've Been Haacked (Phil Haack)](http://haacked.com/)
+* [.NET Escapades (Andrew Lock)](http://andrewlock.net/)
+* [CodeOpinion (Derek Comartin)](http://codeopinion.com/)
+* [Exception Not Found (Matthew P Jones)](https://www.exceptionnotfound.net/)
+* [Fritz on the Web (Jeffrey Fritz)](http://www.jeffreyfritz.com/)
+* [Kévin Chalet](http://kevinchalet.com/)
+* [Laurent Kempé](http://laurentkempe.com/)
+* [Dominick Baier](https://leastprivilege.com/)
+* [Talking Dotnet](http://www.talkingdotnet.com/)
+* [The Codeface (Mark Rendle)](https://blog.rendle.io/)
 
 ### Podcasts
 There is only one item here, because my commute to work is quite short. But seriously, if you work in software development (especially in .NET) and you have time for one podcast only, it has to be [.NET Rocks](http://www.dotnetrocks.com/). Richard and Carl are great hosts and their guests always happen to be exceptionally good at something. After so many shows their voices sound so familiar that I'm almost starting to think of them as my colleagues. And it is very likely that I will meet them alive on [NDC London 2017](http://ndc-london.com/) (which will probably be a reason for a separate post).

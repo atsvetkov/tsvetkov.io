@@ -15,7 +15,7 @@ Johhny feels that he might have been missing something important going on, but h
 
 What could be the most exciting new possibilities in today's .NET ecosystem that Johnny learned about? Let's look at Dave's *Top 5 Reasons Why .NET Is So Awesome Today*:
 
-1. .NET is now [completely open-source](https://github.com/dotnet/), so, for example, if you ever wondered how LINQ's `Count()` method worked, now you can [look it up on GitHub](https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs). For example, you can see that before even trying to iterate the whole sequence (which might be time-consuming), they check if this sequence is actually a collection (which preserves a 'Count' property), and if it is, then the collection's `Count` is returned, making it O(1) operation instead of O(n):
+1. .NET is now [completely open-source](https://github.com/dotnet/). If you ever wondered how LINQ's `Count()` method worked, now you can [look it up on GitHub](https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs). For example, you can see that before even trying to iterate the whole sequence (which might be time-consuming), they check if this sequence is actually a collection (which preserves a 'Count' property), and if it is, then the collection's `Count` is returned, making it O(1) operation instead of O(n):
 ```
 ICollection collection = source as ICollection;
 if (collection != null)

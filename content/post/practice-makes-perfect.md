@@ -41,4 +41,4 @@ So, how to practice?
 
 I only found this site two days ago, so there are already several puzzles to catch up, but this is a really fun way of practicing. Will definitely keep going and encourage you to check it out too.
 
-As Neil Gaiman said, *"you learn by finishing things"*, so just doing one small programming exercise (non work related!) a day will be of great help on your road to mastery.  
+As Neil Gaiman said, *"you learn by finishing things"*, so just doing one small programming exercise (non work-related!) a day will be of great help on your road to mastery.  

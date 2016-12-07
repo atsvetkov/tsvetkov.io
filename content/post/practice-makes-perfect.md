@@ -13,7 +13,7 @@ title = "Practice makes perfect"
 
 (*Steve Yegge, [Practicing Programming](https://sites.google.com/site/steveyegge2/practicing-programming)*)
 
-I couldn't agree more. More often than not we developers tend to only rely on working hours for coding. It's about eight hours and (hopefully) most of those are spent *actually* programming, so that seems quite enough, right?
+I couldn't agree more. More often than not we developers tend to write code only during working hours. It's about eight hours and (hopefully) most of those are spent *actually* programming, so that seems quite enough, right?
 
 Wrong!
 
@@ -23,7 +23,7 @@ Well, of course, it depends. We all have lives and keeping the work-life balance
 
 > Everyone practices -- everyone, that is, except for us. We just grind stuff out, day in, day out. Are you as embarrassed about the state of our profession as I am?
 
-I always compare it to running. Do you join a competition right away or you practice first? Do you run marathons without training between them? And, in my opinion, all of this is applicable to programming: every minute of focused practice trains your abstract thinking muscle and make it easier to turn mental models into working code next time you actually need it.
+I always compare it to running. Do you join a competition right away or you practice first? Do you run marathons without training between them? And, in my opinion, all of this is applicable to programming: every minute of focused practice trains your abstract thinking muscle and makes it easier to turn mental models into working code next time you actually need it.
 
 So, how to practice?
 

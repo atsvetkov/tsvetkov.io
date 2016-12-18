@@ -48,7 +48,7 @@ var x = map(opt, v => v * 2); // static method to mimic a globally available 'ma
 
 * [You are not paid to write code](http://bravenewgeek.com/you-are-not-paid-to-write-code) - a very nice read about the essence of programming and risks of having engineers build and maintain systems just for the sake of systems, not to solve a real business problem.
 
-> But if you set up a system, you are likely to find your time and effort now being consumed in the care and feeding of the system itself. New problems are created by its very presence. Once set up, it won't go away, it grows and encroaches. 
+> *"But if you set up a system, you are likely to find your time and effort now being consumed in the care and feeding of the system itself. New problems are created by its very presence. Once set up, it won't go away, it grows and encroaches."*
 
 * * *
 

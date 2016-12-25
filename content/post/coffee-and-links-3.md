@@ -23,9 +23,9 @@ title = "Coffee and Links - 3"
 
 ### Languages and frameworks
 
-* If you are already preparing your New Year resolutions and catching up with JavaScript is on the list, then you might want to check [Top JavaScript Frameworks & Topics to Learn in 2017](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711#.qe16jz7ue). Quite opinionated view, but makes a lot of sense. Choosing between top contenders, Angular 2 and Recat, personally I'd bet on and invest into the latter. And if you feel fed up with JavaScript frameworks, maybe refresh the core skills by taking [free 30-day vanilla JavaScript course](https://javascript30.com/).
+* If you are already preparing your New Year resolutions and the list includes something like *catch up with JavaScript*, then you might want to check out [Top JavaScript Frameworks & Topics to Learn in 2017](https://medium.com/javascript-scene/top-javascript-frameworks-topics-to-learn-in-2017-700a397b711#.qe16jz7ue). Quite an opinionated view, but makes a lot of sense to me. Choosing between top contenders, Angular 2 and React, personally I'd bet on and invest into the latter. And if you feel fed up with the JavaScript frameworks altogether, maybe refresh the core skills by taking [free 30-day vanilla JavaScript course](https://javascript30.com/).
 
-* At some point most .NET developers have to deal with [reflection](https://msdn.microsoft.com/en-us/library/f7ykdhsy.aspx). And very soon after that they learn that reflection API is slow (by design) and has to be used with caution. [Matt Warren explains why and shows some benchmarks](http://mattwarren.org/2016/12/14/Why-is-Reflection-slow/), demonstrating that, for instance, calling a property getter through a delegate is 8 times slower than the direct invocation, while calling it through reflection is 900 times slower. Always good to be aware of the relative speed.
+* At some point most .NET developers have to deal with [reflection](https://msdn.microsoft.com/en-us/library/f7ykdhsy.aspx). And soon after they learn that reflection API is slow (by design) and has to be used with caution. [Matt Warren explains why and shows some benchmarks](http://mattwarren.org/2016/12/14/Why-is-Reflection-slow/), demonstrating that, for instance, calling a property getter through a delegate is 8 times slower than the direct invocation, while calling it through reflection is 900 times slower. Always good to be aware of the relative speed.
 
 ### Tools
 
@@ -68,6 +68,6 @@ var summary = BenchmarkRunner.Run<Md5VsSha256>();
 
 > *"That’s because people don't work to be agile. People work for their satisfaction. Often, autonomy, mastery, and purpose will satisfy them. Keep people satisfied at the personal level and they will provide the results you want in their team."*
 
-* How do you estimate the total number of German tanks only having several ones captured? [An fascinating application of statistical theory to a very specific problem during World War II](https://en.wikipedia.org/wiki/German_tank_problem).
+* How do you estimate the total number of German tanks only having several ones captured? [A fascinating application of statistical theory to a very specific problem during World War II](https://en.wikipedia.org/wiki/German_tank_problem).
 
 * TED is publishing a link to a selected talk every day in December, calling it [31 days of ideas](http://www.tedxbasel.com/txb-blog/?tag=31+days+of+ideas). A nice and not-too-time-consuming way to learn ideas from various areas and get inspired. Highly recommended for broadening your horizons.

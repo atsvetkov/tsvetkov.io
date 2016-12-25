@@ -3,7 +3,8 @@ Categories = []
 Description = ""
 Tags = []
 date = "2016-12-16T21:40:04+01:00"
-title = "Coffee and Links - 3"
+title = "coffee and links 3"
+displaytitle = "Coffee and Links #3"
 
 +++
 

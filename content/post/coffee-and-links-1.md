@@ -3,7 +3,8 @@ Categories = []
 Description = ""
 Tags = []
 date = "2016-11-12T15:00:54+01:00"
-title = "Coffee and Links - 1"
+title = "coffee and links 1"
+displaytitle = "Coffee and Links #1"
 +++
 
 Sometimes I find interesting things on the web, which don't belong to a single category. Just random articles or news about technology. Since I still want to share these findings and because I normally do this kind of reading at the start of the day, I will be publishing this as a *Coffee and links* digest.

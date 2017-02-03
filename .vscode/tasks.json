@@ -1,0 +1,15 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "C:\\Program Files\\Git\\bin\\sh.exe",
+    "args": ["remote.sh"],
+    "showOutput": "always",
+    "echoCommand": true,
+    "tasks": [
+        {
+            "taskName": "deploy",
+            "args": ["remote.sh"]
+        }
+    ]
+}

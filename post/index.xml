@@ -2,19 +2,141 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/post/index.xml</link>
+    <link>https://tsvetkov.io/post/index.xml</link>
     <description>Recent content in Posts on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Jan 2017 11:54:46 +0100</lastBuildDate>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Feb 2017 15:59:26 +0100</lastBuildDate>
+    <atom:link href="https://tsvetkov.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Static site deployment options</title>
+      <link>https://tsvetkov.io/2017/02/static-site-deployment-options/</link>
+      <pubDate>Sat, 04 Feb 2017 15:59:26 +0100</pubDate>
+      
+      <guid>https://tsvetkov.io/2017/02/static-site-deployment-options/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;I know that for a lot of people their blog is something that should &lt;em&gt;just work&lt;/em&gt;. So they go for WordPress and focus on writing, especially when a blog is a source of income. Well, I have zero commercial value from this one and I also enjoy being a web developer, so I keep using the blog as a guinea pig for all these explorations.&lt;/p&gt;
+
+&lt;p&gt;When I first set everything up, the publishing pipeline looked like this:
+1. a new post is committed to a &lt;a href=&#34;https://github.com/atsvetkov/tsvetkov.io&#34;&gt;github repo&lt;/a&gt;
+2. &lt;a href=&#34;https://travis-ci.org&#34;&gt;Travis CI&lt;/a&gt; is notified and triggers a build (luckily, this service is free for open-source projects, meaning - for everything that is public on github). The build, well, builds the static site using &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; CLI tool and then deploys it to a folder on a &lt;a href=&#34;digitalocean.com&#34;&gt;DigitalOcean&lt;/a&gt; server (a simple Ubuntu instance) via SSH ans using &lt;code&gt;git push&lt;/code&gt; to a remote on this server.
+3. &lt;a href=&#34;https://caddyserver.com/&#34;&gt;Caddy&lt;/a&gt;, my favourite little web server, serves the new content.&lt;/p&gt;
+
+&lt;p&gt;It all worked well until it didn&amp;rsquo;t. At some point Travis CI builds would not trigger for way too long, then they would fail because the latest version of Hugo didn&amp;rsquo;t work with my site sources, then it just would succeed without actually copying files or giving an error. So I got fed up and decided to explore different options. Potentially I also want to stop using my own server altogether, since there are free solutions for static site hosting at GutHubm GitLab and many others.&lt;/p&gt;
+
+&lt;p&gt;Don&amp;rsquo;t expect a finished story, it is rather an ongoing process of improving the way this blog is deployed.&lt;/p&gt;
+
+&lt;h3 id=&#34;automated-deployment-from-my-own-machine&#34;&gt;Automated deployment from my own machine&lt;/h3&gt;
+
+&lt;p&gt;First, I just decided to stop depending on Travis CI. As much as I like the idea of Continuous Integration, using a free tier often means being part of a shared infrastructure and therefore having a higher level of uncertainty regarding when builds are actually triggered. So step one for me was to be able to deploy the blog to DigitalOcean in one command.&lt;/p&gt;
+
+&lt;p&gt;Ok, that can be done in many ways, and I have chosen the following:
+1. open an SSH session
+2. run a bash script remotely, which will clone my git repo (and a slightly customized theme), run &lt;code&gt;hugo&lt;/code&gt; on the server and copy the compiled static site to the web server content folder.&lt;/p&gt;
+
+&lt;p&gt;So, a &lt;code&gt;deploy.bat&lt;/code&gt; executes a &lt;code&gt;remote.sh&lt;/code&gt; script in a git shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;C:\Program Files\Git\bin\sh.exe&amp;quot; remote.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This &lt;code&gt;remote.sh&lt;/code&gt; script simply sends the contents of the actual &lt;code&gt;deploy.sh&lt;/code&gt; script as an input to a &lt;code&gt;bash&lt;/code&gt; shell opened in an SSH session (this may look crazy for mostly Windows people like me, but seems to be a well-known pattern in the Linux world):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat deploy.sh | ssh root@tsvetkov.io &#39;bash -&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, &lt;code&gt;deploy.sh&lt;/code&gt; script will clone the repo and do the rest (this is already executed on the remote machine):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/atsvetkov/tsvetkov.io.git /var/www/tsvetkov.io/temp
+mkdir /var/www/tsvetkov.io/temp/themes
+git clone https://github.com/atsvetkov/hyde.git /var/www/tsvetkov.io/temp/themes/hyde
+~/work/bin/hugo -s /var/www/tsvetkov.io/temp -d /var/www/tsvetkov.io/html
+rm -rf /var/www/tsvetkov.io/temp
+echo done!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Took me a Friday evening to configure, but now I can deploy the blog to the current hosting server with a single &lt;code&gt;deploy.bat&lt;/code&gt;. But what if I want to migrate from a personal server to some completely free hosting? Let&amp;rsquo;s see some alternatives.&lt;/p&gt;
+
+&lt;h3 id=&#34;gitlab-pages&#34;&gt;GitLab Pages&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.gitlab.com/ee/user/project/pages/index.html&#34;&gt;GitLab Pages&lt;/a&gt; supports hosting static sites built from a repository at GitLab. To achieve that, one would have to configure a &lt;a href=&#34;https://docs.gitlab.com/ee/ci/pipelines.html&#34;&gt;pipeline&lt;/a&gt;, which defines the steps to run during the build (usually triggered by a commit). They actually make it very easy to start by having several starter projects for various static site engines. Obviously, I just forked the &lt;a href=&#34;https://docs.gitlab.com/ee/ci/pipelines.html&#34;&gt;Hugo website example&lt;/a&gt; and configured the build pipeline in a &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file in my repo. GitLab infrastructure seems to run on Docker containers, so this file defines the base image and the build actions:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;image: alpine:3.4
+
+before_script:
+  - apk update &amp;amp;&amp;amp; apk add openssl
+  - wget https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz
+  - echo &amp;quot;37ee91ab3469afbf7602a091d466dfa5  hugo_0.16_linux-64bit.tgz&amp;quot; | md5sum -c
+  - tar xf hugo_0.16_linux-64bit.tgz &amp;amp;&amp;amp; cp ./hugo /usr/bin
+  - hugo version
+
+pages:
+  script:
+  - hugo
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Basically, you can read this as &amp;ldquo;using &lt;code&gt;alpine&lt;/code&gt; image, install OpenSSL and Hugo to my container and then build the site, with &lt;code&gt;public&lt;/code&gt; folder as the resulting content folder&amp;rdquo;. Easy-peasy, and results in a site available at &lt;a href=&#34;https://PROJECT_NAME.gitlab.io&#34;&gt;https://PROJECT_NAME.gitlab.io&lt;/a&gt;. Custom domains are supported too, so right now this version of my blog is running at &lt;a href=&#34;https://alexandertsvetkov.me:&#34;&gt;https://alexandertsvetkov.me:&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://tsvetkov.io/images/gitlab_pages_blog.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h3 id=&#34;github-pages&#34;&gt;GitHub pages&lt;/h3&gt;
+
+&lt;p&gt;OK, this is all well and good, but the sources of my blog are actually stored on GitHub and keeping the version at GitLab in sync with the original one is not something I really want to be doing. Maybe I can actually use &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; directly?&lt;/p&gt;
+
+&lt;p&gt;Of course, I can! One of the way it is supported at GitHub Pages is the following:
+1. a repository should have a special branch named &lt;code&gt;gh-pages&lt;/code&gt;
+2. when project is configured to use Pages and something is pushed to this branch, it will treat the files as a root folder of the site and serve them under some project-specific URL (once again, custom domain domains and HTTPS are supported automatically)&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;deploy-to-gh-pages.bat&lt;/code&gt; script to the rescue:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo --config config.gh-pages.toml
+git add public
+git commit -m &amp;quot;updated published static site&amp;quot;
+git push
+git subtree push --prefix public origin gh-pages
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case Hugo will compile the site using a separate config file, since the base URL of the site has to be different (just until a custom domain is remapped). Then the compiled static site is pushed from &lt;code&gt;public&lt;/code&gt; subfolder to the &lt;code&gt;gh-pages&lt;/code&gt; branch - and it automagically appears on the web under &lt;a href=&#34;https://USER_NAME.github.io/REPO_NAME!&#34;&gt;https://USER_NAME.github.io/REPO_NAME!&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://tsvetkov.io/images/github_pages_blog.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;surge&lt;/li&gt;
+&lt;li&gt;now&lt;/li&gt;
+&lt;li&gt;static.land&lt;/li&gt;
+&lt;li&gt;gh-pages npm cli tool&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>NDC London: talks</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</link>
+      <link>https://tsvetkov.io/2017/01/ndc-london-talks/</link>
       <pubDate>Sat, 28 Jan 2017 11:54:46 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</guid>
+      <guid>https://tsvetkov.io/2017/01/ndc-london-talks/</guid>
       <description>
 
 &lt;p&gt;Last three days of NDC London presented a constant paradox of choice, since every hour 7-8 speakers would have parallel sessions in different rooms. How the hell am I supposed to pick only one, if all of them are great? How on earth can you choose between Jon Skeet and Mark Seeman? My way of solving this problem was to spend an hour every evening going through the list of the next day&amp;rsquo;s speakers and googling their talks from the past. Sometimes this helped me to pick a brilliant talk from someone I had not known yet, sometimes this meant I would go to the Bill Wagner&amp;rsquo;s talk and&amp;hellip; well, more on that later.&lt;/p&gt;
@@ -52,7 +174,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/jimmys_law.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/jimmys_law.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -79,7 +201,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/devops_definition.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/devops_definition.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -93,14 +215,14 @@
     
     <item>
       <title>NDC London: ASP.NET Core workshop</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</link>
+      <link>https://tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</link>
       <pubDate>Tue, 17 Jan 2017 21:14:23 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</guid>
+      <guid>https://tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/ndc_london_2017_workshops.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/ndc_london_2017_workshops.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -127,7 +249,7 @@
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/london_evening_thames.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/london_evening_thames.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -137,10 +259,10 @@
     
     <item>
       <title>coffee and links 4</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</link>
+      <link>https://tsvetkov.io/2017/01/coffee-and-links-4/</link>
       <pubDate>Sun, 08 Jan 2017 18:11:53 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</guid>
+      <guid>https://tsvetkov.io/2017/01/coffee-and-links-4/</guid>
       <description>
 
 &lt;p&gt;Happy New Year everyone and thank you for reading this blog!&lt;/p&gt;
@@ -150,7 +272,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-4.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-4.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -214,7 +336,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_interactive_tutorials.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/resharper_interactive_tutorials.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -231,7 +353,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -243,16 +365,16 @@ function renderMainFragment ( root, component ) {
     
     <item>
       <title>C-Sharp 7.0 and Visual Studio 2017 RC</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
+      <link>https://tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
       <pubDate>Sun, 25 Dec 2016 12:58:59 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
+      <guid>https://tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -267,7 +389,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-workloads.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-workloads.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -288,7 +410,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-project-file.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-project-file.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -358,7 +480,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-out-variable.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-out-variable.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -401,7 +523,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -421,16 +543,16 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 3</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</link>
+      <link>https://tsvetkov.io/2016/12/coffee-and-links-3/</link>
       <pubDate>Fri, 16 Dec 2016 21:40:04 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</guid>
+      <guid>https://tsvetkov.io/2016/12/coffee-and-links-3/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-3.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-3.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -445,7 +567,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/google_revenue.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/google_revenue.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -492,7 +614,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_heap_allocations.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/resharper_heap_allocations.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -507,7 +629,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/radio_garden.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/radio_garden.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -542,14 +664,14 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>Practice makes perfect</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</link>
+      <link>https://tsvetkov.io/2016/12/practice-makes-perfect/</link>
       <pubDate>Tue, 06 Dec 2016 21:50:43 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</guid>
+      <guid>https://tsvetkov.io/2016/12/practice-makes-perfect/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/practice_makes_perfect.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/practice_makes_perfect.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -601,7 +723,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/advent_of_code.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/advent_of_code.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -615,10 +737,10 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 2</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</link>
+      <link>https://tsvetkov.io/2016/11/coffee-and-links-2/</link>
       <pubDate>Sat, 19 Nov 2016 14:17:47 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</guid>
+      <guid>https://tsvetkov.io/2016/11/coffee-and-links-2/</guid>
       <description>
 
 &lt;p&gt;This was a week of &lt;a href=&#34;https://connectevent.microsoft.com&#34;&gt;Microsoft Connect 2016&lt;/a&gt;, an event where yet another bunch of cool announcements were made. However, being a good software engineer means not restricting yourself to a single technology, so I have some awesome non-Microsoft things to share as well. Let&amp;rsquo;s jump straight in!&lt;/p&gt;
@@ -626,7 +748,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-2.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-2.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -665,7 +787,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/iis_manager_preview.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/iis_manager_preview.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -697,7 +819,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/twitter_vi.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/twitter_vi.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -707,10 +829,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>coffee and links 1</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</link>
+      <link>https://tsvetkov.io/2016/11/coffee-and-links-1/</link>
       <pubDate>Sat, 12 Nov 2016 15:00:54 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</guid>
+      <guid>https://tsvetkov.io/2016/11/coffee-and-links-1/</guid>
       <description>
 
 &lt;p&gt;Sometimes I find interesting things on the web, which don&amp;rsquo;t belong to a single category. Just random articles or news about technology. Since I still want to share these findings and because I normally do this kind of reading at the start of the day, I will be publishing this as a &lt;em&gt;Coffee and links&lt;/em&gt; digest.&lt;/p&gt;
@@ -718,7 +840,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-1.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -737,7 +859,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/AcclaimBadge.png&#34; /&gt;
+        &lt;img src=&#34;https://tsvetkov.io/images/AcclaimBadge.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -779,10 +901,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>Some facts about WiX</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</link>
+      <link>https://tsvetkov.io/2016/10/some-facts-about-wix/</link>
       <pubDate>Thu, 27 Oct 2016 22:20:54 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</guid>
+      <guid>https://tsvetkov.io/2016/10/some-facts-about-wix/</guid>
       <description>&lt;p&gt;Before we start, let me ask you a question: do you know what is the oldest still active open source .NET project?&lt;/p&gt;
 
 &lt;p&gt;Today I was again listening to awesome &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt; podcast and the guest was Rob Mensching, the guy behind &lt;a href=&#34;http://wixtoolset.org/&#34;&gt;Wix Toolset&lt;/a&gt;. WiX provides a bunch of tools to simplify the creation of MSI packages for Windows, and as far as I know, it is one of the most popular open-source implementations in that area. And it is also free! We use it for the product I am currently working on. Hell, even Microsoft is using it: &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/packaging/windows/clisdk/dotnet.wxs&#34;&gt;see for yourself&lt;/a&gt; that the current .NET Core installer is actually built with WiX! In fact, Rob Mensching used to work in Microsoft on setup and deployment for Office, Windows and Visual Studio. Obviously, he knows more about installers than most people do, enough to build a business around it. So he is now a CEO and a co-founder of &lt;a href=&#34;https://www.firegiant.com/&#34;&gt;Fire Giant&lt;/a&gt;, a company providing commercial support for WiX Toolset.&lt;/p&gt;
@@ -822,10 +944,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>Current state of .NET</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</link>
+      <link>https://tsvetkov.io/2016/10/current-state-of-.net/</link>
       <pubDate>Tue, 18 Oct 2016 22:22:41 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</guid>
+      <guid>https://tsvetkov.io/2016/10/current-state-of-.net/</guid>
       <description>&lt;p&gt;Imagine a software developer working in a typical enterprise IT company. Let&amp;rsquo;s call him Johnny. Most of the time Johnny works with .NET applications. He&amp;rsquo;s been writing web apps since the days of ASP (he feels pretty comfortable with Web Forms and IIS after all these years), but he was always too busy doing &lt;em&gt;important things&lt;/em&gt; and never really had time to follow the news in the industry. Yeah, he heard some folks in another department are using &amp;ldquo;MVC&amp;rdquo;, and somebody mentioned something like &amp;ldquo;core&amp;rdquo; or &amp;ldquo;standard&amp;rdquo;. And some fellow .NET developers were even talking about Linux at the coffee machine. What? &lt;em&gt;.NET&lt;/em&gt; and &lt;em&gt;Linux&lt;/em&gt;? Weird!&lt;/p&gt;
 
 &lt;p&gt;Or is it?&lt;/p&gt;
@@ -876,16 +998,16 @@ dotnet run
 
 &lt;p&gt;Be like Johnny! Embrace change and learn amazing things!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Staying up-to-date with software development trends</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
+      <link>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
       <pubDate>Sun, 16 Oct 2016 16:51:55 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
+      <guid>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
       <description>
 
 &lt;p&gt;Earlier this year I was assigned to a role of a technical lead in a small development team. This happened after working in the same team for more than a year and then being a part of a two-person architecture team focused on evaluating the microservices approach for a couple of months. At my current employer things are changing quickly and people are free to figure out what the idea actually was. So I am still looking for the meaning of the tech lead role, but definitely enjoying it already.&lt;/p&gt;
@@ -960,10 +1082,10 @@ dotnet run
     
     <item>
       <title>Building a blog with Hugo, GitHub, Travis-CI and DigitalOcean - Part 1</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
+      <link>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
       <pubDate>Sun, 28 Aug 2016 23:01:21 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
+      <guid>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
       <description>&lt;p&gt;&lt;em&gt;With great power comes great responsibility&lt;/em&gt;, they say. In case of being a programmer, this sometimes means that achieving simple things may get complicated. I understand that WordPress essentially won as the blogging platform and you can setup your hosted blog in almost no time&amp;hellip; but then where is all the fun? On the other hand, putting on a pragmatic programmer&amp;rsquo;s hat, I don&amp;rsquo;t really have time or desire to write my own blog engine either. So I was looking for some kind of a middle ground.&lt;/p&gt;
 
 &lt;p&gt;To me the sweet spot seems to be in the static site generators: with this approach you usually get a high performance of a simple static site together with the beauty of Markdown, while still maintaining a freedom to choose how to store the sources and deploy the end result.&lt;/p&gt;
@@ -978,10 +1100,10 @@ dotnet run
     
     <item>
       <title>Never too late</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</link>
+      <link>https://tsvetkov.io/2016/06/never-too-late/</link>
       <pubDate>Fri, 17 Jun 2016 22:52:13 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</guid>
+      <guid>https://tsvetkov.io/2016/06/never-too-late/</guid>
       <description>&lt;p&gt;It wasn&amp;rsquo;t until this year that I decided to start blogging. A lot of things changed since moving from Russia to the Netherlands more than a year ago, in both life and work. At my current employer we are undergoing a tough and sometimes painful process of migrating our software architecture and development process to a presumably better state - and I am right in the middle of it. There are plenty discussions and experiments, some of them I hope might be worth sharing with the community.&lt;/p&gt;
 
 &lt;p&gt;My initial goal is to write at least one post a week (feel free to poke me if I don&amp;rsquo;t). And I think in the actual first one (&lt;em&gt;every programmer&amp;rsquo;s posts should be zero-indexed, right?&lt;/em&gt;) I am going to describe the technical parts behind this very blog.&lt;/p&gt;

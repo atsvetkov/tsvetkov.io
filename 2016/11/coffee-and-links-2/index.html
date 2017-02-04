@@ -1,0 +1,182 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.19-DEV" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>coffee and links 2 &middot; Surfing the code</title>
+  
+
+  
+  <link rel="stylesheet" href="https://tsvetkov.io/css/poole.css">
+  <link rel="stylesheet" href="https://tsvetkov.io/css/syntax.css">
+  <link rel="stylesheet" href="https://tsvetkov.io/css/hyde.css">
+  <link rel="stylesheet" href="https://tsvetkov.io/css/custom.css">
+  <link rel="stylesheet" href="https://tsvetkov.io/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Surfing the code" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <div class="center-wrapper">
+        <img class="avatar" src="/images/avatar_pixel_16.png" />
+      </div>
+      <a href="https://tsvetkov.io/"><h1>Surfing the code</h1></a>
+      <p class="lead">
+       POST /thoughts 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="/about/"> About </a></li>
+      
+    </ul>
+
+    <div class="social-wrapper center-wrapper">
+      
+      <a class="social-link" href="https://www.facebook.com/alex.tsvetkov.18">
+          <i class="fa fa-2x fa-facebook"></i>
+      </a>
+      
+      <a class="social-link" href="https://www.github.com/atsvetkov">
+          <i class="fa fa-2x fa-github"></i>
+      </a>
+      
+      <a class="social-link" href="https://www.instagram.com/alexander_tsvetkov/">
+          <i class="fa fa-2x fa-instagram"></i>
+      </a>
+      
+      <a class="social-link" href="https://tsvetkov.io/index.xml">
+          <i class="fa fa-2x fa-rss"></i>
+      </a>
+      
+    </div>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>
+					
+                  		Coffee and Links #2
+                	
+				</h1>
+				<span class="post-date">Nov 19, 2016</span>
+				
+
+<p>This was a week of <a href="https://connectevent.microsoft.com">Microsoft Connect 2016</a>, an event where yet another bunch of cool announcements were made. However, being a good software engineer means not restricting yourself to a single technology, so I have some awesome non-Microsoft things to share as well. Let&rsquo;s jump straight in!</p>
+
+
+<figure >
+    
+        <img src="/images/coffee-and-links-2.jpg" />
+    
+    
+</figure>
+
+
+<h3 id="news">News</h3>
+
+<ul>
+<li><p>Microsoft used to be one of those companies on the far end on the &ldquo;opensourceness&rdquo; spectrum, and .NET itself seemed to be almost an antonim of &ldquo;open source&rdquo;. These days are gone! Just look at this: <a href="https://techcrunch.com/2016/11/16/microsoft-joins-the-linux-foundation/">Microsoft is joining the Linux Foundation</a>, while <a href="https://cloudplatform.googleblog.com/2016/11/Google-Cloud-to-join-NET-Foundation-Technical-Steering-Group.html">Google is joining the .NET Foundation</a>. Generally this means that both companies are getting more and more committed to contributing to the open source tools and products from both worlds, which is amazing news for all developers. It is not that crazy or surprising, though, given that <a href="https://azure.microsoft.com/en-us/blog/powershell-is-open-sourced-and-is-available-on-linux/">PowerShell now runs on Linux</a>, <a href="https://insights.ubuntu.com/2016/11/16/microsoft-loves-linux-ubuntu-available-on-sql-server-public-preview">SQL Server preview runs on Ubuntu</a> and <a href="https://cloudplatform.googleblog.com/2016/08/making-ASP.NET-apps-first-class-citizens-on-Google-Cloud-Platform.html">Google Cloud supports ASP.NET web applications</a>. It&rsquo;s all so mixed up now&hellip; which is awesome!</p></li>
+
+<li><p>Visual Studio 2017 Release Candidate (formerly known as Visual Studio 15) <a href="https://msdn.microsoft.com/magazine/mt790181">is now available</a>. There are lots of productivity and performance improvements, for example, solutions and projects should be loading 2-4 times faster than in VS 2015. I&rsquo;m really looking forward to it, as well as to the <a href="https://msdn.microsoft.com/magazine/mt790184">new language features of C# 7.0</a>. And finally there is <a href="https://msdn.microsoft.com/magazine/mt790182">Visual Studio for Mac</a>! Not that I am personally going to use it, but it is just cool to see how Microsoft can leverage existing open-source tools to expand into the new market (VS for Mac is built on top of <a href="http://www.monodevelop.com/">MonoDevelop</a> and VS Code - on top of <a href="https://atom.io/">Atom</a>).</p></li>
+
+<li><p><a href="https://blogs.msdn.microsoft.com/webdev/2016/11/16/announcing-asp-net-core-1-1/">ASP.NET Core 1.1</a> is released, featuring even higher performance rating on <a href="https://www.techempower.com/blog/2016/11/16/framework-benchmarks-round-13/">TechEmpower</a>, URL rewriting, response caching, Web Listener server on Windows (can be used instead of Kestrel to utilize Windows-specific features) and more. It is still based on project.json file, but there are already working on switching back to .csproj and msbuild - a much improved version of a familiar tooling (more details on the alpha version of this <a href="https://blogs.msdn.microsoft.com/dotnet/2016/11/16/announcing-net-core-tools-msbuild-alpha/">here</a>).</p></li>
+
+<li><p>Jimmy Bogard, the creator of <a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a> and <a href="https://github.com/jbogard/MediatR">MediatR</a>, has updated his sample project <a href="https://github.com/jbogard/contosouniversitycore">Contoso University</a> to .NET Core. It shows how to use all these fancy tools together, applying <a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a> pattern and NOT overengineering the solution structure (Jimmy is a big advocate of using a simpler setup and <a href="https://lostechies.com/jimmybogard/2012/08/30/evolutionary-project-structure/">preferring folders over projects for layering</a>). I really like the way he looks into the common software development problems and finds reasonable no-nonsense solutions. He is also an excellent speaker, so when you have time, watch some of his <a href="https://vimeo.com/search?q=jimmy+bogard">NDC talks</a>.</p></li>
+</ul>
+
+<h3 id="languages-and-frameworks">Languages and frameworks</h3>
+
+<ul>
+<li><p><a href="http://programming.witheve.com/">Eve: Programming designed for humans</a> - quite an unusual approach to designing a programming language and an IDE together to provide a unique and human-friendly experience. Perhaps not for every project, but certainly interesting for some.</p></li>
+
+<li><p><a href="https://vuejs.org/">Vue.js</a>, yet another JavaScript framework rapidly gaining popularity, <a href="https://medium.com/the-vue-point/vue-2-0-is-here-ef1f26acf4b8#.w0mmh55at">has recently got a new 2.0 release</a>. I like the philosophy behind it, especially the idea of a <em>progressive framework</em>, which allows you to start quickly with the smallest subset of features and only add more when your application has grown big enough. The author, Evan You, explains this nicely in <a href="https://www.youtube.com/watch?v=pBBSp_iIiVM">his talk at UtahJS conference</a>.</p></li>
+
+<li><p>If you want more functional programming features in your .NET code, but switching to F# is not an option, there is <a href="https://github.com/louthy/language-ext">C# Functional Language Extensions</a> project to the rescue. Using <a href="http://geekswithblogs.net/BlackRabbitCoder/archive/2015/04/16/c.net-little-wonders-static-using-statements-in-c-6.aspx">static usings from C# 6.0</a> in a clever way, this library allows you to write code that looks and feels pretty much like F# or any other functional language:</p>
+
+<pre><code>List&lt;int&gt; items = List(1,2,3,4,5); // static method as constructor function instead of your typical 'new List'
+var x = map(opt, v =&gt; v * 2); // static method to mimic a globally available 'map' function as a primitive
+</code></pre></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+
+<ul>
+<li>Even in the latest version the IIS Manager tool still looks terribly outdated and doesn&rsquo;t exactly provide a nice user experience. Fear not! There is now a new web-based tool for managing IIS, which provides a full-blown REST API and a default Angular-based web UI for that purpose. Check out the <a href="https://blogs.iis.net/adminapi/microsoft-iis-administration-api-preview">Microsoft IIS Administration Preview</a>. This looks so much more like it&rsquo;s 2016 today, doesn&rsquo;t it?
+
+<figure >
+    
+        <img src="/images/iis_manager_preview.png" />
+    
+    
+</figure>
+</li>
+</ul>
+
+<h3 id="fun">Fun</h3>
+
+<ul>
+<li><p><em>&ldquo;90% of everything is crap&rdquo;</em>, <em>&ldquo;Communication usually fails, except by accident&rdquo;</em> and other wittyful observations in <a href="https://www.exceptionnotfound.net/15-fundamental-laws-of-the-internet/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+ExceptionNotFound+%28Exception+Not+Found%29">15 Fundamental Laws of the Internet</a>.</p></li>
+
+<li><p>Some kind of Google neural network will try to recognize what you are drawing: <a href="https://quickdraw.withgoogle.com/">Quick, draw!</a></p></li>
+</ul>
+
+<h3 id="other">Other</h3>
+
+<ul>
+<li><a href="http://bravenewgeek.com/you-are-not-paid-to-write-code">You are not paid to write code</a> - a very nice read about the essence of programming and risks of having engineers build and maintain systems just for the sake of systems, not to solve a real business problem.</li>
+</ul>
+
+<blockquote>
+<p><em>&ldquo;But if you set up a system, you are likely to find your time and effort now being consumed in the care and feeding of the system itself. New problems are created by its very presence. Once set up, it won&rsquo;t go away, it grows and encroaches.&rdquo;</em></p>
+</blockquote>
+
+<hr />
+
+<p>P.S. Usually I write these posts in VS Code, just because the whole blog is stored in a github repository, so it is kind of natural to treat is as a code base. However, I always enjoy pushing myself out of the comfort zone and optimizing the coding experience. That&rsquo;s why I am now learning to use <a href="http://www.vim.org">Vim</a>, a text editor which is more common in Unix OS, but can be used anywhere. The general idea, as I see it, is to keep your fingers on the home row of the keyboard and minimize unnecessary movement. Learning curve is quite steep, but the benefits are tempting. So in fact this entire post has been authored in Vim (at least doubling the writing time)! And you don&rsquo;t necesssarily have to use the old-school console version, there is <a href="https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim">an extension for Visual Studio</a> and <a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">one for Visual Studio Code too</a>, which emulate Vim-like keybindings. Check it out and don&rsquo;t forget: to quit Vim, you type <code>:wq!</code>.</p>
+
+
+<figure >
+    
+        <img src="/images/twitter_vi.png" />
+    
+    
+</figure>
+
+
+			</div>
+			<h2>Comments</h2>
+			<div id="disqus_thread"></div>
+<script>
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//tsvetkovio.disqus.com/embed.js'; 
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</div>
+  </body>
+</html>

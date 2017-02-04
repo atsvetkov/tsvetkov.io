@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Surfing the code</title>
-    <link>https://tsvetkov.io/index.xml</link>
+    <link>https://atsvetkov.github.io/tsvetkov.io/index.xml</link>
     <description>Recent content on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 28 Jan 2017 11:54:46 +0100</lastBuildDate>
-    <atom:link href="https://tsvetkov.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>NDC London: talks</title>
-      <link>https://tsvetkov.io/2017/01/ndc-london-talks/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</link>
       <pubDate>Sat, 28 Jan 2017 11:54:46 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2017/01/ndc-london-talks/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</guid>
       <description>
 
 &lt;p&gt;Last three days of NDC London presented a constant paradox of choice, since every hour 7-8 speakers would have parallel sessions in different rooms. How the hell am I supposed to pick only one, if all of them are great? How on earth can you choose between Jon Skeet and Mark Seeman? My way of solving this problem was to spend an hour every evening going through the list of the next day&amp;rsquo;s speakers and googling their talks from the past. Sometimes this helped me to pick a brilliant talk from someone I had not known yet, sometimes this meant I would go to the Bill Wagner&amp;rsquo;s talk and&amp;hellip; well, more on that later.&lt;/p&gt;
@@ -52,7 +52,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/jimmys_law.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/jimmys_law.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -79,7 +79,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/devops_definition.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/devops_definition.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -93,14 +93,14 @@
     
     <item>
       <title>NDC London: ASP.NET Core workshop</title>
-      <link>https://tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</link>
       <pubDate>Tue, 17 Jan 2017 21:14:23 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/ndc_london_2017_workshops.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/ndc_london_2017_workshops.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -127,7 +127,7 @@
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/london_evening_thames.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/london_evening_thames.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -137,10 +137,10 @@
     
     <item>
       <title>coffee and links 4</title>
-      <link>https://tsvetkov.io/2017/01/coffee-and-links-4/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</link>
       <pubDate>Sun, 08 Jan 2017 18:11:53 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2017/01/coffee-and-links-4/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</guid>
       <description>
 
 &lt;p&gt;Happy New Year everyone and thank you for reading this blog!&lt;/p&gt;
@@ -150,7 +150,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-4.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-4.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -214,7 +214,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/resharper_interactive_tutorials.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_interactive_tutorials.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -231,7 +231,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -243,16 +243,16 @@ function renderMainFragment ( root, component ) {
     
     <item>
       <title>C-Sharp 7.0 and Visual Studio 2017 RC</title>
-      <link>https://tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
       <pubDate>Sun, 25 Dec 2016 12:58:59 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -267,7 +267,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-workloads.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-workloads.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -288,7 +288,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-project-file.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-project-file.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -358,7 +358,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-out-variable.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-out-variable.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -401,7 +401,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -421,16 +421,16 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 3</title>
-      <link>https://tsvetkov.io/2016/12/coffee-and-links-3/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</link>
       <pubDate>Fri, 16 Dec 2016 21:40:04 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2016/12/coffee-and-links-3/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-3.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-3.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -445,7 +445,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/google_revenue.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/google_revenue.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -492,7 +492,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/resharper_heap_allocations.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_heap_allocations.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -507,7 +507,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/radio_garden.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/radio_garden.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -542,14 +542,14 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>Practice makes perfect</title>
-      <link>https://tsvetkov.io/2016/12/practice-makes-perfect/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</link>
       <pubDate>Tue, 06 Dec 2016 21:50:43 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2016/12/practice-makes-perfect/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/practice_makes_perfect.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/practice_makes_perfect.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -601,7 +601,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/advent_of_code.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/advent_of_code.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -615,10 +615,10 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 2</title>
-      <link>https://tsvetkov.io/2016/11/coffee-and-links-2/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</link>
       <pubDate>Sat, 19 Nov 2016 14:17:47 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2016/11/coffee-and-links-2/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</guid>
       <description>
 
 &lt;p&gt;This was a week of &lt;a href=&#34;https://connectevent.microsoft.com&#34;&gt;Microsoft Connect 2016&lt;/a&gt;, an event where yet another bunch of cool announcements were made. However, being a good software engineer means not restricting yourself to a single technology, so I have some awesome non-Microsoft things to share as well. Let&amp;rsquo;s jump straight in!&lt;/p&gt;
@@ -626,7 +626,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-2.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-2.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -665,7 +665,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/iis_manager_preview.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/iis_manager_preview.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -697,7 +697,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/twitter_vi.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/twitter_vi.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -707,10 +707,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>coffee and links 1</title>
-      <link>https://tsvetkov.io/2016/11/coffee-and-links-1/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</link>
       <pubDate>Sat, 12 Nov 2016 15:00:54 +0100</pubDate>
       
-      <guid>https://tsvetkov.io/2016/11/coffee-and-links-1/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</guid>
       <description>
 
 &lt;p&gt;Sometimes I find interesting things on the web, which don&amp;rsquo;t belong to a single category. Just random articles or news about technology. Since I still want to share these findings and because I normally do this kind of reading at the start of the day, I will be publishing this as a &lt;em&gt;Coffee and links&lt;/em&gt; digest.&lt;/p&gt;
@@ -718,7 +718,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/coffee-and-links-1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-1.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -737,7 +737,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://tsvetkov.io/images/AcclaimBadge.png&#34; /&gt;
+        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/AcclaimBadge.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -779,10 +779,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>Some facts about WiX</title>
-      <link>https://tsvetkov.io/2016/10/some-facts-about-wix/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</link>
       <pubDate>Thu, 27 Oct 2016 22:20:54 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/2016/10/some-facts-about-wix/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</guid>
       <description>&lt;p&gt;Before we start, let me ask you a question: do you know what is the oldest still active open source .NET project?&lt;/p&gt;
 
 &lt;p&gt;Today I was again listening to awesome &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt; podcast and the guest was Rob Mensching, the guy behind &lt;a href=&#34;http://wixtoolset.org/&#34;&gt;Wix Toolset&lt;/a&gt;. WiX provides a bunch of tools to simplify the creation of MSI packages for Windows, and as far as I know, it is one of the most popular open-source implementations in that area. And it is also free! We use it for the product I am currently working on. Hell, even Microsoft is using it: &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/packaging/windows/clisdk/dotnet.wxs&#34;&gt;see for yourself&lt;/a&gt; that the current .NET Core installer is actually built with WiX! In fact, Rob Mensching used to work in Microsoft on setup and deployment for Office, Windows and Visual Studio. Obviously, he knows more about installers than most people do, enough to build a business around it. So he is now a CEO and a co-founder of &lt;a href=&#34;https://www.firegiant.com/&#34;&gt;Fire Giant&lt;/a&gt;, a company providing commercial support for WiX Toolset.&lt;/p&gt;
@@ -822,10 +822,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>Current state of .NET</title>
-      <link>https://tsvetkov.io/2016/10/current-state-of-.net/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</link>
       <pubDate>Tue, 18 Oct 2016 22:22:41 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/2016/10/current-state-of-.net/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</guid>
       <description>&lt;p&gt;Imagine a software developer working in a typical enterprise IT company. Let&amp;rsquo;s call him Johnny. Most of the time Johnny works with .NET applications. He&amp;rsquo;s been writing web apps since the days of ASP (he feels pretty comfortable with Web Forms and IIS after all these years), but he was always too busy doing &lt;em&gt;important things&lt;/em&gt; and never really had time to follow the news in the industry. Yeah, he heard some folks in another department are using &amp;ldquo;MVC&amp;rdquo;, and somebody mentioned something like &amp;ldquo;core&amp;rdquo; or &amp;ldquo;standard&amp;rdquo;. And some fellow .NET developers were even talking about Linux at the coffee machine. What? &lt;em&gt;.NET&lt;/em&gt; and &lt;em&gt;Linux&lt;/em&gt;? Weird!&lt;/p&gt;
 
 &lt;p&gt;Or is it?&lt;/p&gt;
@@ -876,16 +876,16 @@ dotnet run
 
 &lt;p&gt;Be like Johnny! Embrace change and learn amazing things!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Staying up-to-date with software development trends</title>
-      <link>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
       <pubDate>Sun, 16 Oct 2016 16:51:55 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
       <description>
 
 &lt;p&gt;Earlier this year I was assigned to a role of a technical lead in a small development team. This happened after working in the same team for more than a year and then being a part of a two-person architecture team focused on evaluating the microservices approach for a couple of months. At my current employer things are changing quickly and people are free to figure out what the idea actually was. So I am still looking for the meaning of the tech lead role, but definitely enjoying it already.&lt;/p&gt;
@@ -960,10 +960,10 @@ dotnet run
     
     <item>
       <title>Building a blog with Hugo, GitHub, Travis-CI and DigitalOcean - Part 1</title>
-      <link>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
       <pubDate>Sun, 28 Aug 2016 23:01:21 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
       <description>&lt;p&gt;&lt;em&gt;With great power comes great responsibility&lt;/em&gt;, they say. In case of being a programmer, this sometimes means that achieving simple things may get complicated. I understand that WordPress essentially won as the blogging platform and you can setup your hosted blog in almost no time&amp;hellip; but then where is all the fun? On the other hand, putting on a pragmatic programmer&amp;rsquo;s hat, I don&amp;rsquo;t really have time or desire to write my own blog engine either. So I was looking for some kind of a middle ground.&lt;/p&gt;
 
 &lt;p&gt;To me the sweet spot seems to be in the static site generators: with this approach you usually get a high performance of a simple static site together with the beauty of Markdown, while still maintaining a freedom to choose how to store the sources and deploy the end result.&lt;/p&gt;
@@ -978,10 +978,10 @@ dotnet run
     
     <item>
       <title>About</title>
-      <link>https://tsvetkov.io/about/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/about/</link>
       <pubDate>Fri, 17 Jun 2016 23:00:45 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/about/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/about/</guid>
       <description>&lt;p&gt;Hi, I&amp;rsquo;m Alex! I have been working as a software engineer for the last 12 years, and now I am a Technical Lead in a software company in Utrecht, the Netherlands.&lt;/p&gt;
 
 &lt;p&gt;I have always enjoyed exploring all things .NET and creating high performance web applications. Besides coding, I play the guitar and occasionally produce electronic music.&lt;/p&gt;
@@ -990,10 +990,10 @@ dotnet run
     
     <item>
       <title>Never too late</title>
-      <link>https://tsvetkov.io/2016/06/never-too-late/</link>
+      <link>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</link>
       <pubDate>Fri, 17 Jun 2016 22:52:13 +0200</pubDate>
       
-      <guid>https://tsvetkov.io/2016/06/never-too-late/</guid>
+      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</guid>
       <description>&lt;p&gt;It wasn&amp;rsquo;t until this year that I decided to start blogging. A lot of things changed since moving from Russia to the Netherlands more than a year ago, in both life and work. At my current employer we are undergoing a tough and sometimes painful process of migrating our software architecture and development process to a presumably better state - and I am right in the middle of it. There are plenty discussions and experiments, some of them I hope might be worth sharing with the community.&lt;/p&gt;
 
 &lt;p&gt;My initial goal is to write at least one post a week (feel free to poke me if I don&amp;rsquo;t). And I think in the actual first one (&lt;em&gt;every programmer&amp;rsquo;s posts should be zero-indexed, right?&lt;/em&gt;) I am going to describe the technical parts behind this very blog.&lt;/p&gt;

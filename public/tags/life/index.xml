@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Life on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/tags/life/index.xml</link>
+    <link>https://tsvetkov.io/tags/life/index.xml</link>
     <description>Recent content in Life on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsvetkov.io/tags/life/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Never too late</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</link>
+      <link>https://tsvetkov.io/2016/06/never-too-late/</link>
       <pubDate>Fri, 17 Jun 2016 22:52:13 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</guid>
+      <guid>https://tsvetkov.io/2016/06/never-too-late/</guid>
       <description>&lt;p&gt;It wasn&amp;rsquo;t until this year that I decided to start blogging. A lot of things changed since moving from Russia to the Netherlands more than a year ago, in both life and work. At my current employer we are undergoing a tough and sometimes painful process of migrating our software architecture and development process to a presumably better state - and I am right in the middle of it. There are plenty discussions and experiments, some of them I hope might be worth sharing with the community.&lt;/p&gt;
 
 &lt;p&gt;My initial goal is to write at least one post a week (feel free to poke me if I don&amp;rsquo;t). And I think in the actual first one (&lt;em&gt;every programmer&amp;rsquo;s posts should be zero-indexed, right?&lt;/em&gt;) I am going to describe the technical parts behind this very blog.&lt;/p&gt;

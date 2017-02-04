@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Travis Ci on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/tags/travis-ci/index.xml</link>
+    <link>https://tsvetkov.io/tags/travis-ci/index.xml</link>
     <description>Recent content in Travis Ci on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsvetkov.io/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Building a blog with Hugo, GitHub, Travis-CI and DigitalOcean - Part 1</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
+      <link>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
       <pubDate>Sun, 28 Aug 2016 23:01:21 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
+      <guid>https://tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
       <description>&lt;p&gt;&lt;em&gt;With great power comes great responsibility&lt;/em&gt;, they say. In case of being a programmer, this sometimes means that achieving simple things may get complicated. I understand that WordPress essentially won as the blogging platform and you can setup your hosted blog in almost no time&amp;hellip; but then where is all the fun? On the other hand, putting on a pragmatic programmer&amp;rsquo;s hat, I don&amp;rsquo;t really have time or desire to write my own blog engine either. So I was looking for some kind of a middle ground.&lt;/p&gt;
 
 &lt;p&gt;To me the sweet spot seems to be in the static site generators: with this approach you usually get a high performance of a simple static site together with the beauty of Markdown, while still maintaining a freedom to choose how to store the sources and deploy the end result.&lt;/p&gt;

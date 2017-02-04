@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Development on Surfing the code</title>
+    <link>https://tsvetkovio.surge.sh/tags/software-development/index.xml</link>
+    <description>Recent content in Software Development on Surfing the code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://tsvetkovio.surge.sh/tags/software-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Current state of .NET</title>
+      <link>https://tsvetkovio.surge.sh/2016/10/current-state-of-.net/</link>
+      <pubDate>Tue, 18 Oct 2016 22:22:41 +0200</pubDate>
+      
+      <guid>https://tsvetkovio.surge.sh/2016/10/current-state-of-.net/</guid>
+      <description>&lt;p&gt;Imagine a software developer working in a typical enterprise IT company. Let&amp;rsquo;s call him Johnny. Most of the time Johnny works with .NET applications. He&amp;rsquo;s been writing web apps since the days of ASP (he feels pretty comfortable with Web Forms and IIS after all these years), but he was always too busy doing &lt;em&gt;important things&lt;/em&gt; and never really had time to follow the news in the industry. Yeah, he heard some folks in another department are using &amp;ldquo;MVC&amp;rdquo;, and somebody mentioned something like &amp;ldquo;core&amp;rdquo; or &amp;ldquo;standard&amp;rdquo;. And some fellow .NET developers were even talking about Linux at the coffee machine. What? &lt;em&gt;.NET&lt;/em&gt; and &lt;em&gt;Linux&lt;/em&gt;? Weird!&lt;/p&gt;
+
+&lt;p&gt;Or is it?&lt;/p&gt;
+
+&lt;p&gt;Johhny feels that he might have been missing something important going on, but he is a bit afraid to ask his colleagues (after all, his title clear says he is a &lt;em&gt;Senior Developer&lt;/em&gt;). So Johhny arranges a meeting with Dave, his former colleague, who left the company a long time ago to join some fancy startup. In fact, Johnny thinks that Dave is a total hipster and a nerd obsessed with new shiny frameworks&amp;hellip; well, at least they are friends, so it&amp;rsquo;s OK to look less competent. So Johnny asks something like &amp;ldquo;what&amp;rsquo;s new in .NET&amp;rdquo; - and Dave opens a whole new world to him.&lt;/p&gt;
+
+&lt;p&gt;What could be the most exciting new possibilities in today&amp;rsquo;s .NET ecosystem that Johnny learned about? Let&amp;rsquo;s look at Dave&amp;rsquo;s &lt;em&gt;Top 5 Reasons Why .NET Is So Awesome Today&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;.NET is now &lt;a href=&#34;https://github.com/dotnet/&#34;&gt;completely open-source&lt;/a&gt;. If you ever wondered how LINQ&amp;rsquo;s &lt;code&gt;Count()&lt;/code&gt; method worked, now you can &lt;a href=&#34;https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs&#34;&gt;look it up on GitHub&lt;/a&gt;. For example, you can see that before even trying to iterate the whole sequence (which might be time-consuming), they check if this sequence is actually a collection (which preserves a &amp;lsquo;Count&amp;rsquo; property), and if it is, then the collection&amp;rsquo;s &lt;code&gt;Count&lt;/code&gt; is returned, making it O(1) operation instead of O(n):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ICollection collection = source as ICollection;
+if (collection != null)
+{
+    return collection.Count;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The newest version of the framework is called &lt;a href=&#34;https://www.microsoft.com/net/core/platform&#34;&gt;.NET Core&lt;/a&gt; and is completely cross-platform (not only you can &lt;a href=&#34;https://docs.asp.net/en/latest/publishing/linuxproduction.html&#34;&gt;run .NET apps on Linux&lt;/a&gt;, you can even have the &lt;a href=&#34;http://piotrgankiewicz.com/2016/10/17/net-on-linux-bye-windows-10/&#34;&gt;whole development environment on Linux too&lt;/a&gt;). And the new command-line tool &lt;code&gt;dotnet&lt;/code&gt; allows to &lt;a href=&#34;http://www.hanselman.com/blog/ExploringTheNewNETDotnetCommandLineInterfaceCLI.aspx&#34;&gt;scaffold, build and run the application on all platforms&lt;/a&gt;, just like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dotnet new
+dotnet build
+dotnet run
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blogs.microsoft.com/blog/2016/03/07/announcing-sql-server-on-linux&#34;&gt;SQL Server 2016 is going to run on Linux too&lt;/a&gt;, which is exciting news for the companies that want to reduce costs of licencing and hosting.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/2016/08/24/whats-new-in-csharp-7-0/&#34;&gt;Next version of C# (7.0)&lt;/a&gt; will contain even more features inspired by functional languages: there will be &lt;a href=&#34;https://en.wikipedia.org/wiki/Pattern_matching&#34;&gt;pattern matching&lt;/a&gt;, real tuples, local functions and deconstruction syntax support. For example, we will be able to write code like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void Foo()
+{
+    // local function
+    (string firstName, string secondName) GetTwo()
+    {
+            // returns a tuple
+            return (&amp;quot;Johnny&amp;quot;, &amp;quot;Dave&amp;quot;);
+    }
+
+    // deconstruction into two variables at once
+    (var first, var second) = GetTwo();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If just having functional features in an object-oriented language is not enough, you can easily switch to &lt;a href=&#34;http://fsharp.org/&#34;&gt;F#&lt;/a&gt;, a functional language for .NET platform. It is becoming more and more popular in the &lt;a href=&#34;http://tomasp.net/blog/2015/why-fsharp-in-2015/&#34;&gt;finance&lt;/a&gt; &lt;a href=&#34;https://fsharp.tv/gazettes/f-the-most-highly-paid-tech-worldwide-in-2016/&#34;&gt;industry&lt;/a&gt; and has frameworks for web development too, like &lt;a href=&#34;http://websharper.com/&#34;&gt;WebSharper&lt;/a&gt; and &lt;a href=&#34;https://suave.io/&#34;&gt;Suave&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Obviously this is just the tip of the iceberg. Johnny has a lot to catch up, but he already feels very much inspired. This is clearly not the same .NET world where he started his career many years ago: everything is changing and Microsoft is making .NET a very attractive platform for all kinds of applications. It&amp;rsquo;s a great time to be a .NET developer, so Johnny decides that he needs to meet with Dave more often, read more developer-oriented resources and also try some new shiny stuff out.&lt;/p&gt;
+
+&lt;p&gt;Be like Johnny! Embrace change and learn amazing things!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://tsvetkovio.surge.sh/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

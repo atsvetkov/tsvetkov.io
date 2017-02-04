@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wix on Surfing the code</title>
+    <link>https://tsvetkovio.surge.sh/categories/wix/index.xml</link>
+    <description>Recent content in Wix on Surfing the code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://tsvetkovio.surge.sh/categories/wix/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Some facts about WiX</title>
+      <link>https://tsvetkovio.surge.sh/2016/10/some-facts-about-wix/</link>
+      <pubDate>Thu, 27 Oct 2016 22:20:54 +0200</pubDate>
+      
+      <guid>https://tsvetkovio.surge.sh/2016/10/some-facts-about-wix/</guid>
+      <description>&lt;p&gt;Before we start, let me ask you a question: do you know what is the oldest still active open source .NET project?&lt;/p&gt;
+
+&lt;p&gt;Today I was again listening to awesome &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt; podcast and the guest was Rob Mensching, the guy behind &lt;a href=&#34;http://wixtoolset.org/&#34;&gt;Wix Toolset&lt;/a&gt;. WiX provides a bunch of tools to simplify the creation of MSI packages for Windows, and as far as I know, it is one of the most popular open-source implementations in that area. And it is also free! We use it for the product I am currently working on. Hell, even Microsoft is using it: &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/packaging/windows/clisdk/dotnet.wxs&#34;&gt;see for yourself&lt;/a&gt; that the current .NET Core installer is actually built with WiX! In fact, Rob Mensching used to work in Microsoft on setup and deployment for Office, Windows and Visual Studio. Obviously, he knows more about installers than most people do, enough to build a business around it. So he is now a CEO and a co-founder of &lt;a href=&#34;https://www.firegiant.com/&#34;&gt;Fire Giant&lt;/a&gt;, a company providing commercial support for WiX Toolset.&lt;/p&gt;
+
+&lt;p&gt;In a nutshell, WiX allows to define the package contents and installation steps in a declarative way, using XML files like this (taken from &lt;a href=&#34;https://www.firegiant.com/wix/tutorial/getting-started/&#34;&gt;WiX documentation&lt;/a&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&#39;1.0&#39; encoding=&#39;windows-1252&#39;?&amp;gt;
+&amp;lt;Wix xmlns=&#39;http://schemas.microsoft.com/wix/2006/wi&#39;&amp;gt;
+    &amp;lt;Product Name=&#39;Foobar 1.0&#39; Manufacturer=&#39;Acme Ltd.&#39;
+        Id=&#39;YOURGUID-86C7-4D14-AEC0-86416A69ABDE&#39; 
+        UpgradeCode=&#39;YOURGUID-7349-453F-94F6-BCB5110BA4FD&#39;
+        Language=&#39;1033&#39; Codepage=&#39;1252&#39; Version=&#39;1.0.0&#39;&amp;gt;
+    &amp;lt;Package Id=&#39;*&#39; Keywords=&#39;Installer&#39; Description=&amp;quot;Acme&#39;s Foobar 1.0 Installer&amp;quot;
+        Comments=&#39;Foobar is a registered trademark of Acme Ltd.&#39; Manufacturer=&#39;Acme Ltd.&#39;
+        InstallerVersion=&#39;100&#39; Languages=&#39;1033&#39; Compressed=&#39;yes&#39; SummaryCodepage=&#39;1252&#39; /&amp;gt;
+
+...
+
+&amp;lt;Directory Id=&#39;ProgramFilesFolder&#39; Name=&#39;PFiles&#39;&amp;gt;
+    &amp;lt;Directory Id=&#39;Acme&#39; Name=&#39;Acme&#39;&amp;gt;
+        &amp;lt;Directory Id=&#39;INSTALLDIR&#39; Name=&#39;Foobar 1.0&#39;&amp;gt;
+
+...
+
+&amp;lt;Component Id=&#39;HelperLibrary&#39; Guid=&#39;YOURGUID-6BE3-460D-A14F-75658D16550B&#39;&amp;gt;
+    &amp;lt;File Id=&#39;HelperDLL&#39; Name=&#39;Helper.dll&#39; DiskId=&#39;1&#39; Source=&#39;Helper.dll&#39; KeyPath=&#39;yes&#39; /&amp;gt;
+&amp;lt;/Component&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, it can do much more than just that, but I&amp;rsquo;m not going into too much detail. Instead I encourage you to &lt;a href=&#34;https://www.dotnetrocks.com/?show=1367&#34;&gt;check out the podcast&lt;/a&gt; and learn something new about installers business in general and WiX in particular. I learned a couple of things I didn&amp;rsquo;t know before. First, there is a version 4 of WiX in development, which is a rewrite, so it should be better in all ways (&lt;a href=&#34;https://github.com/wixtoolset/wix4&#34;&gt;source code is available on GitHub&lt;/a&gt;). And second&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;and the second new thing actually brings us to the question I asked in the beginning. Turns out that nobody really knows what &lt;em&gt;the&lt;/em&gt; oldest .NET open source project is, but WiX comes pretty damn close: it started in 1999 and was publicly released for the first time in 2004. So by any measure it is more than ten years old now! Two other pretty old and well-known ones are &lt;a href=&#34;http://www.nunit.org/&#34;&gt;NUnit&lt;/a&gt; in 2002 (a unit testing framework) and &lt;a href=&#34;http://www.mono-project.com/&#34;&gt;Mono&lt;/a&gt; in 2000-2001 (cross platform .NET framework that allowed to run C# and VB code on Linux long before &lt;a href=&#34;https://www.microsoft.com/net/core&#34;&gt;.NET Core&lt;/a&gt; came into being). Some discussions about those old open source projects took place in &lt;a href=&#34;https://twitter.com/robmen/status/692843420981661696&#34;&gt;this Rob&amp;rsquo;s tweet&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I personally think this is exciting: although Microsoft has only recently started to move towards open-source community, the community itself has been around for more than a decade now and has built tons of great tools and products.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

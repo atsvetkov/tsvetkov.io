@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learning on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/tags/learning/index.xml</link>
+    <link>https://tsvetkov.io/tags/learning/index.xml</link>
     <description>Recent content in Learning on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tsvetkov.io/tags/learning/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Staying up-to-date with software development trends</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
+      <link>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
       <pubDate>Sun, 16 Oct 2016 16:51:55 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
+      <guid>https://tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
       <description>
 
 &lt;p&gt;Earlier this year I was assigned to a role of a technical lead in a small development team. This happened after working in the same team for more than a year and then being a part of a two-person architecture team focused on evaluating the microservices approach for a couple of months. At my current employer things are changing quickly and people are free to figure out what the idea actually was. So I am still looking for the meaning of the tech lead role, but definitely enjoying it already.&lt;/p&gt;

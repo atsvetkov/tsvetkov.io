@@ -1,0 +1,172 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.19-DEV" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>NDC London: talks &middot; Surfing the code</title>
+  
+
+  
+  <link rel="stylesheet" href="https://tsvetkovio.surge.sh/css/poole.css">
+  <link rel="stylesheet" href="https://tsvetkovio.surge.sh/css/syntax.css">
+  <link rel="stylesheet" href="https://tsvetkovio.surge.sh/css/hyde.css">
+  <link rel="stylesheet" href="https://tsvetkovio.surge.sh/css/custom.css">
+  <link rel="stylesheet" href="https://tsvetkovio.surge.sh/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Surfing the code" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <div class="center-wrapper">
+        <img class="avatar" src="https://tsvetkovio.surge.sh/images/avatar_pixel_16.png" />
+      </div>
+      <a href="https://tsvetkovio.surge.sh/"><h1>Surfing the code</h1></a>
+      <p class="lead">
+       POST /thoughts 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="/about/"> About </a></li>
+      
+    </ul>
+
+    <div class="social-wrapper center-wrapper">
+      
+      <a class="social-link" href="https://www.facebook.com/alex.tsvetkov.18">
+          <i class="fa fa-2x fa-facebook"></i>
+      </a>
+      
+      <a class="social-link" href="https://www.github.com/atsvetkov">
+          <i class="fa fa-2x fa-github"></i>
+      </a>
+      
+      <a class="social-link" href="https://www.instagram.com/alexander_tsvetkov/">
+          <i class="fa fa-2x fa-instagram"></i>
+      </a>
+      
+      <a class="social-link" href="https://tsvetkovio.surge.sh/index.xml">
+          <i class="fa fa-2x fa-rss"></i>
+      </a>
+      
+    </div>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>
+					
+                  		NDC London: talks
+                	
+				</h1>
+				<span class="post-date">Jan 28, 2017</span>
+				
+
+<p>Last three days of NDC London presented a constant paradox of choice, since every hour 7-8 speakers would have parallel sessions in different rooms. How the hell am I supposed to pick only one, if all of them are great? How on earth can you choose between Jon Skeet and Mark Seeman? My way of solving this problem was to spend an hour every evening going through the list of the next day&rsquo;s speakers and googling their talks from the past. Sometimes this helped me to pick a brilliant talk from someone I had not known yet, sometimes this meant I would go to the Bill Wagner&rsquo;s talk and&hellip; well, more on that later.</p>
+
+<p>Being an old-school geek, I still prefer to make notes on paper, so I have pretty good coverage of what I learned during these talks. Hopefully all the recorded sessions will be available on the web soon (that&rsquo;s the part I really like about NDC), but before this happens, here&rsquo;s a list of my observations and learnings from the talks I personally attended.</p>
+
+<h3 id="day-1">Day 1</h3>
+
+<ul>
+<li><p>In the keynote Richard Campbell was talking about the <a href="http://www.htbox.org/">Humanitarian Toolbox</a>, an open-source project for helping non-commercial organizations like Red Cross, and invited everyone to join. I&rsquo;m really considering that, since there is a noble purpose and pretty nice technology stack too.</p></li>
+
+<li><p>Ian Cooper told us about <a href="https://12factor.net/">The Twelve-Factor Apps</a>, but on a really high level, so I didn&rsquo;t learn anything practical.</p></li>
+
+<li><p>Async/await in C# is still not well-understood by many developers, so <a href="http://www.filipekberg.se/">Filip Ekberg</a> talked about the actual compiler logic behind this pattern and listed some gotchas. For example, you should never block on async code (<a href="http://blog.stephencleary.com/2012/07/dont-block-on-async-code.html">here is why</a>) and it&rsquo;s better to avoid too many nested async method calls, because a compiler will create and instantiate a genereated state-machine class for each one, so there is some overhead.</p></li>
+
+<li><p>Dominick Baier and Brock Allen explained the differences between the recently released IdentityServer4 and widely-used IdensityServer3. It targets .NET Core, which means they don&rsquo;t have their own built-in DI and can rely on ASP.NET Core dependency resolution instead. <em>Scopes</em> were renamed to <em>ApiResources</em> and <em>IdentityResources</em>, since the concept of scopes wasn&rsquo;t obvious to people and usually would be explained like &ldquo;think of them as <em>resources</em> to protect access to&rdquo;. Login UI is not included anymore, but there is a <a href="https://github.com/IdentityServer/IdentityServer4.Quickstart.UI">quickstart project</a> to use as an example when building your own. Also, there is now a built-in temporary generated certificate, which makes the development-time configuration very easy.</p></li>
+
+<li><p>Scott Allen shared some of his experience with modern JavaScript, pointing out that many patterns we were used to (like <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">&ldquo;use strict&rdquo;</a>) are quickly becoming obsolete, while tools like <a href="https://webpack.github.io/">Webpack</a> and <a href="https://babeljs.io/">Babel</a> are developer&rsquo;s best friends when working with the latest and experimental JS features across different browsers.</p></li>
+</ul>
+
+<h3 id="day-2">Day 2</h3>
+
+<ul>
+<li><p><a href="https://aurelia.ninja/">Ashley Grant</a> gave a more or less typical <a href="http://aurelia.io/">Aurelia</a> talk with standard demo (side note: did you know that <a href="http://wiki.c2.com/?KebabCase">this-is-called-kebab-case</a>?), except for the last part, where he showed hot module reloading and server-side rendering support implemented just the day before and not released yet. He also mentioned some of their future plans, including Webpack support and an ongoing work on <a href="http://eisenbergeffect.bluespire.com/aurelia-interface-update/">UI controls</a>.</p></li>
+
+<li><p>Most people know <a href="http://blog.ploeh.dk/">Mark Seemann</a> as the author of a <a href="https://www.manning.com/books/dependency-injection-in-dot-net">Dependency Injection in .NET</a> book, but since then he moved into the mysterious land of the functional programming. His talk actually combined both worlds, with a very simple question as the main theme: how do you properly implement dependency injection in functional languages? Using examples from C#, F# and Haskell, going through <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a> and <a href="http://blog.ploeh.dk/2016/03/18/functional-architecture-is-ports-and-adapters/">ports and adapters architecture</a>, he demonstrated that the answer is not <em>partial application</em> (because it is not functional at heart), but <em>composition of functions</em> instead. Very enlightening.</p></li>
+
+<li><p>The all time top StackOverflow guru <a href="http://stackoverflow.com/users/22656/jon-skeet">Jon Skeet</a> gave an entertaining talk called &ldquo;Abusing C# More&rdquo; and, oh boy, yes he can! He easily tricked the audience <em>and</em> the compiler with the invisible <a href="https://codeblog.jonskeet.uk/2014/12/01/when-is-an-identifier-not-an-identifier-attack-of-the-mongolian-vowel-separator/">mongolian vowel separator</a>, totally abused the deconstruction feature of C# 7.0, played with operator overloading for IEnumerable (imagine you could use &ldquo;+&rdquo;, &ldquo;-&rdquo; etc. with collections) and did all other kinds of nasty and mostly useless magic which blew my mind. The code examples are available in a <a href="https://github.com/jskeet/DemoCode">github repo</a>.</p></li>
+
+<li><p><a href="https://schneids.net/">Spencer Schneiderbach</a> listed the best practices for building REST APIs. Some thoughts were opinionated, others were common sense, but overall it was a good overview, I think. And yes, he recommends using <a href="https://github.com/jbogard/MediatR">MediatR</a>, so thumbs up.</p></li>
+
+<li><p>One day I will write a post about something which, for lack of a better name, I call <em>a virtual apprenticeship</em>. For me the most effective learning model these days is to find someone in the industry who I understand and trust, and then follow closely everything they do (I think this very much resembles how people did it last several thousand years, learning from masters by following their example). For me one of these guys is <a href="https://lostechies.com/jimmybogard/">Jimmy Bogard</a>, the autor of AutoMapper and MediatR. Not only I like the tools, but I also always enjoy watching his talks, because usually they <em>click</em> with my way of thinking about software development. So, going to his talk about microservices was a no-brainer. It was a funny story about his team&rsquo;s experience migrating a legacy web system at a fictional company <em>Bell Computers</em> (ha-ha) to a microservices architecture. There were smart technical decisions and also many organizational quirks and impediments, which resulted in talking about the <em>Inverse Conway Maneuver</em> and Jimmy&rsquo;s own extension of Conway&rsquo;s Law.</p></li>
+</ul>
+
+
+<figure >
+    
+        <img src="/images/jimmys_law.jpg" />
+    
+    
+</figure>
+
+
+<ul>
+<li><p><a href="http://blogs.microsoft.co.il/sasha/">Sasha Goldshtein</a> threw a lot of low-level technical details about utilizing modern CPU features to improve performance of .NET applications. A famous example of speed comparison when processing a sorted vs unsorted array shows that CPU branch prediction matters and can influence your programs, <a href="https://en.wikipedia.org/wiki/SIMD">SIMD</a> and vector-based operations allow to do more computational work in the same amount of CPU cycles (and, by the way, .NET Framework 4.6 has <a href="https://msdn.microsoft.com/en-us/library/dn879696">built-in classes with SIMD support</a>).</p></li>
+
+<li><p>The day ended in the most perfect way possible: I attended a live recording of .NET Rocks show! It was a panel discussion about machine learning with Evelina Gabasova, Barbara Fusinska and Jennifer Marsman, which showed that women in technology are super cool and incredibly smart. And it goes without saying that watching Carl and Richard actually do their magic on stage was just beyond awesome.</p></li>
+</ul>
+
+<h3 id="day-3">Day 3</h3>
+
+<ul>
+<li><p>A talk about dockerizing ASP.NET applications happened to be one of the most productive in terms of demos and inspiration. <a href="https://blog.sixeyed.com/">Elton Stoneman</a> showed a very basic ASP.NET WebForms (!!!) app and then step by step containerized it into a fully distributed set of nicely decoupled microservices, all in one hour! I was very impressed by the quality of the examples, everything looked practical, polished, and ready-to-use. I wish all speakers prepared like this.</p></li>
+
+<li><p>One of those talks I chose by googling the day before, <a href="http://simonbrown.je/">Simon Brown&rsquo;s</a> approach to visualizing software architecture is no-nonsense, to the point and flexible. His own <em>C4</em> model stands for <em>Context, Containers, Components, Classes</em>, which are essentially the four different zoom levels when looking down on the architecture (he uses the &ldquo;diagrams as maps&rdquo; metaphor all the time). Of course, he has a <a href="https://leanpub.com/b/software-architecture">book</a> and a <a href="https://structurizr.com/">SaaS architecture visualization software</a> to support this approach. I also liked his idea of how the software documentation should look like: not a hundred page outdated monstrocity, but a <em>software guidebook</em> instead, containing the explanation of how it works, without too many implementation details and possible to read in 1-2 hours maximum.</p></li>
+
+<li><p>I had had high expectations about Bill Wagner&rsquo;s presentation on C# 7.0 pattern matching, but it ended up being one of the most disappointing talks. One third of the time was spent on generic Microsoft open-source roadmap explanation, the second, on struggling with a recent build of Visual Studio 2017, the rest - writing some very, very basic sample code, which didn&rsquo;t go further than anything you can google and try yourself in 5 minutes. I respect everything that Bill has done for the industry over the years, but this time it felt rough and shallow.</p></li>
+
+<li><p>When it comes to talking about Octopus Deploy, <a href="https://damianbrady.com.au/">Damian Brady</a> is usually the guy to explain it very well. But it seems that he is gradually shifting his area of interest, so this talk was more about implementing DevOps in an organization in general. A lot of very sensible advice, like isolating variations of software, externalizing configuration, measuring in production, deploying without drama, using feature flags, and making the culture change happen. His definition of DevOps is powerful and should be every company&rsquo;s motto, I think. Also, Damian was very friendly and open after the talk, when I bothered him with some Octopus-related questions.</p></li>
+</ul>
+
+
+<figure >
+    
+        <img src="/images/devops_definition.jpg" />
+    
+    
+</figure>
+
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>NDC London 2017 was just awesome; seeing all these smart people at one place gives so much inspiration and feels like being part of something bigger. I guess my budget will be suffering a lot, because I absolutely have to attend more NDC&rsquo;s!</p>
+
+			</div>
+			<h2>Comments</h2>
+			<div id="disqus_thread"></div>
+<script>
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//tsvetkovio.disqus.com/embed.js'; 
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		</div>
+  </body>
+</html>

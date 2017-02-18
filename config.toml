@@ -4,6 +4,7 @@ title = "Surfing the code"
 theme = "hyde"
 googleAnalytics = "UA-51668451-2"
 disqusShortname = "tsvetkovio"
+PygmentsCodeFences = true
 
 [permalinks]
   	post = "/:year/:month/:title/"

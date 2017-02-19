@@ -186,7 +186,37 @@ code .
 
 ### dotnet rocks!
 
-You can only do much with scripting, so there will be a point when a full-blown executable will make more sense. Plus, so far the commands have been still pretty simple and boring. And since I am a big fan of [.NET Rocks! show](https://www.dotnetrocks.com/), I decided to pay a tribute to Carl and Richard: the greatest podcast about .NET deserves its own `dotnet` command.
+You can only do much with scripting, so there will be a point when a full-blown executable will make more sense. Plus, so far the commands have been still pretty simple and boring. And since I am a big fan of [.NET Rocks! show](https://www.dotnetrocks.com/), I decided to pay a tribute to Carl and Richard: the greatest podcast about .NET absolutely deserves its own `dotnet` command.
 
 So let me introduce you to `dotnet rocks`!
+```
+> dotnet rocks
+Pick one of 10 last episodes on .NET Rocks! to play:
+ -16 Feb 2017: Fusion Power Update Geek Out
+ -15 Feb 2017: Virtual, Augmented and Mixed Realities with Jessica Engstrom
+ -14 Feb 2017: Machine Learning Panel at NDC London
+ -09 Feb 2017: Ops and Operability with Dan North
+ -08 Feb 2017: Xamarin MVVM apps with Gill Cleeren
+ -07 Feb 2017: Chatbots with Galiya Warrier
+ -02 Feb 2017: IdentityServer4 with Brock Allen and Dominick Baier
+ -01 Feb 2017: Data and Docker with Stephanie Locke
+ -31 Jan 2017: Nodatime, Google Cloud and More with Jon Skeet
+ -26 Jan 2017: Punishment Driven Development with Louise Elliott
+```
 
+The tool itself is very simple: it is built as a .NET Core console app, which will display a menu of N (10 by default) last episodes from .NET Rocks! and allow you to pick one. Once selected, the URL of episode's MP3 file will be executed with the default OS program (most likely - will open in your default browser and start playing). The source code is [on github](https://github.com/atsvetkov/dotnet-rocks) and the tool is available [as a NuGet package](https://www.nuget.org/packages/dotnet-rocks). This last one is actually important: having an executable *somewhere on your PATH* is not exactly the most robust way of installing .NET CLI extensions, so there is a better option: [adding it as a .NET CLI tool reference to a project file](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/extensibility). So, since it is already on [nuget.org](http://nuget.org), you can just create a new .NET Core app and add a tool reference to "dotnet-rocks" in a .csproj file:
+```
+<ItemGroup>
+    <DotNetCliToolReference Include="dotnet-rocks" Version="0.0.1" />
+</ItemGroup>
+```
+
+Then, after performing `dotnet restore`, you should be able to run `dotnet rocks` in this project's folder. This time there is no executable with the name *dotnet-rocks* anywhere on the PATH, but there is a package folder with *dotnet-rocks.dll* in the system-wide NuGet packages directory, which will also be probed by .NET CLI.
+
+{{< figure src="/images/dotnet-rocks-package.png" title="" >}}
+
+This way of installing custom extensions seems much cleaner and more under control than scripts with magic names living in some hidden well-known folders. And now your dream of checking out the latest .NET Rocks episodes from the command-line has finally come true! OK, maybe it wasn't anyone's dream, but I just felt it has to be done.
+
+### Summary
+
+Hopefully this post demonstrates what kind of funny and relatively useless things can be done using the .NET CLI extension mechanism. I see this as yet another way of building the convenience tools for making your team's life easier. The probing logic in *dotnet.exe* is flexible enough to allow hooking up tools or scripts from different places, so go ahead and come up with your own `dotnet something-cool` extension!

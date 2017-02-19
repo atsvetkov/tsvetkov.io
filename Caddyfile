@@ -1,3 +1,9 @@
-tsvetkov.io
-root /var/www/tsvetkov.io/html
-gzip
+tsvetkov.io {
+  root /var/www/tsvetkov.io/html
+  gzip
+}
+
+surfingthecode.com {
+  root /var/www/surfingthecode.com/html
+  gzip
+}

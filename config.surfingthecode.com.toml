@@ -1,0 +1,21 @@
+baseurl = "https://surfingthecode.com/"
+languageCode = "en-us"
+title = "Surfing the code"
+theme = "hyde"
+googleAnalytics = "UA-51668451-2"
+disqusShortname = "surfingthecode-com"
+PygmentsCodeFences = true
+
+[permalinks]
+  	post = "/:year/:month/:title/"
+
+[params]
+	name = "Surfing the code"
+	description = "POST /thoughts"
+	disqusShortname = "surfingthecode-com"
+
+[social]
+    facebook 	= "https://www.facebook.com/alex.tsvetkov.18"
+    github   	= "https://www.github.com/atsvetkov"
+	instagram	= "https://www.instagram.com/alexander_tsvetkov/"
+	rss			= "https://surfingthecode.com/index.xml"

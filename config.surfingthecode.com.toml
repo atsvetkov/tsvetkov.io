@@ -2,7 +2,7 @@ baseurl = "https://surfingthecode.com/"
 languageCode = "en-us"
 title = "Surfing the code"
 theme = "hyde"
-googleAnalytics = "UA-51668451-2"
+googleAnalytics = "UA-51668451-3"
 disqusShortname = "surfingthecode-com"
 PygmentsCodeFences = true
 

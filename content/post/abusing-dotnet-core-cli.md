@@ -1,6 +1,5 @@
 +++
 Description = ""
-draft = true
 Categories = []
 Tags = []
 date = "2017-02-18T14:35:25+01:00"
@@ -10,7 +9,7 @@ displaytitle = "Abusing .NET Core CLI"
 
 ### "dotnet new" and friends
 
-When developing with .NET Core, you have two different workflows to choose from: manage projects from Visual Studio or work from a command-line, using `dotnet` commands. For example, new projects can be created this way, and after the recent updates the project templates system became extensible, allowing to install additional templates or even create your own. For example, this is how the output of `dotnet new` looks like by default with the latest RC installed (.NET Core 1.0 SDK RC4, to be specific):
+When developing with .NET Core, you have two different workflows to choose from: manage projects from Visual Studio or work from a command-line using `dotnet` commands. New projects can be created this way, and after the recent updates the project templates system became extensible, allowing to install additional templates or even create your own. For example, this is how the output of `dotnet new` looks like by default with the latest RC installed (*.NET Core 1.0 SDK RC4*, to be specific):
 ```
 > dotnet new
 Template Instantiation Commands for .NET Core CLI.
@@ -51,7 +50,9 @@ We can additionally install [JavaScriptServices](https://blogs.msdn.microsoft.co
 dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 ```
 
-Now, when we execute `dotnet new` once again, the list has grown bigger and we can use these nicely preconfigured .NET Core + React/Angular/etc. projects:
+As mentioned in the recent [ASP.NET Community Standup](https://www.youtube.com/watch?v=q88i3oDWp80), the asterisk at the end means "any version" and is required, because `--install` argument needs a version to be specified.
+
+Now, when we execute `dotnet new` once again, the list will have more items and we can use these nicely preconfigured .NET Core + React/Angular/etc. projects:
 ```
 Templates                                  Short Name      Language      Tags
 ---------------------------------------------------------------------------------------
@@ -70,11 +71,11 @@ Web API ASP.NET Core Web Application       webapi          [C#]          Web/Web
 Solution File                              sln                           Solution
 ```
 
-These new SPA templates are built by [Steve Sanderson](http://blog.stevensanderson.com/) (the author of [knockout.js](http://knockoutjs.com/)) and deserve a separate post, so I'm not going to discuss them now. What I want to talk about instead is the extensibility of `dotnet` command.
+These new SPA templates are built by [Steve Sanderson](http://blog.stevensanderson.com/) (the author of [knockout.js](http://knockoutjs.com/)) together with the ASP.NET team and deserve a separate post, so I'm not going to discuss them now. What I want to talk about instead is the extensibility of `dotnet` command itself.
 
 ### How "dotnet" command works
 
-Obviously, there is not too much magic: the .NET Core installer copies `dotnet.exe` to *C:\Program Files\dotnet\dotnet.exe* and adds this directory to PATH. When in doubt, remember about `where` command, which can help identify the location of an executable:
+Obviously, there is not too much magic: the .NET Core installer copies `dotnet.exe` to *C:\Program Files\dotnet* and adds this directory to PATH. When in doubt, remember about `where` command, which can help identify the location of an executable:
 ```
 > where dotnet
 C:\Program Files\dotnet\dotnet.exe
@@ -95,7 +96,7 @@ Commands:
   sln           Modify solution (SLN) files.
 ```
 
-All of them are the built-in commands, which can be seen [in the source code](https://github.com/dotnet/cli/blob/rel/1.0.0/src/dotnet/Program.cs):
+All of them are the built-in commands, which can be seen [in the source code on Github](https://github.com/dotnet/cli/blob/rel/1.0.0/src/dotnet/Program.cs):
 ```
 public class Program
 {
@@ -147,25 +148,25 @@ else
 return exitCode;
 ```
 
-So *dotnet.exe* will try to find the `COMMANDNAME` in the predefined list, and if it isn't found, will try to run an executable with the filename `dotnet-COMMANDNAME`, passing down the rest of the original arguments to it. This only works if a file *dotnet-COMMANDNAME.exe* can be found in at least one of the places from the PATH variable.
+So *dotnet.exe* will look for `COMMANDNAME` in the predefined list, and if it isn't found, will try to run an executable with the filename `dotnet-COMMANDNAME`, passing down the rest of the original arguments to it. This only works if a file *dotnet-COMMANDNAME.exe* can be found in at least one of the places from the PATH variable.
 
 In fact, this is *almost* true: it actually doesn't have to be an *.exe file, as you can see in the snippet above. Anything that is on PATH, can be executed and has the name `dotnet-COMMANDNAME` will do. Which opens some creative possibilities...
 
 ### Batch file
 
-Let's start from the simplest example. I created a batch file *dotnet-hi.bat* in *C:\tools\go\bin* which happens to be in my computer's PATH, with the following content:
+Let's start from the simplest example. I created a batch file *dotnet-hi.bat* in *C:\tools\go\bin* (which happens to be in my computer's PATH) with the following content:
 ```
 @echo off
 echo Hi there!
 ```
 
-And now I can do `dotnet hi`:
+And now I can do `dotnet hi` from anywhere:
 ```
 > dotnet hi
 Hi there!
 ```
 
-Ok, it works, but not soo exciting. Let's have some more interaction and create the following `dotnet-flickr.bat` file:
+Ok, it works, but not soo exciting. Let's add some interaction and create the following `dotnet-flickr.bat` file:
 ```
 @echo off
 set "url=https://www.flickr.com/photos/tags/%1"
@@ -186,7 +187,7 @@ code .
 
 ### dotnet rocks!
 
-You can only do much with scripting, so there will be a point when a full-blown executable will make more sense. Plus, so far the commands have been still pretty simple and boring. And since I am a big fan of [.NET Rocks! show](https://www.dotnetrocks.com/), I decided to pay a tribute to Carl and Richard: the greatest podcast about .NET absolutely deserves its own `dotnet` command.
+You can only do much with scripting, so there will be a point when a full-blown executable makes more sense. Plus, so far the commands have been still pretty simple and boring. And since I am a big fan of [.NET Rocks!](https://www.dotnetrocks.com/) show, I decided to pay a tribute to Carl and Richard: the greatest podcast about .NET absolutely deserves its own `dotnet` command.
 
 So let me introduce you to `dotnet rocks`!
 ```
@@ -204,7 +205,9 @@ Pick one of 10 last episodes on .NET Rocks! to play:
  -26 Jan 2017: Punishment Driven Development with Louise Elliott
 ```
 
-The tool itself is very simple: it is built as a .NET Core console app, which will display a menu of N (10 by default) last episodes from .NET Rocks! and allow you to pick one. Once selected, the URL of episode's MP3 file will be executed with the default OS program (most likely - will open in your default browser and start playing). The source code is [on github](https://github.com/atsvetkov/dotnet-rocks) and the tool is available [as a NuGet package](https://www.nuget.org/packages/dotnet-rocks). This last one is actually important: having an executable *somewhere on your PATH* is not exactly the most robust way of installing .NET CLI extensions, so there is a better option: [adding it as a .NET CLI tool reference to a project file](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/extensibility). So, since it is already on [nuget.org](http://nuget.org), you can just create a new .NET Core app and add a tool reference to "dotnet-rocks" in a .csproj file:
+(Disclaimer: only freely available data is used here and I am not affiliated with .NET Rocks!, although I can't recommend it enough! When asked for permission to use "dotnet rocks" as the tool name, Carl and Richard kindly allowed me to "*go for it*".)
+
+The tool itself is very simple: it is built as a .NET Core console app, which will display a menu of N (10 by default) last episodes from .NET Rocks! and allow to pick one. Once selected, the URL of episode's MP3 file will be opened by the default OS program (most likely - will open in your default browser and start playing). The source code is on [https://github.com/atsvetkov/dotnet-rocks](https://github.com/atsvetkov/dotnet-rocks) and the packaged version is available in a NuGet format at [https://www.nuget.org/packages/dotnet-rocks](https://www.nuget.org/packages/dotnet-rocks). This last one is actually important: having an executable *somewhere on your PATH* is not exactly the most robust way of installing .NET CLI extensions, so there is a better option: [adding it as a .NET CLI tool reference to a project file](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/extensibility). So, since it is already on [nuget.org](http://nuget.org), you can just create a new .NET Core app and add a tool reference to "dotnet-rocks" in a .csproj file:
 ```
 <ItemGroup>
     <DotNetCliToolReference Include="dotnet-rocks" Version="0.0.1" />
@@ -215,8 +218,8 @@ Then, after performing `dotnet restore`, you should be able to run `dotnet rocks
 
 {{< figure src="/images/dotnet-rocks-package.png" title="" >}}
 
-This way of installing custom extensions seems much cleaner and more under control than scripts with magic names living in some hidden well-known folders. And now your dream of checking out the latest .NET Rocks episodes from the command-line has finally come true! OK, maybe it wasn't anyone's dream, but I just felt it has to be done.
+This way of installing custom extensions seems much cleaner and more under control than scripts with magic names residing in unpredictable corners of the filesystem. And now your dream of checking out the latest .NET Rocks episodes from the command-line has finally come true! OK, maybe it wasn't anyone's dream, but I just felt it had to be done.
 
 ### Summary
 
-Hopefully this post demonstrates what kind of funny and relatively useless things can be done using the .NET CLI extension mechanism. I see this as yet another way of building the convenience tools for making your team's life easier. The probing logic in *dotnet.exe* is flexible enough to allow hooking up tools or scripts from different places, so go ahead and come up with your own `dotnet something-cool` extension!
+Hopefully this post demonstrates what kind of funny and not completely useless things can be done using the .NET CLI extension mechanism. I see this as yet another way of building the convenience tools for making your dev team's life easier. The probing logic in *dotnet.exe* is flexible enough to allow hooking up tools or scripts from different places, so go ahead and come up with your own `dotnet something-cool` extension!

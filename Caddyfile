@@ -1,6 +1,5 @@
 tsvetkov.io {
-  root /var/www/tsvetkov.io/html
-  gzip
+  redir https://surfingthecode.com{uri}
 }
 
 surfingthecode.com {

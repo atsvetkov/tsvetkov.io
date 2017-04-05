@@ -56,7 +56,7 @@ If we look at `ValueTuple<T1,T2>` itself, there is nothing really interesting, j
 
 {{< figure src="/images/csharp7-deconstruction-ilspy-valuetuple.png" title="" >}}
 
-So, how does this struct get assigned to two variables at once? Turns out, the compiler will use [duck-typing](https://en.wikipedia.org/wiki/Duck-typing) and check if there is `Deconstruct` method available on the type we are, well, deconstructing. Actually, the method doesn't have to be defined in the type itself, it can be declared as an extension method - which is exactly the case for `System.ValueTuple`:
+So, how does this struct get assigned to two variables at once? Turns out, the compiler will use [duck-typing](https://en.wikipedia.org/wiki/Duck_typing) and check if there is `Deconstruct` method available on the type we are, well, deconstructing. Actually, the method doesn't have to be defined in the type itself, it can be declared as an extension method - which is exactly the case for `System.ValueTuple`:
 
 {{< figure src="/images/csharp7-deconstruction-ilspy-tupleextensions.png" title="" >}}
 

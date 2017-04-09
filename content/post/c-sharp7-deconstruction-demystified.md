@@ -8,6 +8,8 @@ Description = ""
 
 +++
 
+**Update 2017-04-09**: *As pointed out by [Julien Couvreur](http://blog.monstuff.com/) in the comments, I made some incorrect conclusions about how compiler actually deconstructs ValueTuples. I assumed that this is done using the extensions methods in the System.ValueTuple NuGet package, while they are clearly declared on the older `System.Tuple` type and are NOT being used for the deconstruction. In fact, C# compiler has built-in knowledge for ValueTuple type, so no extensions needed. More detailed explanation is available in [this document](https://github.com/dotnet/roslyn/blob/master/docs/features/deconstruction.md) in Roslyn repository on Github.*
+
 ### Introduction
 
 Let's talk about one of the cool new features of C# 7.0 - *deconstruction*. Quite often you might need to return more than one value from a method, which can be accomplished in several ways:
@@ -60,7 +62,9 @@ So, how does this struct get assigned to two variables at once? Turns out, the c
 
 {{< figure src="/images/csharp7-deconstruction-ilspy-tupleextensions.png" title="" >}}
 
-Finally, the magic is revealed! The C# compiler will convert our nice and readable code into a bit more boring code using `ValueTuple`, and if there is a deconstruction statement used in the calling code, it will be rewritten with the `Deconstruct` method, if such exists.
+~~Finally, the magic is revealed! The C# compiler will convert our nice and readable code into a bit more boring code using `ValueTuple`, and if there is a deconstruction statement used in the calling code, it will be rewritten with the `Deconstruct` method, if such exists.~~
+
+**Edit 2017-04-09**: *Turns out I was wrong here (thanks to Julien Couvreur for correcting me): C# compiler has built-in knowledge of `System.ValueTuple` type, and moreover, the extensions methods above are clearly defined on a completely different type and have nothing to do with C# deconstruction syntax.*
 
 This bring us to another interesting question: can we only use deconstruction with these value tuples or with custom types as well?
 

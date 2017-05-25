@@ -29,15 +29,21 @@ Real production databases will have very different sizes, and when a complex sch
 
 {{< figure src="/images/database-project-column-in-the-middle.png" title="" >}}
 
-Obviously, I'm not blaming the tool for human error, but in my experience visual designers hide complexity too much and allow for more errors to be made.
+Obviously, I'm not trying to blame a tool for human error, but in my experience visual designers in IDEs hide complexity too much and allow for more errors to be silently made.
 
 At the end of the day, the schema and pre/post-deployment scripts are stored just nicely organized SQL scripts, so there is no DSL involved. This is actually an important point when you already have quite a lot of these scripts and want to consider migrating to an alternative tool (more on this in the last option on the list).
 
-### 2. ReadyRoll
+To apply the migrations from Visual Studio, you can right-click "Publish" on the database project, which will ask for a connection string and then do its magic. Automated deployment approach, obviously, will rely on either *sqlpackage.exe* or custom code using SSDT assemblies.
 
-### 3. Entity Framework Migrations
+{{< figure src="/images/database-project-publish.png" title="" >}}
 
-### 4. Fluent Migrator
+### 2. Entity Framework Migrations
+
+If your project already relies on [Entity Framework](https://docs.microsoft.com/en-us/ef/), then going for [EF Migrations](https://msdn.microsoft.com/en-us/library/jj591621.aspx) is a natural step. Running *Enable-Migrations* in Package Manager Console will configure the project with migrations support, so after any modification to the project's DbContext you can run *Add-Migration*, which will detect the changes in the code and create a new migration file.
+
+### 3. Fluent Migrator
+
+### 4. ReadyRoll
 
 ### 5. DbUp
 

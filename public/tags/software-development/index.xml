@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software Development on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/tags/software-development/index.xml</link>
+    <link>https://surfingthecode.com/tags/software-development/index.xml</link>
     <description>Recent content in Software Development on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/tags/software-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://surfingthecode.com/tags/software-development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Current state of .NET</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</link>
+      <link>https://surfingthecode.com/2016/10/current-state-of-.net/</link>
       <pubDate>Tue, 18 Oct 2016 22:22:41 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</guid>
+      <guid>https://surfingthecode.com/2016/10/current-state-of-.net/</guid>
       <description>&lt;p&gt;Imagine a software developer working in a typical enterprise IT company. Let&amp;rsquo;s call him Johnny. Most of the time Johnny works with .NET applications. He&amp;rsquo;s been writing web apps since the days of ASP (he feels pretty comfortable with Web Forms and IIS after all these years), but he was always too busy doing &lt;em&gt;important things&lt;/em&gt; and never really had time to follow the news in the industry. Yeah, he heard some folks in another department are using &amp;ldquo;MVC&amp;rdquo;, and somebody mentioned something like &amp;ldquo;core&amp;rdquo; or &amp;ldquo;standard&amp;rdquo;. And some fellow .NET developers were even talking about Linux at the coffee machine. What? &lt;em&gt;.NET&lt;/em&gt; and &lt;em&gt;Linux&lt;/em&gt;? Weird!&lt;/p&gt;
 
 &lt;p&gt;Or is it?&lt;/p&gt;
@@ -64,7 +64,7 @@ dotnet run
 
 &lt;p&gt;Be like Johnny! Embrace change and learn amazing things!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://surfingthecode.com/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     

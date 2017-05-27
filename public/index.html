@@ -13,11 +13,11 @@
   
 
   
-  <link rel="stylesheet" href="https://atsvetkov.github.io/tsvetkov.io/css/poole.css">
-  <link rel="stylesheet" href="https://atsvetkov.github.io/tsvetkov.io/css/syntax.css">
-  <link rel="stylesheet" href="https://atsvetkov.github.io/tsvetkov.io/css/hyde.css">
-  <link rel="stylesheet" href="https://atsvetkov.github.io/tsvetkov.io/css/custom.css">
-  <link rel="stylesheet" href="https://atsvetkov.github.io/tsvetkov.io/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://surfingthecode.com/css/poole.css">
+  <link rel="stylesheet" href="https://surfingthecode.com/css/syntax.css">
+  <link rel="stylesheet" href="https://surfingthecode.com/css/hyde.css">
+  <link rel="stylesheet" href="https://surfingthecode.com/css/custom.css">
+  <link rel="stylesheet" href="https://surfingthecode.com/fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
   
@@ -25,7 +25,7 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
 
   
-  <link href="https://atsvetkov.github.io/tsvetkov.io/index.xml" rel="alternate" type="application/rss+xml" title="Surfing the code" />
+  <link href="https://surfingthecode.com/index.xml" rel="alternate" type="application/rss+xml" title="Surfing the code" />
 </head>
 
   <body class=" ">
@@ -34,18 +34,18 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <div class="center-wrapper">
-        <img class="avatar" src="https://atsvetkov.github.io/tsvetkov.io/images/avatar_pixel_16.png" />
+        <img class="avatar" src="/images/avatar_pixel_16.png" />
       </div>
-      <a href="https://atsvetkov.github.io/tsvetkov.io/"><h1>Surfing the code</h1></a>
+      <a href="https://surfingthecode.com/"><h1>Surfing the code</h1></a>
       <p class="lead">
-       POST /thoughts 
+       with Alexander Tsvetkov 
       </p>
     </div>
 
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
       
-        <li><a href="/tsvetkov.io/about/"> About </a></li>
+        <li><a href="/about/"> About </a></li>
       
     </ul>
 
@@ -63,7 +63,7 @@
           <i class="fa fa-2x fa-instagram"></i>
       </a>
       
-      <a class="social-link" href="https://atsvetkov.github.io/tsvetkov.io/index.xml">
+      <a class="social-link" href="/index.xml">
           <i class="fa fa-2x fa-rss"></i>
       </a>
       
@@ -80,7 +80,92 @@
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2017/02/coffee-and-links-5/">
+              <a href="https://surfingthecode.com/2017/05/book-review-microservices-in-.net-core-by-christian-horsdal-gammelgaard/">
+                
+                  Book review: &#34;Microservices in .NET Core&#34; by Christian Horsdal Gammelgaard
+                
+              </a>
+            </h1>
+
+            <span class="post-date">May 1, 2017</span>
+
+            A few weeks ago I finished reading this book, which was quite an intersting view on the microservices design problem. Most of the articles related to this topic tend to be either very conceptual and high-level (bounded context, culture shift, containers etc.) and usually describe how the whole distributed system should look like. One of the benefits of microservices is the ability to use different technologies for different services.
+            
+            
+            <div class="read-more-link">
+              <a href="/2017/05/book-review-microservices-in-.net-core-by-christian-horsdal-gammelgaard/">Read More…</a>
+            </div>
+            
+
+          </div>
+          
+          <div class="post">
+            <h1 class="post-title">
+              <a href="https://surfingthecode.com/2017/04/c-sharp7-deconstruction-demystified/">
+                
+                  C# 7.0: Deconstruction demystified
+                
+              </a>
+            </h1>
+
+            <span class="post-date">Apr 2, 2017</span>
+
+            Update 2017-04-09: As pointed out by Julien Couvreur in the comments, I made some incorrect conclusions about how compiler actually deconstructs ValueTuples. I assumed that this is done using the extensions methods in the System.ValueTuple NuGet package, while they are clearly declared on the older System.Tuple type and are NOT being used for the deconstruction. In fact, C# compiler has built-in knowledge for ValueTuple type, so no extensions needed. More detailed explanation is available in this document in Roslyn repository on Github.
+            
+            
+            <div class="read-more-link">
+              <a href="/2017/04/c-sharp7-deconstruction-demystified/">Read More…</a>
+            </div>
+            
+
+          </div>
+          
+          <div class="post">
+            <h1 class="post-title">
+              <a href="https://surfingthecode.com/2017/03/coffee-and-links-6/">
+                
+                  Coffee and Links #6
+                
+              </a>
+            </h1>
+
+            <span class="post-date">Mar 11, 2017</span>
+
+            Visual Studio 2017 released The most significant event of this week was, of course, the launch of Visual Studio 2017 by Microsoft. If you haven&rsquo;t downloaded it yet, go ahead! As promised, it really has a lot of improvements, like faster installation, shorter startup time, lightweight solution load, and much more.
+Code navigation and built-in refactorings are so good now, that first time in about 10 years I feel pretty comfortable without ReSharper.
+            
+            
+            <div class="read-more-link">
+              <a href="/2017/03/coffee-and-links-6/">Read More…</a>
+            </div>
+            
+
+          </div>
+          
+          <div class="post">
+            <h1 class="post-title">
+              <a href="https://surfingthecode.com/2017/02/abusing-dotnet-core-cli/">
+                
+                  Abusing .NET Core CLI
+                
+              </a>
+            </h1>
+
+            <span class="post-date">Feb 18, 2017</span>
+
+            &ldquo;dotnet new&rdquo; and friends When developing with .NET Core, you have two different workflows to choose from: manage projects from Visual Studio or work from a command-line using dotnet commands. New projects can be created this way, and after the recent updates the project templates system became extensible, allowing to install additional templates or even create your own. For example, this is how the output of dotnet new looks like by default with the latest RC installed (.
+            
+            
+            <div class="read-more-link">
+              <a href="/2017/02/abusing-dotnet-core-cli/">Read More…</a>
+            </div>
+            
+
+          </div>
+          
+          <div class="post">
+            <h1 class="post-title">
+              <a href="https://surfingthecode.com/2017/02/coffee-and-links-5/">
                 
                   Coffee and Links #5
                 
@@ -94,7 +179,7 @@
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2017/02/coffee-and-links-5/">Read More…</a>
+              <a href="/2017/02/coffee-and-links-5/">Read More…</a>
             </div>
             
 
@@ -102,7 +187,7 @@
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2017/02/static-site-deployment-options/">
+              <a href="https://surfingthecode.com/2017/02/static-site-deployment-options/">
                 
                   Static site deployment options
                 
@@ -116,7 +201,7 @@ When I first set everything up, the publishing pipeline looked like this:
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2017/02/static-site-deployment-options/">Read More…</a>
+              <a href="/2017/02/static-site-deployment-options/">Read More…</a>
             </div>
             
 
@@ -124,7 +209,7 @@ When I first set everything up, the publishing pipeline looked like this:
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/">
+              <a href="https://surfingthecode.com/2017/01/ndc-london-talks/">
                 
                   NDC London: talks
                 
@@ -137,7 +222,7 @@ When I first set everything up, the publishing pipeline looked like this:
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2017/01/ndc-london-talks/">Read More…</a>
+              <a href="/2017/01/ndc-london-talks/">Read More…</a>
             </div>
             
 
@@ -145,7 +230,7 @@ When I first set everything up, the publishing pipeline looked like this:
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/">
+              <a href="https://surfingthecode.com/2017/01/ndc-london-asp.net-core-workshop/">
                 
                   NDC London: ASP.NET Core workshop
                 
@@ -158,7 +243,7 @@ When I first set everything up, the publishing pipeline looked like this:
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/">Read More…</a>
+              <a href="/2017/01/ndc-london-asp.net-core-workshop/">Read More…</a>
             </div>
             
 
@@ -166,7 +251,7 @@ When I first set everything up, the publishing pipeline looked like this:
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/">
+              <a href="https://surfingthecode.com/2017/01/coffee-and-links-4/">
                 
                   Coffee and Links #4
                 
@@ -181,7 +266,7 @@ I decided to slightly modify the format of this series, so that the posts have o
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2017/01/coffee-and-links-4/">Read More…</a>
+              <a href="/2017/01/coffee-and-links-4/">Read More…</a>
             </div>
             
 
@@ -189,7 +274,7 @@ I decided to slightly modify the format of this series, so that the posts have o
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/">
+              <a href="https://surfingthecode.com/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/">
                 
                   C# 7.0 and Visual Studio 2017 RC
                 
@@ -202,7 +287,7 @@ I decided to slightly modify the format of this series, so that the posts have o
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/">Read More…</a>
+              <a href="/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/">Read More…</a>
             </div>
             
 
@@ -210,7 +295,7 @@ I decided to slightly modify the format of this series, so that the posts have o
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/">
+              <a href="https://surfingthecode.com/2016/12/coffee-and-links-3/">
                 
                   Coffee and Links #3
                 
@@ -223,7 +308,7 @@ I decided to slightly modify the format of this series, so that the posts have o
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/12/coffee-and-links-3/">Read More…</a>
+              <a href="/2016/12/coffee-and-links-3/">Read More…</a>
             </div>
             
 
@@ -231,7 +316,7 @@ I decided to slightly modify the format of this series, so that the posts have o
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/">
+              <a href="https://surfingthecode.com/2016/12/practice-makes-perfect/">
                 
                   Practice makes perfect
                 
@@ -246,7 +331,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/12/practice-makes-perfect/">Read More…</a>
+              <a href="/2016/12/practice-makes-perfect/">Read More…</a>
             </div>
             
 
@@ -254,7 +339,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/">
+              <a href="https://surfingthecode.com/2016/11/coffee-and-links-2/">
                 
                   Coffee and Links #2
                 
@@ -268,7 +353,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/11/coffee-and-links-2/">Read More…</a>
+              <a href="/2016/11/coffee-and-links-2/">Read More…</a>
             </div>
             
 
@@ -276,7 +361,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/">
+              <a href="https://surfingthecode.com/2016/11/coffee-and-links-1/">
                 
                   Coffee and Links #1
                 
@@ -290,7 +375,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/11/coffee-and-links-1/">Read More…</a>
+              <a href="/2016/11/coffee-and-links-1/">Read More…</a>
             </div>
             
 
@@ -298,7 +383,7 @@ I couldn&rsquo;t agree more. More often than not we developers tend to write cod
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/">
+              <a href="https://surfingthecode.com/2016/10/some-facts-about-wix/">
                 
                   Some facts about WiX
                 
@@ -312,7 +397,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/10/some-facts-about-wix/">Read More…</a>
+              <a href="/2016/10/some-facts-about-wix/">Read More…</a>
             </div>
             
 
@@ -320,7 +405,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/">
+              <a href="https://surfingthecode.com/2016/10/current-state-of-.net/">
                 
                   Current state of .NET
                 
@@ -333,7 +418,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/10/current-state-of-.net/">Read More…</a>
+              <a href="/2016/10/current-state-of-.net/">Read More…</a>
             </div>
             
 
@@ -341,7 +426,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/">
+              <a href="https://surfingthecode.com/2016/10/staying-up-to-date-with-software-development-trends/">
                 
                   Staying up-to-date with software development trends
                 
@@ -354,7 +439,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/">Read More…</a>
+              <a href="/2016/10/staying-up-to-date-with-software-development-trends/">Read More…</a>
             </div>
             
 
@@ -362,7 +447,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/">
+              <a href="https://surfingthecode.com/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/">
                 
                   Building a blog with Hugo, GitHub, Travis-CI and DigitalOcean - Part 1
                 
@@ -375,7 +460,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/">Read More…</a>
+              <a href="/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/">Read More…</a>
             </div>
             
 
@@ -383,7 +468,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
           
           <div class="post">
             <h1 class="post-title">
-              <a href="https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/">
+              <a href="https://surfingthecode.com/2016/06/never-too-late/">
                 
                   Never too late
                 
@@ -396,7 +481,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
             
             
             <div class="read-more-link">
-              <a href="/tsvetkov.io/2016/06/never-too-late/">Read More…</a>
+              <a href="/2016/06/never-too-late/">Read More…</a>
             </div>
             
 
@@ -411,7 +496,7 @@ Today I was again listening to awesome .NET Rocks podcast and the guest was Rob 
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-51668451-2', 'auto');
+ga('create', 'UA-51668451-3', 'auto');
 ga('send', 'pageview');
 </script>
 

@@ -2,19 +2,469 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/post/index.xml</link>
+    <link>https://surfingthecode.com/post/index.xml</link>
     <description>Recent content in Posts on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Feb 2017 18:11:53 +0100</lastBuildDate>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 May 2017 21:49:35 +0200</lastBuildDate>
+    <atom:link href="https://surfingthecode.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Book review: Microservices in .NET Core by Christian Horsdal Gammelgaard</title>
+      <link>https://surfingthecode.com/2017/05/book-review-microservices-in-.net-core-by-christian-horsdal-gammelgaard/</link>
+      <pubDate>Mon, 01 May 2017 21:49:35 +0200</pubDate>
+      
+      <guid>https://surfingthecode.com/2017/05/book-review-microservices-in-.net-core-by-christian-horsdal-gammelgaard/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.manning.com/books/microservices-in-net-core&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/book_cover_microservices_in_dotnet_core.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A few weeks ago I finished reading this book, which was quite an intersting view on the microservices design problem. Most of the articles related to this topic tend to be either very conceptual and high-level (&lt;em&gt;bounded context, culture shift, containers etc.&lt;/em&gt;) and usually describe how the whole distributed system should look like. One of the benefits of microservices is the ability to use different technologies for different services. And that makes total sense in a large enterprise, where you often &lt;em&gt;have&lt;/em&gt; to deal with multiple programming languages and frameworks, or in a unicorn startup, where just everything is possible. But I am sure there hundreds of smaller companies with software systems already built and core technologies already chosen. How do you step into the shiny world of microservices with your specific background? How do you implement a microservice itself in a given programming language?&lt;/p&gt;
+
+&lt;p&gt;I feel that until now there wasn&amp;rsquo;t a good example of building microservices specifically in .NET and from &lt;em&gt;application architecture&lt;/em&gt; perspective instead of &lt;em&gt;enterprise architecture&lt;/em&gt;. And in my opinion, &lt;a href=&#34;https://www.manning.com/books/microservices-in-net-core&#34;&gt;&lt;em&gt;Microservices in .NET Core&lt;/em&gt; by Christian Horsdal Gammelgaard&lt;/a&gt; fills this gap in a very solid way. It uses an e-commerce system as an example throughout the book, starting by explaining basic microservices concepts and then going deep into detail across multiple topics, including reliability, testability, reusability, and many other -ilities. Christian uses a very structured approach, with eash chapter defining a generic problem area, then scoping it down to the specific software system being discussed, and then providing lots of code examples which show how to &lt;em&gt;actually&lt;/em&gt; implement a given feature. Some solutions are clearly opinionated, but very openly: such places are usually accompanied with a discussion of other options. For example, the suggested approach to asynchronous handling of cross-service events is to expose an &lt;code&gt;/events&lt;/code&gt; endpoint in a microservice, which allows any interested subscriber to fetch events that happened after a specified ID. That was a new idea to me, since I would normally think of a message queue as a way to publish/subscribe events, but obviously this simple implementation has its benefits: at a price of a tighter coupling between publishers and subscribers, we are avoiding all the complexity and additional efforts of managing message queues infrastructure.&lt;/p&gt;
+
+&lt;p&gt;What I also really appreciated was the author&amp;rsquo;s going through common patterns in building distributed systems and giving practical solutions to them. If someone is building such a system for the first time, it might not be clear which cross-functional aspects should be taken into account. But retro-fitting them months later would be much, much harder than building them in right from the get go. So, Christian matter-of-factly explains how to support &lt;a href=&#34;https://articles.microservices.com/practical-microservices-correlation-tokens-75888baa5182&#34;&gt;correlation tokens&lt;/a&gt;, how to make microservices&amp;rsquo; communication robust with &lt;a href=&#34;https://github.com/App-vNext/Polly&#34;&gt;Polly&lt;/a&gt;, how to apply centralized logging with &lt;a href=&#34;https://serilog.net/&#34;&gt;Serilog&lt;/a&gt; and &lt;a href=&#34;https://www.elastic.co/&#34;&gt;Elasticsearch&lt;/a&gt;, and how the token-based authentication can be organized using &lt;a href=&#34;https://identityserver.io/&#34;&gt;IdentityServer&lt;/a&gt;. Some practical examples go even deeper into code level, showing, for instance, how &lt;a href=&#34;https://en.wikipedia.org/wiki/Factory_method_pattern&#34;&gt;a factory pattern&lt;/a&gt; can be used to inject standard HTTP headers into every request made by an &lt;code&gt;HttpClient&lt;/code&gt; instance. That, in my opinion, is what makes this book unique: whether you are an architect or a developer, you will find tons of useful information and hands-on code snippets.&lt;/p&gt;
+
+&lt;p&gt;Another interesting point is that, despite talking about .NET Core, the book uses &lt;a href=&#34;http://nancyfx.org/&#34;&gt;Nancy&lt;/a&gt; as the web framework. Surely the same things could be achieved with vanilla ASP.NET Core, but Nancy allows to simplify so many things and write elegant and minimalistic code that is all about &lt;em&gt;your&lt;/em&gt; application logic, not plumbing and infrastructure. I&amp;rsquo;ve used it several years ago in one of the projects, and it was a joy to work with. Obviously, being a long-time user of and contributor to Nancy project, Christian explains everything about Nancy in a very detailed way and convincingly demonstrates that it is a viable alternative to other .NET web frameworks.&lt;/p&gt;
+
+&lt;p&gt;With that said, there are certain parts in the book where everyone will have strong opinions on the topic. The suggested idea of packaging and reusing common middleware implementations as NuGet packages is probably a very good and practical solution, when one needs to implement many completely different new microservices &lt;em&gt;across differect organizations&lt;/em&gt;. However, when applied to dozens of constantly evolving services &lt;em&gt;in a single company&lt;/em&gt;, this might become difficult to maintain, since I think it would be quite hard to come up with such a middleware system upfront and expect no changes to it. And when changes do happen (new security infrastructure, a different distributed monitoring system etc.), this common package becomes a coupling point between many already deployed services, so updating them all without breaking any can become quite tricky. In some cases, as Sam Newman&amp;rsquo;s &lt;a href=&#34;http://shop.oreilly.com/product/0636920033158.do&#34;&gt;&lt;em&gt;Building Microservices&lt;/em&gt;&lt;/a&gt; book suggests, it might be beneficial to accept some level of code duplication and use source-controlled quickstart project templates with this common functionality instead of NuGet packages. In any case, both approaches have their places and the answer is always &amp;ldquo;it depends&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, I highly recommend this book to any .NET developer or architect interested in doing microservices and looking for practical advice. Also, there is &lt;a href=&#34;https://www.youtube.com/watch?v=DkG76TgntBQ&amp;amp;list=PL03Lrmd9CiGf2iIh4x8HM4iKmi6PhCe96&amp;amp;index=83&#34;&gt;Christian&amp;rsquo;s talk on NDC London 2017&lt;/a&gt;, where he touches upon similar topics, but more focusing on using ASP.NET Core middleware to add cross-cutting functionality to web applications and to compose these pieces into a reusable &lt;em&gt;microservices platform&lt;/em&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>c sharp7 deconstruction demystified</title>
+      <link>https://surfingthecode.com/2017/04/c-sharp7-deconstruction-demystified/</link>
+      <pubDate>Sun, 02 Apr 2017 13:22:56 +0200</pubDate>
+      
+      <guid>https://surfingthecode.com/2017/04/c-sharp7-deconstruction-demystified/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Update 2017-04-09&lt;/strong&gt;: &lt;em&gt;As pointed out by &lt;a href=&#34;http://blog.monstuff.com/&#34;&gt;Julien Couvreur&lt;/a&gt; in the comments, I made some incorrect conclusions about how compiler actually deconstructs ValueTuples. I assumed that this is done using the extensions methods in the System.ValueTuple NuGet package, while they are clearly declared on the older &lt;code&gt;System.Tuple&lt;/code&gt; type and are NOT being used for the deconstruction. In fact, C# compiler has built-in knowledge for ValueTuple type, so no extensions needed. More detailed explanation is available in &lt;a href=&#34;https://github.com/dotnet/roslyn/blob/master/docs/features/deconstruction.md&#34;&gt;this document&lt;/a&gt; in Roslyn repository on Github.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s talk about one of the cool new features of C# 7.0 - &lt;em&gt;deconstruction&lt;/em&gt;. Quite often you might need to return more than one value from a method, which can be accomplished in several ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;use &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/t3c3bfhx.aspx&#34;&gt;&lt;code&gt;out&lt;/code&gt;&lt;/a&gt;/&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/14akc2c7.aspx&#34;&gt;&lt;code&gt;ref&lt;/code&gt;&lt;/a&gt; arguments (usually considered a code smell)&lt;/li&gt;
+&lt;li&gt;create a more meaningful class/struct that represents the result of calling the method (a preferable option, especially as the number of returned values grows)&lt;/li&gt;
+&lt;li&gt;use &lt;a href=&#34;https://msdn.microsoft.com/en-us/library/system.tuple.aspx&#34;&gt;&lt;code&gt;System.Tuple&lt;/code&gt;&lt;/a&gt; (some kind of a middleground)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;They all work, but in fact only a special return type feels like a good solution, since both &lt;code&gt;out&lt;/code&gt; arguments and explicitly used tuples look just like a boilerplate code and don&amp;rsquo;t contribute to readable code.&lt;/p&gt;
+
+&lt;h3 id=&#34;before-c-7-0&#34;&gt;Before C# 7.0&lt;/h3&gt;
+
+&lt;p&gt;As an example, I&amp;rsquo;ll use a very simple &lt;code&gt;GetPositiveNumber&lt;/code&gt; method, which generates a random integer in the [-3, 3] interval and returns both the number and a boolean flag, specifying whether the nuber was actually positive. In previous versions of C#, if we followed the common &lt;code&gt;Try...&lt;/code&gt; method pattern, it could look like this (imagine all of the following code to be inside a class):&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/atsvetkov/838245cce67d0ba1ff730d9af7e37ee9.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Rewritten with tuples, it would look not too different (but at least without &lt;code&gt;out&lt;/code&gt; arguments):&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/atsvetkov/be95d55c39620833fc120466231704c4.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Not too bad. It already shows the intent of the code much better: clearly, the method returns two things packed into a container type. But when we try to write the code that calls this method, it begins to look ugly:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/atsvetkov/5c65e720eae7a307c67d3ba278d4e11c.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;These &lt;code&gt;Item1&lt;/code&gt; and &lt;code&gt;Item2&lt;/code&gt; properties don&amp;rsquo;t really mean anything to the reader, they describe neither purpose, nor type. And this is exactly the problem that was solved with &lt;code&gt;ValueTuple&lt;/code&gt; and deconstruction in C# 7.0.&lt;/p&gt;
+
+&lt;h3 id=&#34;deconstruction&#34;&gt;Deconstruction&lt;/h3&gt;
+
+&lt;p&gt;What really felt wrong in the previous version of our code is that we could not give the tuple properties meaningful names and also we needed to first assign the tuple itself to a variable and only after that we could access the values. If you think about it, this is redundant: we are not interested in the tuple itself, we just want our values! So, C# 7.0 allows us to write the same functionality in a much shorter way:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/atsvetkov/e065c97a041b524907873d4abb03bc07.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;(IMPORTANT: for this to work, you need to manually install a &lt;em&gt;System.ValueTuple&lt;/em&gt; NuGet package to your project, since the compiler will use types from it.)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This way both values we are actually interested in are immediately assigned to the corresponding variables - &lt;em&gt;all in one line&lt;/em&gt;! Also, the method signature now reads much better, since it is quite obvious that there are two return values.&lt;/p&gt;
+
+&lt;p&gt;After 12 years of .NET development, this looks like magic. And I don&amp;rsquo;t like magic. So, if you are like me, the next thing you do is open your favourite IL disassembler (mine is &lt;a href=&#34;http://ilspy.net/&#34;&gt;ILSpy&lt;/a&gt;) and see what actually happens behind the scenes.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/csharp7-deconstruction-ilspy-method.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;So, essentially everything we wrote was just syntactic sugar, which then was turned into using a concrete &lt;code&gt;System.ValueTuple&lt;/code&gt; struct. We can also see that the method is now marked with a &lt;a href=&#34;https://github.com/dotnet/corefx/blob/master/src/System.ValueTuple/src/System/Runtime/CompilerServices/TupleElementNamesAttribute.cs&#34;&gt;&lt;code&gt;TupleElementNames&lt;/code&gt;&lt;/a&gt; attribute, which kept the names of the values returned by the original method. Obviously, we can deconstruct to local variables with any names, so this information is only preserved for displaying an Intellisense hint, when you hover over the method:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/csharp7-deconstruction-ilspy-intellisense.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;If we look at &lt;code&gt;ValueTuple&amp;lt;T1,T2&amp;gt;&lt;/code&gt; itself, there is nothing really interesting, just a struct with (again!) &lt;code&gt;Item1&lt;/code&gt; and &lt;code&gt;Item2&lt;/code&gt; properties:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/csharp7-deconstruction-ilspy-valuetuple.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;So, how does this struct get assigned to two variables at once? Turns out, the compiler will use &lt;a href=&#34;https://en.wikipedia.org/wiki/Duck_typing&#34;&gt;duck-typing&lt;/a&gt; and check if there is &lt;code&gt;Deconstruct&lt;/code&gt; method available on the type we are, well, deconstructing. Actually, the method doesn&amp;rsquo;t have to be defined in the type itself, it can be declared as an extension method - which is exactly the case for &lt;code&gt;System.ValueTuple&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/csharp7-deconstruction-ilspy-tupleextensions.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;del&gt;Finally, the magic is revealed! The C# compiler will convert our nice and readable code into a bit more boring code using &lt;code&gt;ValueTuple&lt;/code&gt;, and if there is a deconstruction statement used in the calling code, it will be rewritten with the &lt;code&gt;Deconstruct&lt;/code&gt; method, if such exists.&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edit 2017-04-09&lt;/strong&gt;: &lt;em&gt;Turns out I was wrong here (thanks to Julien Couvreur for correcting me): C# compiler has built-in knowledge of &lt;code&gt;System.ValueTuple&lt;/code&gt; type, and moreover, the extensions methods above are clearly defined on a completely different type and have nothing to do with C# deconstruction syntax.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This bring us to another interesting question: can we only use deconstruction with these value tuples or with custom types as well?&lt;/p&gt;
+
+&lt;h3 id=&#34;deconstructing-custom-types&#34;&gt;Deconstructing custom types&lt;/h3&gt;
+
+&lt;p&gt;Since we already saw that deconstruction works by using duck-typing, you can guess that the same trick works with our custom return types too. When might this be useful? Imagine you already have some method that returns a class, not a tuple, and you still want to leverage the deconstruction pattern when &lt;em&gt;calling&lt;/em&gt; this existing method. Most likely you wouldn&amp;rsquo;t want to rewrite the method to use tuples (too much work probably) - and luckily you don&amp;rsquo;t have to! Just defining an extension method &lt;code&gt;Deconstruct&lt;/code&gt; on the return type is enough to make compiler happy:&lt;/p&gt;
+
+&lt;script src=&#34;//gist.github.com/atsvetkov/db1583d6ecf4a67faa6c7ad1f1f1f5e3.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This is, in my opinion, the best way to write this kind of code, since we managed to combine the best of both worlds: the method now returns a type with a meaningful name (and can easily be extended with more properties, if necessary), while, with the help of an extension method, we could deconstruct the result into two local variables - &lt;em&gt;still in one line&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;One shouldn&amp;rsquo;t underestimate such language improvements: even though there is, strictly speaking, no new functionality here, it greatly reduces the amount of boilerplate code and improves redability by making the intent of a method much clearer. After all, human time is the most expensive resource in software development, so having less lines of code to read (without sacrificing readability) is a big win.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>coffee and links 6</title>
+      <link>https://surfingthecode.com/2017/03/coffee-and-links-6/</link>
+      <pubDate>Sat, 11 Mar 2017 18:11:53 +0100</pubDate>
+      
+      <guid>https://surfingthecode.com/2017/03/coffee-and-links-6/</guid>
+      <description>
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-6.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h3 id=&#34;visual-studio-2017-released&#34;&gt;Visual Studio 2017 released&lt;/h3&gt;
+
+&lt;p&gt;The most significant event of this week was, of course, the &lt;a href=&#34;https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes&#34;&gt;launch of Visual Studio 2017&lt;/a&gt; by Microsoft. If you haven&amp;rsquo;t downloaded it yet, &lt;a href=&#34;https://www.visualstudio.com/downloads/&#34;&gt;go ahead&lt;/a&gt;! As promised, it really has a lot of improvements, like faster installation, shorter startup time, lightweight solution load, and much more.&lt;/p&gt;
+
+&lt;p&gt;Code navigation and built-in refactorings are so good now, that first time in about 10 years I feel pretty comfortable without ReSharper. Seriously, last four days I&amp;rsquo;ve been coding without any third-party extensions and the only extra effort I had to make was pressing &lt;em&gt;Ctrl+.&lt;/em&gt; instead of so familiar &lt;em&gt;Alt+Enter&lt;/em&gt; (muscle memory strikes back here). I&amp;rsquo;m really curious to see what the future of ReSharper will be, given that &lt;a href=&#34;https://blog.jetbrains.com/dotnet/2014/04/10/resharper-and-roslyn-qa/&#34;&gt;a rewrite to support Roslyn is not going to happen&lt;/a&gt; and that &lt;a href=&#34;https://www.devexpress.com/products/coderush/&#34;&gt;CodeRush&lt;/a&gt; (a competing product from DevExpress) is already built on top of Roslyn platform. Perhaps, the main focus of JetBrains for .NET platform will be &lt;a href=&#34;https://www.jetbrains.com/rider/&#34;&gt;a new IDE called Rider&lt;/a&gt;? We&amp;rsquo;ll see.&lt;/p&gt;
+
+&lt;p&gt;Another example of an improvement that makes a third-party tool kind of obsolete is &lt;a href=&#34;https://blogs.msdn.microsoft.com/visualstudio/2017/03/09/live-unit-testing-in-visual-studio-2017-enterprise/&#34;&gt;live unit testing feature&lt;/a&gt;. It does exactly what you&amp;rsquo;d think: continously runs the unit tests related to the code you are changing in the background (test projects can be included/excluded individually, which is important when there are integration tests in the same solution). And while &lt;a href=&#34;http://www.ncrunch.net/&#34;&gt;NCrunch&lt;/a&gt; has been the leading tool in this area this for years, I wonder if it is that relevant anymore. Of course, with live unit testing only available in VS 2017 Enterprise, lots of individual developers might still find NCrunch more affordable, so it will probably retain its niche.&lt;/p&gt;
+
+&lt;h3 id=&#34;c-7-0-net-core-devops&#34;&gt;C# 7.0, .NET Core, DevOps&lt;/h3&gt;
+
+&lt;p&gt;Of course, it wasn&amp;rsquo;t only about Visual Studio, and many other announcements were made. &lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/2017/03/09/new-features-in-c-7-0/&#34;&gt;C# 7.0&lt;/a&gt; came out too, bringing all the neat new features (I already highlighted some of them &lt;a href=&#34;https://surfingthecode.com/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/&#34;&gt;in one of my previous blog posts&lt;/a&gt;). &lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/2017/03/07/announcing-net-core-tools-1-0/&#34;&gt;Tooling for .NET Core&lt;/a&gt; finally hit version 1.0.0, which was a milestone long-awaited by many .NET Core early adopters. After the two year journey through &lt;em&gt;ASP.NET vNext&lt;/em&gt;, &lt;em&gt;ASP.NET 5&lt;/em&gt;, &lt;em&gt;Project K&lt;/em&gt;, &lt;em&gt;DNX&lt;/em&gt; and various betas and RCs of &lt;em&gt;.NET Core&lt;/em&gt;, finally seeing this output in the console is very satisfying:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/dotnet-version.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;In ASP.NET Core area, there is now an easy support for using Docker containers (even debugging dockerized applications!), default web project templates now include frontend assets using &lt;a href=&#34;https://bower.io/&#34;&gt;Bower&lt;/a&gt; (in the past all JavaScript files used to be just fixed versions, without any package management), debugging client-side code is now possible in Chrome as well as IE, and an immensely popular &lt;a href=&#34;http://vswebessentials.com/&#34;&gt;Web Essentials&lt;/a&gt; extension pack &lt;a href=&#34;http://madskristensen.net/post/long-live-web-essentials&#34;&gt;has been updated for VS 2017 too&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A lot of improvements were also made in DevOps area. How about &lt;a href=&#34;https://blogs.msdn.microsoft.com/visualstudio/2017/02/06/continuous-delivery-tools-extension-visual-studio-2017/&#34;&gt;configuring CI/CD pipeline with Visual Studio Team Services&lt;/a&gt; right from Visual Studio itself? As always, Microsoft makes this kind of things ridiculously easy, so there is no excuse for not using the best practices of agile software development anymore. Also, &lt;a href=&#34;https://www.red-gate.com/blog/database-lifecycle-management/visual-studio-2017-redgate-data-tools&#34;&gt;a new partnership with RedGate was announced&lt;/a&gt;, giving the users of Visual Studio 2017 Enterprise several built-in extensions, like &lt;a href=&#34;http://www.red-gate.com/products/sql-development/readyroll/entrypage/microsoft-and-readyroll&#34;&gt;ReadyRoll&lt;/a&gt;, a tool for managing database migrations in a very natural database-first way (for example, with &lt;a href=&#34;https://dbup.github.io/&#34;&gt;DbUp&lt;/a&gt; you would write the migration scripts as the first step and only then apply the changes, while with ReadyRoll you make changes to the local development database first and then tell the tool to generate the diff script).&lt;/p&gt;
+
+&lt;p&gt;All these new features and many more were covered in the &lt;a href=&#34;https://channel9.msdn.com/Events/Visual-Studio/Visual-Studio-2017-Launch/100&#34;&gt;keynote&lt;/a&gt; and &lt;a href=&#34;https://channel9.msdn.com/Events/Visual-Studio/Visual-Studio-2017-Launch&#34;&gt;deep dive sessions&lt;/a&gt; on Channel 9, and also there is &lt;a href=&#34;https://www.dotnetrocks.com/?show=1422&#34;&gt;a new episode about Visual Studio 2017 on .NET Rocks&lt;/a&gt;. So, if you want to know more, go ahead - watch, listen, and of course try Visual Studio 2017 with C# 7.0 yourself, because it is seriously cool!&lt;/p&gt;
+
+&lt;h3 id=&#34;bonus-link&#34;&gt;Bonus link&lt;/h3&gt;
+
+&lt;p&gt;If you already started using VS 2017, you might have been wondering why the new icon looked so different from the previous versions:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/vs-2017-icon.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;To satisfy this curiosity of yours and mine, Visual Studio team has published a blog post explaining the design process and reasoning behind this choice, with a rather romantic title &lt;a href=&#34;https://blogs.msdn.microsoft.com/visualstudio/2017/03/08/iterations-on-infinity/&#34;&gt;&amp;ldquo;Iterations on infinity&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>abusing dotnet core cli</title>
+      <link>https://surfingthecode.com/2017/02/abusing-dotnet-core-cli/</link>
+      <pubDate>Sat, 18 Feb 2017 14:35:25 +0100</pubDate>
+      
+      <guid>https://surfingthecode.com/2017/02/abusing-dotnet-core-cli/</guid>
+      <description>
+
+&lt;h3 id=&#34;dotnet-new-and-friends&#34;&gt;&amp;ldquo;dotnet new&amp;rdquo; and friends&lt;/h3&gt;
+
+&lt;p&gt;When developing with .NET Core, you have two different workflows to choose from: manage projects from Visual Studio or work from a command-line using &lt;code&gt;dotnet&lt;/code&gt; commands. New projects can be created this way, and after the recent updates the project templates system became extensible, allowing to install additional templates or even create your own. For example, this is how the output of &lt;code&gt;dotnet new&lt;/code&gt; looks like by default with the latest RC installed (&lt;em&gt;.NET Core 1.0 SDK RC4&lt;/em&gt;, to be specific):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; dotnet new
+Template Instantiation Commands for .NET Core CLI.
+
+Usage: dotnet new [arguments] [options]
+
+Arguments:
+  template  The template to instantiate.
+
+Options:
+  -l|--list         List templates containing the specified name.
+  -lang|--language  Specifies the language of the template to create
+  -n|--name         The name for the output being created. If no name is specified, the name of the current directory is used.
+  -o|--output       Location to place the generated output.
+  -h|--help         Displays help for this command.
+  -all|--show-all   Shows all templates
+
+
+Templates                                 Short Name      Language      Tags
+--------------------------------------------------------------------------------------
+Console Application                       console         [C#], F#      Common/Console
+Class library                             classlib        [C#], F#      Common/Library
+Unit Test Project                         mstest          [C#], F#      Test/MSTest
+xUnit Test Project                        xunit           [C#], F#      Test/xUnit
+Empty ASP.NET Core Web Application        web             [C#]          Web/Empty
+MVC ASP.NET Core Web Application          mvc             [C#], F#      Web/MVC
+Web API ASP.NET Core Web Application      webapi          [C#]          Web/WebAPI
+Solution File                             sln                           Solution
+
+Examples:
+    dotnet new mvc --auth None --framework netcoreapp1.0
+    dotnet new classlib --framework netstandard1.4
+    dotnet new --help
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can additionally install &lt;a href=&#34;https://blogs.msdn.microsoft.com/webdev/2017/02/14/building-single-page-applications-on-asp-net-core-with-javascriptservices/&#34;&gt;JavaScriptServices&lt;/a&gt; templates like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As mentioned in the recent &lt;a href=&#34;https://www.youtube.com/watch?v=q88i3oDWp80&#34;&gt;ASP.NET Community Standup&lt;/a&gt;, the asterisk at the end means &amp;ldquo;any version&amp;rdquo; and is required, because &lt;code&gt;--install&lt;/code&gt; argument needs a version to be specified.&lt;/p&gt;
+
+&lt;p&gt;Now, when we execute &lt;code&gt;dotnet new&lt;/code&gt; once again, the list will have more items and we can use these nicely preconfigured .NET Core + React/Angular/etc. projects:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Templates                                  Short Name      Language      Tags
+---------------------------------------------------------------------------------------
+Console Application                        console         [C#], F#      Common/Console
+Class library                              classlib        [C#], F#      Common/Library
+Unit Test Project                          mstest          [C#], F#      Test/MSTest
+xUnit Test Project                         xunit           [C#], F#      Test/xUnit
+Empty ASP.NET Core Web Application         web             [C#]          Web/Empty
+MVC ASP.NET Core Web Application           mvc             [C#], F#      Web/MVC
+MVC ASP.NET Core with Angular              angular         [C#]          Web/MVC/SPA
+MVC ASP.NET Core with Aurelia              aurelia         [C#]          Web/MVC/SPA
+MVC ASP.NET Core with Knockout.js          knockout        [C#]          Web/MVC/SPA
+MVC ASP.NET Core with React.js             react           [C#]          Web/MVC/SPA
+MVC ASP.NET Core with React.js and Redux   reactredux      [C#]          Web/MVC/SPA
+Web API ASP.NET Core Web Application       webapi          [C#]          Web/WebAPI
+Solution File                              sln                           Solution
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These new SPA templates are built by &lt;a href=&#34;http://blog.stevensanderson.com/&#34;&gt;Steve Sanderson&lt;/a&gt; (the author of &lt;a href=&#34;http://knockoutjs.com/&#34;&gt;knockout.js&lt;/a&gt;) together with the ASP.NET team and deserve a separate post, so I&amp;rsquo;m not going to discuss them now. What I want to talk about instead is the extensibility of &lt;code&gt;dotnet&lt;/code&gt; command itself.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-dotnet-command-works&#34;&gt;How &amp;ldquo;dotnet&amp;rdquo; command works&lt;/h3&gt;
+
+&lt;p&gt;Obviously, there is not too much magic: the .NET Core installer copies &lt;code&gt;dotnet.exe&lt;/code&gt; to &lt;em&gt;C:\Program Files\dotnet&lt;/em&gt; and adds this directory to PATH. When in doubt, remember about &lt;code&gt;where&lt;/code&gt; command, which can help identify the location of an executable:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; where dotnet
+C:\Program Files\dotnet\dotnet.exe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In most cases &lt;code&gt;dotnet&lt;/code&gt; command will be executed with an additonal argument, which is the actual action we want to perform, like &lt;code&gt;new&lt;/code&gt;, &lt;code&gt;build&lt;/code&gt;, or &lt;code&gt;run&lt;/code&gt;. The list of supported ones can be displayed by running &lt;code&gt;dotnet help&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Commands:
+  new           Initialize .NET projects.
+  restore       Restore dependencies specified in the .NET project.
+  build         Builds a .NET project.
+  publish       Publishes a .NET project for deployment (including the runtime).
+  run           Compiles and immediately executes a .NET project.
+  test          Runs unit tests using the test runner specified in the project.
+  pack          Creates a NuGet package.
+  migrate       Migrates a project.json based project to a msbuild based project.
+  clean         Clean build output(s).
+  sln           Modify solution (SLN) files.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All of them are the built-in commands, which can be seen &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/src/dotnet/Program.cs&#34;&gt;in the source code on Github&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Program
+{
+    private static Dictionary&amp;lt;string, Func&amp;lt;string[], int&amp;gt;&amp;gt; s_builtIns = new Dictionary&amp;lt;string, Func&amp;lt;string[], int&amp;gt;&amp;gt;
+    {
+        [&amp;quot;add&amp;quot;] = AddCommand.Run,
+        [&amp;quot;build&amp;quot;] = BuildCommand.Run,
+        [&amp;quot;clean&amp;quot;] = CleanCommand.Run,
+        [&amp;quot;help&amp;quot;] = HelpCommand.Run,
+        [&amp;quot;list&amp;quot;] = ListCommand.Run,
+        [&amp;quot;migrate&amp;quot;] = MigrateCommand.Run,
+        [&amp;quot;msbuild&amp;quot;] = MSBuildCommand.Run,
+        [&amp;quot;new&amp;quot;] = NewCommandShim.Run,
+        [&amp;quot;nuget&amp;quot;] = NuGetCommand.Run,
+        [&amp;quot;pack&amp;quot;] = PackCommand.Run,
+        [&amp;quot;publish&amp;quot;] = PublishCommand.Run,
+        [&amp;quot;remove&amp;quot;] = RemoveCommand.Run,
+        [&amp;quot;restore&amp;quot;] = RestoreCommand.Run,
+        [&amp;quot;restore-projectjson&amp;quot;] = RestoreProjectJsonCommand.Run,
+        [&amp;quot;run&amp;quot;] = RunCommand.Run,
+        [&amp;quot;sln&amp;quot;] = SlnCommand.Run,
+        [&amp;quot;test&amp;quot;] = TestCommand.Run,
+        [&amp;quot;vstest&amp;quot;] = VSTestCommand.Run,
+    };
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, if you tried using Entity Framework Core CLI, you know that it is managed using the &lt;a href=&#34;https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet&#34;&gt;&lt;code&gt;dotnet ef&lt;/code&gt;&lt;/a&gt; command installed with a &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final&#34;&gt;separate NuGet package&lt;/a&gt;. And there is definitely no &amp;ldquo;ef&amp;rdquo; in the list of built-in commands above. How does this actually work? What happens when we execute &lt;code&gt;dotnet COMMANDNAME&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;The answer is again in the source code, same &lt;em&gt;Program.cs&lt;/em&gt; file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int exitCode;
+Func&amp;lt;string[], int&amp;gt; builtIn;
+if (s_builtIns.TryGetValue(command, out builtIn))
+{
+    exitCode = builtIn(appArgs.ToArray());
+}
+else
+{
+    CommandResult result = Command.Create(
+            &amp;quot;dotnet-&amp;quot; + command,
+            appArgs,
+            FrameworkConstants.CommonFrameworks.NetStandardApp15)
+        .Execute();
+    exitCode = result.ExitCode;
+}
+
+return exitCode;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So &lt;em&gt;dotnet.exe&lt;/em&gt; will look for &lt;code&gt;COMMANDNAME&lt;/code&gt; in the predefined list, and if it isn&amp;rsquo;t found, will try to run an executable with the filename &lt;code&gt;dotnet-COMMANDNAME&lt;/code&gt;, passing down the rest of the original arguments to it. This only works if a file &lt;em&gt;dotnet-COMMANDNAME.exe&lt;/em&gt; can be found in at least one of the places from the PATH variable.&lt;/p&gt;
+
+&lt;p&gt;In fact, this is &lt;em&gt;almost&lt;/em&gt; true: it actually doesn&amp;rsquo;t have to be an *.exe file, as you can see in the snippet above. Anything that is on PATH, can be executed and has the name &lt;code&gt;dotnet-COMMANDNAME&lt;/code&gt; will do. Which opens some creative possibilities&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;batch-file&#34;&gt;Batch file&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start from the simplest example. I created a batch file &lt;em&gt;dotnet-hi.bat&lt;/em&gt; in &lt;em&gt;C:\tools\go\bin&lt;/em&gt; (which happens to be in my computer&amp;rsquo;s PATH) with the following content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@echo off
+echo Hi there!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And now I can do &lt;code&gt;dotnet hi&lt;/code&gt; from anywhere:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; dotnet hi
+Hi there!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok, it works, but not soo exciting. Let&amp;rsquo;s add some interaction and create the following &lt;code&gt;dotnet-flickr.bat&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@echo off
+set &amp;quot;url=https://www.flickr.com/photos/tags/%1&amp;quot;
+start %url%
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, when you are feeling sad, just run &lt;code&gt;dotnet flickr cats&lt;/code&gt; and be happy!&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/dotnet-flickr-cats.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can also do something at least remotely useful, for example, create a &lt;code&gt;dotnet-code.bat&lt;/code&gt;, which will start Visual Studio Code in the current directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@echo off
+code .
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/dotnet-code.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h3 id=&#34;dotnet-rocks&#34;&gt;dotnet rocks!&lt;/h3&gt;
+
+&lt;p&gt;You can only do much with scripting, so there will be a point when a full-blown executable makes more sense. Plus, so far the commands have been still pretty simple and boring. And since I am a big fan of &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks!&lt;/a&gt; show, I decided to pay a tribute to Carl and Richard: the greatest podcast about .NET absolutely deserves its own &lt;code&gt;dotnet&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;So let me introduce you to &lt;code&gt;dotnet rocks&lt;/code&gt;!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; dotnet rocks
+Pick one of 10 last episodes on .NET Rocks! to play:
+ -16 Feb 2017: Fusion Power Update Geek Out
+ -15 Feb 2017: Virtual, Augmented and Mixed Realities with Jessica Engstrom
+ -14 Feb 2017: Machine Learning Panel at NDC London
+ -09 Feb 2017: Ops and Operability with Dan North
+ -08 Feb 2017: Xamarin MVVM apps with Gill Cleeren
+ -07 Feb 2017: Chatbots with Galiya Warrier
+ -02 Feb 2017: IdentityServer4 with Brock Allen and Dominick Baier
+ -01 Feb 2017: Data and Docker with Stephanie Locke
+ -31 Jan 2017: Nodatime, Google Cloud and More with Jon Skeet
+ -26 Jan 2017: Punishment Driven Development with Louise Elliott
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(Disclaimer: only freely available data is used here and I am not affiliated with .NET Rocks!, although I can&amp;rsquo;t recommend it enough! When asked for permission to use &amp;ldquo;dotnet rocks&amp;rdquo; as the tool name, Carl and Richard kindly allowed me to &amp;ldquo;&lt;em&gt;go for it&lt;/em&gt;&amp;rdquo;.)&lt;/p&gt;
+
+&lt;p&gt;The tool itself is very simple: it is built as a .NET Core console app, which will display a menu of N (10 by default) last episodes from .NET Rocks! and allow to pick one. Once selected, the URL of episode&amp;rsquo;s MP3 file will be opened by the default OS program (most likely - will open in your default browser and start playing). The source code is on &lt;a href=&#34;https://github.com/atsvetkov/dotnet-rocks&#34;&gt;https://github.com/atsvetkov/dotnet-rocks&lt;/a&gt; and the packaged version is available in a NuGet format at &lt;a href=&#34;https://www.nuget.org/packages/dotnet-rocks&#34;&gt;https://www.nuget.org/packages/dotnet-rocks&lt;/a&gt;. This last one is actually important: having an executable &lt;em&gt;somewhere on your PATH&lt;/em&gt; is not exactly the most robust way of installing .NET CLI extensions, so there is a better option: &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/extensibility&#34;&gt;adding it as a .NET CLI tool reference to a project file&lt;/a&gt;. So, since it is already on &lt;a href=&#34;http://nuget.org&#34;&gt;nuget.org&lt;/a&gt;, you can just create a new .NET Core app and add a tool reference to &amp;ldquo;dotnet-rocks&amp;rdquo; in a .csproj file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ItemGroup&amp;gt;
+    &amp;lt;DotNetCliToolReference Include=&amp;quot;dotnet-rocks&amp;quot; Version=&amp;quot;0.0.1&amp;quot; /&amp;gt;
+&amp;lt;/ItemGroup&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, after performing &lt;code&gt;dotnet restore&lt;/code&gt;, you should be able to run &lt;code&gt;dotnet rocks&lt;/code&gt; in this project&amp;rsquo;s folder. This time there is no executable with the name &lt;em&gt;dotnet-rocks&lt;/em&gt; anywhere on the PATH, but there is a package folder with &lt;em&gt;dotnet-rocks.dll&lt;/em&gt; in the system-wide NuGet packages directory, which will also be probed by .NET CLI.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://surfingthecode.com/images/dotnet-rocks-package.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;This way of installing custom extensions seems much cleaner and more under control than scripts with magic names residing in unpredictable corners of the filesystem. And now your dream of checking out the latest .NET Rocks episodes from the command-line has finally come true! OK, maybe it wasn&amp;rsquo;t anyone&amp;rsquo;s dream, but I just felt it had to be done.&lt;/p&gt;
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Hopefully this post demonstrates what kind of funny and not completely useless things can be done using the .NET CLI extension mechanism. I see this as yet another way of building the convenience tools for making your dev team&amp;rsquo;s life easier. The probing logic in &lt;em&gt;dotnet.exe&lt;/em&gt; is flexible enough to allow hooking up tools or scripts from different places, so go ahead and come up with your own &lt;code&gt;dotnet something-cool&lt;/code&gt; extension!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>coffee and links 5</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/02/coffee-and-links-5/</link>
+      <link>https://surfingthecode.com/2017/02/coffee-and-links-5/</link>
       <pubDate>Thu, 16 Feb 2017 18:11:53 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/02/coffee-and-links-5/</guid>
+      <guid>https://surfingthecode.com/2017/02/coffee-and-links-5/</guid>
       <description>
 
 &lt;p&gt;It&amp;rsquo;s time for a new coffee and some new links! This time it is mostly about .NET, since there are important news and updates.&lt;/p&gt;
@@ -22,7 +472,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-5.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-5.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -63,7 +513,7 @@
 
 &lt;h3 id=&#34;ndc-london-2017-conference-videos-available&#34;&gt;NDC London 2017 conference videos available&lt;/h3&gt;
 
-&lt;p&gt;OK, I lied, these were not &lt;em&gt;all&lt;/em&gt; the good news. I am happy to announce that several recorded videos of NDC London 2017 talks are &lt;a href=&#34;https://vimeo.com/channels/1203692&#34;&gt;already available on vimeo&lt;/a&gt; and hopefully they will be adding even more soon. If you are wondering what this NDC is all about, read my impressions about &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/&#34;&gt;pre-conference workshops&lt;/a&gt; and &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/tsvetkov.io/2017/01/ndc-london-talks/&#34;&gt;three days of great talks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;OK, I lied, these were not &lt;em&gt;all&lt;/em&gt; the good news. I am happy to announce that several recorded videos of NDC London 2017 talks are &lt;a href=&#34;https://vimeo.com/channels/1203692&#34;&gt;already available on vimeo&lt;/a&gt; and hopefully they will be adding even more soon. If you are wondering what this NDC is all about, read my impressions about &lt;a href=&#34;https://surfingthecode.com/2017/01/ndc-london-asp.net-core-workshop/&#34;&gt;pre-conference workshops&lt;/a&gt; and &lt;a href=&#34;https://surfingthecode.com/2017/01/ndc-london-talks/&#34;&gt;three days of great talks&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Are you still here? Just go and learn about &lt;a href=&#34;https://vimeo.com/204078084&#34;&gt;ASP.NET Sockets (a new incarnation of SignalR)&lt;/a&gt;, &lt;a href=&#34;https://vimeo.com/204141878&#34;&gt;a redesigned and rewritten for ASP.NET Core IdentityServer 4&lt;/a&gt;, or &lt;a href=&#34;https://vimeo.com/204075759&#34;&gt;what the reasons behind some design choices of C# were&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -71,10 +521,10 @@
     
     <item>
       <title>Static site deployment options</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/02/static-site-deployment-options/</link>
+      <link>https://surfingthecode.com/2017/02/static-site-deployment-options/</link>
       <pubDate>Sat, 04 Feb 2017 15:59:26 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/02/static-site-deployment-options/</guid>
+      <guid>https://surfingthecode.com/2017/02/static-site-deployment-options/</guid>
       <description>
 
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
@@ -155,7 +605,7 @@ pages:
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/gitlab_pages_blog.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/gitlab_pages_blog.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -186,7 +636,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/github_pages_blog.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/github_pages_blog.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -214,7 +664,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/surge_blog_cli.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/surge_blog_cli.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -223,7 +673,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/surge_blog.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/surge_blog.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -243,10 +693,10 @@ git subtree push --prefix public origin gh-pages
     
     <item>
       <title>NDC London: talks</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</link>
+      <link>https://surfingthecode.com/2017/01/ndc-london-talks/</link>
       <pubDate>Sat, 28 Jan 2017 11:54:46 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</guid>
+      <guid>https://surfingthecode.com/2017/01/ndc-london-talks/</guid>
       <description>
 
 &lt;p&gt;Last three days of NDC London presented a constant paradox of choice, since every hour 7-8 speakers would have parallel sessions in different rooms. How the hell am I supposed to pick only one, if all of them are great? How on earth can you choose between Jon Skeet and Mark Seeman? My way of solving this problem was to spend an hour every evening going through the list of the next day&amp;rsquo;s speakers and googling their talks from the past. Sometimes this helped me to pick a brilliant talk from someone I had not known yet, sometimes this meant I would go to the Bill Wagner&amp;rsquo;s talk and&amp;hellip; well, more on that later.&lt;/p&gt;
@@ -284,7 +734,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/jimmys_law.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/jimmys_law.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -311,7 +761,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/devops_definition.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/devops_definition.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -325,14 +775,14 @@ git subtree push --prefix public origin gh-pages
     
     <item>
       <title>NDC London: ASP.NET Core workshop</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</link>
+      <link>https://surfingthecode.com/2017/01/ndc-london-asp.net-core-workshop/</link>
       <pubDate>Tue, 17 Jan 2017 21:14:23 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</guid>
+      <guid>https://surfingthecode.com/2017/01/ndc-london-asp.net-core-workshop/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/ndc_london_2017_workshops.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/ndc_london_2017_workshops.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -359,7 +809,7 @@ git subtree push --prefix public origin gh-pages
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/london_evening_thames.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/london_evening_thames.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -369,10 +819,10 @@ git subtree push --prefix public origin gh-pages
     
     <item>
       <title>coffee and links 4</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</link>
+      <link>https://surfingthecode.com/2017/01/coffee-and-links-4/</link>
       <pubDate>Sun, 08 Jan 2017 18:11:53 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</guid>
+      <guid>https://surfingthecode.com/2017/01/coffee-and-links-4/</guid>
       <description>
 
 &lt;p&gt;Happy New Year everyone and thank you for reading this blog!&lt;/p&gt;
@@ -382,7 +832,7 @@ git subtree push --prefix public origin gh-pages
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-4.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-4.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -446,7 +896,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_interactive_tutorials.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/resharper_interactive_tutorials.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -463,7 +913,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/aspnet_webhooks_nuget_packages.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -475,16 +925,16 @@ function renderMainFragment ( root, component ) {
     
     <item>
       <title>C-Sharp 7.0 and Visual Studio 2017 RC</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
+      <link>https://surfingthecode.com/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</link>
       <pubDate>Sun, 25 Dec 2016 12:58:59 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
+      <guid>https://surfingthecode.com/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/csharp_7_visual_studio_2017_rc.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -499,7 +949,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-workloads.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/visual-studio-workloads.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -520,7 +970,7 @@ function renderMainFragment ( root, component ) {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-project-file.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/visual-studio-project-file.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -590,7 +1040,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-out-variable.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/visual-studio-out-variable.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -633,7 +1083,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/visual-studio-extract-to-file-refactoring.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -653,16 +1103,16 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 3</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</link>
+      <link>https://surfingthecode.com/2016/12/coffee-and-links-3/</link>
       <pubDate>Fri, 16 Dec 2016 21:40:04 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</guid>
+      <guid>https://surfingthecode.com/2016/12/coffee-and-links-3/</guid>
       <description>
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-3.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-3.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -677,7 +1127,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/google_revenue.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/google_revenue.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -724,7 +1174,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/resharper_heap_allocations.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/resharper_heap_allocations.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -739,7 +1189,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/radio_garden.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/radio_garden.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -774,14 +1224,14 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>Practice makes perfect</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</link>
+      <link>https://surfingthecode.com/2016/12/practice-makes-perfect/</link>
       <pubDate>Tue, 06 Dec 2016 21:50:43 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</guid>
+      <guid>https://surfingthecode.com/2016/12/practice-makes-perfect/</guid>
       <description>
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/practice_makes_perfect.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/practice_makes_perfect.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -833,7 +1283,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/advent_of_code.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/advent_of_code.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -847,10 +1297,10 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
     
     <item>
       <title>coffee and links 2</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</link>
+      <link>https://surfingthecode.com/2016/11/coffee-and-links-2/</link>
       <pubDate>Sat, 19 Nov 2016 14:17:47 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</guid>
+      <guid>https://surfingthecode.com/2016/11/coffee-and-links-2/</guid>
       <description>
 
 &lt;p&gt;This was a week of &lt;a href=&#34;https://connectevent.microsoft.com&#34;&gt;Microsoft Connect 2016&lt;/a&gt;, an event where yet another bunch of cool announcements were made. However, being a good software engineer means not restricting yourself to a single technology, so I have some awesome non-Microsoft things to share as well. Let&amp;rsquo;s jump straight in!&lt;/p&gt;
@@ -858,7 +1308,7 @@ Error when parsing: IntegerParser only accepts strings ans integers, type &#39;S
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-2.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-2.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -897,7 +1347,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/iis_manager_preview.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/iis_manager_preview.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -929,7 +1379,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/twitter_vi.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/twitter_vi.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -939,10 +1389,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>coffee and links 1</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</link>
+      <link>https://surfingthecode.com/2016/11/coffee-and-links-1/</link>
       <pubDate>Sat, 12 Nov 2016 15:00:54 +0100</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</guid>
+      <guid>https://surfingthecode.com/2016/11/coffee-and-links-1/</guid>
       <description>
 
 &lt;p&gt;Sometimes I find interesting things on the web, which don&amp;rsquo;t belong to a single category. Just random articles or news about technology. Since I still want to share these findings and because I normally do this kind of reading at the start of the day, I will be publishing this as a &lt;em&gt;Coffee and links&lt;/em&gt; digest.&lt;/p&gt;
@@ -950,7 +1400,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/coffee-and-links-1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/coffee-and-links-1.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -969,7 +1419,7 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://atsvetkov.github.io/tsvetkov.io/images/AcclaimBadge.png&#34; /&gt;
+        &lt;img src=&#34;https://surfingthecode.com/images/AcclaimBadge.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1011,10 +1461,10 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
     
     <item>
       <title>Some facts about WiX</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</link>
+      <link>https://surfingthecode.com/2016/10/some-facts-about-wix/</link>
       <pubDate>Thu, 27 Oct 2016 22:20:54 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</guid>
+      <guid>https://surfingthecode.com/2016/10/some-facts-about-wix/</guid>
       <description>&lt;p&gt;Before we start, let me ask you a question: do you know what is the oldest still active open source .NET project?&lt;/p&gt;
 
 &lt;p&gt;Today I was again listening to awesome &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt; podcast and the guest was Rob Mensching, the guy behind &lt;a href=&#34;http://wixtoolset.org/&#34;&gt;Wix Toolset&lt;/a&gt;. WiX provides a bunch of tools to simplify the creation of MSI packages for Windows, and as far as I know, it is one of the most popular open-source implementations in that area. And it is also free! We use it for the product I am currently working on. Hell, even Microsoft is using it: &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/packaging/windows/clisdk/dotnet.wxs&#34;&gt;see for yourself&lt;/a&gt; that the current .NET Core installer is actually built with WiX! In fact, Rob Mensching used to work in Microsoft on setup and deployment for Office, Windows and Visual Studio. Obviously, he knows more about installers than most people do, enough to build a business around it. So he is now a CEO and a co-founder of &lt;a href=&#34;https://www.firegiant.com/&#34;&gt;Fire Giant&lt;/a&gt;, a company providing commercial support for WiX Toolset.&lt;/p&gt;
@@ -1049,174 +1499,6 @@ var x = map(opt, v =&amp;gt; v * 2); // static method to mimic a globally availa
 &lt;p&gt;&amp;hellip;and the second new thing actually brings us to the question I asked in the beginning. Turns out that nobody really knows what &lt;em&gt;the&lt;/em&gt; oldest .NET open source project is, but WiX comes pretty damn close: it started in 1999 and was publicly released for the first time in 2004. So by any measure it is more than ten years old now! Two other pretty old and well-known ones are &lt;a href=&#34;http://www.nunit.org/&#34;&gt;NUnit&lt;/a&gt; in 2002 (a unit testing framework) and &lt;a href=&#34;http://www.mono-project.com/&#34;&gt;Mono&lt;/a&gt; in 2000-2001 (cross platform .NET framework that allowed to run C# and VB code on Linux long before &lt;a href=&#34;https://www.microsoft.com/net/core&#34;&gt;.NET Core&lt;/a&gt; came into being). Some discussions about those old open source projects took place in &lt;a href=&#34;https://twitter.com/robmen/status/692843420981661696&#34;&gt;this Rob&amp;rsquo;s tweet&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I personally think this is exciting: although Microsoft has only recently started to move towards open-source community, the community itself has been around for more than a decade now and has built tons of great tools and products.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Current state of .NET</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</link>
-      <pubDate>Tue, 18 Oct 2016 22:22:41 +0200</pubDate>
-      
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</guid>
-      <description>&lt;p&gt;Imagine a software developer working in a typical enterprise IT company. Let&amp;rsquo;s call him Johnny. Most of the time Johnny works with .NET applications. He&amp;rsquo;s been writing web apps since the days of ASP (he feels pretty comfortable with Web Forms and IIS after all these years), but he was always too busy doing &lt;em&gt;important things&lt;/em&gt; and never really had time to follow the news in the industry. Yeah, he heard some folks in another department are using &amp;ldquo;MVC&amp;rdquo;, and somebody mentioned something like &amp;ldquo;core&amp;rdquo; or &amp;ldquo;standard&amp;rdquo;. And some fellow .NET developers were even talking about Linux at the coffee machine. What? &lt;em&gt;.NET&lt;/em&gt; and &lt;em&gt;Linux&lt;/em&gt;? Weird!&lt;/p&gt;
-
-&lt;p&gt;Or is it?&lt;/p&gt;
-
-&lt;p&gt;Johhny feels that he might have been missing something important going on, but he is a bit afraid to ask his colleagues (after all, his title clear says he is a &lt;em&gt;Senior Developer&lt;/em&gt;). So Johhny arranges a meeting with Dave, his former colleague, who left the company a long time ago to join some fancy startup. In fact, Johnny thinks that Dave is a total hipster and a nerd obsessed with new shiny frameworks&amp;hellip; well, at least they are friends, so it&amp;rsquo;s OK to look less competent. So Johnny asks something like &amp;ldquo;what&amp;rsquo;s new in .NET&amp;rdquo; - and Dave opens a whole new world to him.&lt;/p&gt;
-
-&lt;p&gt;What could be the most exciting new possibilities in today&amp;rsquo;s .NET ecosystem that Johnny learned about? Let&amp;rsquo;s look at Dave&amp;rsquo;s &lt;em&gt;Top 5 Reasons Why .NET Is So Awesome Today&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;.NET is now &lt;a href=&#34;https://github.com/dotnet/&#34;&gt;completely open-source&lt;/a&gt;. If you ever wondered how LINQ&amp;rsquo;s &lt;code&gt;Count()&lt;/code&gt; method worked, now you can &lt;a href=&#34;https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs&#34;&gt;look it up on GitHub&lt;/a&gt;. For example, you can see that before even trying to iterate the whole sequence (which might be time-consuming), they check if this sequence is actually a collection (which preserves a &amp;lsquo;Count&amp;rsquo; property), and if it is, then the collection&amp;rsquo;s &lt;code&gt;Count&lt;/code&gt; is returned, making it O(1) operation instead of O(n):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ICollection collection = source as ICollection;
-if (collection != null)
-{
-    return collection.Count;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;The newest version of the framework is called &lt;a href=&#34;https://www.microsoft.com/net/core/platform&#34;&gt;.NET Core&lt;/a&gt; and is completely cross-platform (not only you can &lt;a href=&#34;https://docs.asp.net/en/latest/publishing/linuxproduction.html&#34;&gt;run .NET apps on Linux&lt;/a&gt;, you can even have the &lt;a href=&#34;http://piotrgankiewicz.com/2016/10/17/net-on-linux-bye-windows-10/&#34;&gt;whole development environment on Linux too&lt;/a&gt;). And the new command-line tool &lt;code&gt;dotnet&lt;/code&gt; allows to &lt;a href=&#34;http://www.hanselman.com/blog/ExploringTheNewNETDotnetCommandLineInterfaceCLI.aspx&#34;&gt;scaffold, build and run the application on all platforms&lt;/a&gt;, just like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dotnet new
-dotnet build
-dotnet run
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blogs.microsoft.com/blog/2016/03/07/announcing-sql-server-on-linux&#34;&gt;SQL Server 2016 is going to run on Linux too&lt;/a&gt;, which is exciting news for the companies that want to reduce costs of licencing and hosting.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/2016/08/24/whats-new-in-csharp-7-0/&#34;&gt;Next version of C# (7.0)&lt;/a&gt; will contain even more features inspired by functional languages: there will be &lt;a href=&#34;https://en.wikipedia.org/wiki/Pattern_matching&#34;&gt;pattern matching&lt;/a&gt;, real tuples, local functions and deconstruction syntax support. For example, we will be able to write code like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;public void Foo()
-{
-    // local function
-    (string firstName, string secondName) GetTwo()
-    {
-            // returns a tuple
-            return (&amp;quot;Johnny&amp;quot;, &amp;quot;Dave&amp;quot;);
-    }
-
-    // deconstruction into two variables at once
-    (var first, var second) = GetTwo();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;If just having functional features in an object-oriented language is not enough, you can easily switch to &lt;a href=&#34;http://fsharp.org/&#34;&gt;F#&lt;/a&gt;, a functional language for .NET platform. It is becoming more and more popular in the &lt;a href=&#34;http://tomasp.net/blog/2015/why-fsharp-in-2015/&#34;&gt;finance&lt;/a&gt; &lt;a href=&#34;https://fsharp.tv/gazettes/f-the-most-highly-paid-tech-worldwide-in-2016/&#34;&gt;industry&lt;/a&gt; and has frameworks for web development too, like &lt;a href=&#34;http://websharper.com/&#34;&gt;WebSharper&lt;/a&gt; and &lt;a href=&#34;https://suave.io/&#34;&gt;Suave&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Obviously this is just the tip of the iceberg. Johnny has a lot to catch up, but he already feels very much inspired. This is clearly not the same .NET world where he started his career many years ago: everything is changing and Microsoft is making .NET a very attractive platform for all kinds of applications. It&amp;rsquo;s a great time to be a .NET developer, so Johnny decides that he needs to meet with Dave more often, read more developer-oriented resources and also try some new shiny stuff out.&lt;/p&gt;
-
-&lt;p&gt;Be like Johnny! Embrace change and learn amazing things!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(For some suggestions about which news to follow, take a look into my previous post about &lt;a href=&#34;https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/&#34;&gt;Staying up-to-date with software development trends&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Staying up-to-date with software development trends</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</link>
-      <pubDate>Sun, 16 Oct 2016 16:51:55 +0200</pubDate>
-      
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</guid>
-      <description>
-
-&lt;p&gt;Earlier this year I was assigned to a role of a technical lead in a small development team. This happened after working in the same team for more than a year and then being a part of a two-person architecture team focused on evaluating the microservices approach for a couple of months. At my current employer things are changing quickly and people are free to figure out what the idea actually was. So I am still looking for the meaning of the tech lead role, but definitely enjoying it already.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;lead&lt;/em&gt; word in the role&amp;rsquo;s name assumes knowledge about how to write good software and other related things. In my opinion, this is a sum of three parts:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;taking responsibility&lt;/li&gt;
-&lt;li&gt;applying experience&lt;/li&gt;
-&lt;li&gt;constantly learning
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Part #1 is all about making a decision, taking a well-measured risk and being ready to fail. Evaluating the options and picking one with all potential consequences, be they good or bad - this is what makes a leader (I think I read this in &lt;a href=&#34;http://www.apress.com/9781590590171&#34;&gt;&lt;em&gt;Herding Cats: A Primer for Programmers Who Lead Programmers&lt;/em&gt; by J. Hank Rainwater&lt;/a&gt;). This is hard and needs to be supported by the organizational culture. Luckily, at my current company this is one of the core and officially promoted habits: &lt;em&gt;We make mistakes and learn&lt;/em&gt;. Which is also a life-saver for new hires - nothing encourages more than a feeling of a non-blaming atmosphere around.&lt;/p&gt;
-
-&lt;p&gt;Part #2 may sound obvious, but in fact it has to be an explicit &lt;em&gt;action&lt;/em&gt;. Experience won&amp;rsquo;t manifest itself, you need to actively recognize a familiar pattern, a similar failure or success in the past. Again, the effectiveness of this may depend on the team spirit and organizational values. If there is no trust in the team, then people won&amp;rsquo;t feel like sharing their stories. And it is absolutely necessary to explain the why&amp;rsquo;s, not just make a statement. Compare &amp;ldquo;nooo, we shouldn&amp;rsquo;t use shared databases, everyone knows that&amp;rdquo; with &amp;ldquo;when we had a database shared by three apps on my last project, it resulted in regular deployment failures, finger-pointing and required a lot of cross-team communication&amp;rdquo;. I used to work with a super-smart developer, who also happens to be quite grumpy and hard-to-read. He would just say things like &amp;ldquo;Octopus Deploy? Bad idea. We tried it before, didn&amp;rsquo;t work out.&amp;rdquo; - and would not elaborate further. Statements like this don&amp;rsquo;t help, they only discourage others from trying something new, because &lt;em&gt;this guy probably has already tried this too and&amp;hellip; right, it was a bad idea&lt;/em&gt;. So applying experience may require surprisingly more communication and effort than one might expect. Buf if done right, this is what makes all the difference between a poor product and a great one. Because, you know, experience is just a list of mistakes you won&amp;rsquo;t make again.&lt;/p&gt;
-
-&lt;p&gt;Now, I was originally going to write only about part #3 in this post, so let&amp;rsquo;s finally get to it! For me the best way to describe it would be the current slogan of &lt;a href=&#34;https://www.pluralsight.com/&#34;&gt;PluralSight&lt;/a&gt;, one of my favourite educational video platforms: &lt;em&gt;Smarter than yesterday&lt;/em&gt;. That is it. And this is what I&amp;rsquo;ve been trying to do so far in my career. You don&amp;rsquo;t need to go underwater for a year, memorize all GoF design patterns, complete tutorials for every JavaScript framework out there or read all the books on DDD. (One could argue that this would even be counter-productive, since learning abstract ideas without real-world practice will not really help in solving a real-world problem, at least not in our industry.) It is not too hard to read one good article every day, but it can help accumulate tremendous knowledge in the long run. What is also very important, in my opinion, is to get out of your comfort zone and look beyond your typical technology stack. I generally work with .NET web applications, and yet I try to follow the news and blogs on F#, Elixir, Go and node.js. Why? Because thinking in different languages makes me better understand familiar programming concepts and also learn completely new ones, which are not idiomatic to C#, for example. (And also because you never know what your next job might be.)&lt;/p&gt;
-
-&lt;p&gt;In the previous paragraph I mentioned reading &lt;em&gt;good&lt;/em&gt; articles. The Internet is big, so searching for good stuff can be a daunting task. Most people end up with a relatively stable list of resources for daily/weekly reading. Here&amp;rsquo;s mine (not claiming to be unique or better than any other list):&lt;/p&gt;
-
-&lt;h3 id=&#34;newsletters&#34;&gt;Newsletters&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://csharpdigest.net/&#34;&gt;C# Digest&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://elixirdigest.net/&#34;&gt;Elixir Digest&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://reactdigest.net/&#34;&gt;React Digest&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://sergeytihon.wordpress.com/&#34;&gt;F# Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://dddweekly.com/&#34;&gt;DDD Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://azureweekly.info/&#34;&gt;Azure Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://plataformatec.com.br/elixir-radar&#34;&gt;Elixir Radar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://golangweekly.com/&#34;&gt;Go Newsletter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.devopsweekly.com/&#34;&gt;DevOps Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://webopsweekly.com/&#34;&gt;Web Operations Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://microserviceweekly.com/&#34;&gt;Microservice Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.docker.com/newsletter-subscription&#34;&gt;Docker Weekly&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;blogs&#34;&gt;Blogs&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/dotnet/&#34;&gt;.NET Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/webdev/&#34;&gt;.NET Web Development and Tools Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/visualstudioalm/&#34;&gt;Microsoft Application Lifecycle Management&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/blog/&#34;&gt;Microsoft Azure Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blogs.msdn.microsoft.com/visualstudio/&#34;&gt;The Visual Studio Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://code.visualstudio.com/blogs/&#34;&gt;Visual Studio Code Blog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.hanselman.com/blog/&#34;&gt;Scott Hanselman&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://odetocode.com/&#34;&gt;Ode to Code (K. Scott Allen)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://weblog.west-wind.com/&#34;&gt;Rick Strahl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://haacked.com/&#34;&gt;You&amp;rsquo;ve Been Haacked (Phil Haack)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://andrewlock.net/&#34;&gt;.NET Escapades (Andrew Lock)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://codeopinion.com/&#34;&gt;CodeOpinion (Derek Comartin)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.exceptionnotfound.net/&#34;&gt;Exception Not Found (Matthew P Jones)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.jeffreyfritz.com/&#34;&gt;Fritz on the Web (Jeffrey Fritz)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://kevinchalet.com/&#34;&gt;Kévin Chalet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://laurentkempe.com/&#34;&gt;Laurent Kempé&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://leastprivilege.com/&#34;&gt;Dominick Baier&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.talkingdotnet.com/&#34;&gt;Talking Dotnet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.rendle.io/&#34;&gt;The Codeface (Mark Rendle)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;podcasts&#34;&gt;Podcasts&lt;/h3&gt;
-
-&lt;p&gt;There is only one item here, because my commute to work is quite short. But seriously, if you work in software development (especially in .NET) and you have time for one podcast only, it has to be &lt;a href=&#34;http://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt;. Richard and Carl are great hosts and their guests always happen to be exceptionally good at something. After so many shows their voices sound so familiar that I&amp;rsquo;m almost starting to think of them as my colleagues. And it is very likely that I will meet them alive on &lt;a href=&#34;http://ndc-london.com/&#34;&gt;NDC London 2017&lt;/a&gt; (which will probably be a reason for a separate post).&lt;/p&gt;
-
-&lt;p&gt;This is not to say that everyday I follow &lt;em&gt;only these&lt;/em&gt; or &lt;em&gt;all of these&lt;/em&gt;, but this list seems to be the core of my reading and learning process. Let me know what your favourite learning resources are in the comments.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Building a blog with Hugo, GitHub, Travis-CI and DigitalOcean - Part 1</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</link>
-      <pubDate>Sun, 28 Aug 2016 23:01:21 +0200</pubDate>
-      
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</guid>
-      <description>&lt;p&gt;&lt;em&gt;With great power comes great responsibility&lt;/em&gt;, they say. In case of being a programmer, this sometimes means that achieving simple things may get complicated. I understand that WordPress essentially won as the blogging platform and you can setup your hosted blog in almost no time&amp;hellip; but then where is all the fun? On the other hand, putting on a pragmatic programmer&amp;rsquo;s hat, I don&amp;rsquo;t really have time or desire to write my own blog engine either. So I was looking for some kind of a middle ground.&lt;/p&gt;
-
-&lt;p&gt;To me the sweet spot seems to be in the static site generators: with this approach you usually get a high performance of a simple static site together with the beauty of Markdown, while still maintaining a freedom to choose how to store the sources and deploy the end result.&lt;/p&gt;
-
-&lt;p&gt;Selecting a specific engine is just a matter of taste, I guess, as there are plenty of them these days. Checking out the &lt;a href=&#34;https://www.staticgen.com&#34;&gt;Top Open-Source Static Site Generators&lt;/a&gt; helped me a great deal to pick one. Most of the time I am a .NET developer (apparently not the most popular stack for blog engines, although there are &lt;a href=&#34;https://github.com/Code52/pretzel&#34;&gt;several&lt;/a&gt; &lt;a href=&#34;https://github.com/Wyamio/Wyam&#34;&gt;quite&lt;/a&gt; &lt;a href=&#34;https://github.com/mikoskinen/graze&#34;&gt;interesting&lt;/a&gt; &lt;a href=&#34;https://github.com/Kelindar/misakai-baker&#34;&gt;ones&lt;/a&gt;), but I am also starting to learn some &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; this year, so after some quick experiments I chose &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. The project has over 10K stars on GitHub and promises to &lt;em&gt;&amp;ldquo;make the web fun again&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Hugo (as well as most other static site generators) allows you to write posts in Markdown format, so you sources are very readable. It can then build your site, which will result in static HTML pages. This basically means that writing the posts is super easy, while serving the content is as fast as it can be, since there is no server-side processing involved. So, in the simplest workflow, you can write a post in Markdown, build the updated version of the site locally and then somehow copy the updated files to wherever the blog is hosted.&lt;/p&gt;
-
-&lt;p&gt;Sounds easy, but not automated enough. Part of my daily job is maintaining Continuous Integration pipeline for multiple teams, so I would rather treat a blog as any other code, meaning that is needs to be source-controlled and hosting environment has to be automatically updated on every push. In the next part of this series I will explain how I achieved this using &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;, &lt;a href=&#34;https://travis-ci.org/&#34;&gt;Travis CI&lt;/a&gt; and &lt;a href=&#34;https://www.digitalocean.com/&#34;&gt;DigitalOcean&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Never too late</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</link>
-      <pubDate>Fri, 17 Jun 2016 22:52:13 +0200</pubDate>
-      
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</guid>
-      <description>&lt;p&gt;It wasn&amp;rsquo;t until this year that I decided to start blogging. A lot of things changed since moving from Russia to the Netherlands more than a year ago, in both life and work. At my current employer we are undergoing a tough and sometimes painful process of migrating our software architecture and development process to a presumably better state - and I am right in the middle of it. There are plenty discussions and experiments, some of them I hope might be worth sharing with the community.&lt;/p&gt;
-
-&lt;p&gt;My initial goal is to write at least one post a week (feel free to poke me if I don&amp;rsquo;t). And I think in the actual first one (&lt;em&gt;every programmer&amp;rsquo;s posts should be zero-indexed, right?&lt;/em&gt;) I am going to describe the technical parts behind this very blog.&lt;/p&gt;
 </description>
     </item>
     

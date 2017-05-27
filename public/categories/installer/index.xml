@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Installer on Surfing the code</title>
-    <link>https://atsvetkov.github.io/tsvetkov.io/categories/installer/index.xml</link>
+    <link>https://surfingthecode.com/categories/installer/index.xml</link>
     <description>Recent content in Installer on Surfing the code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://atsvetkov.github.io/tsvetkov.io/categories/installer/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://surfingthecode.com/categories/installer/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Some facts about WiX</title>
-      <link>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</link>
+      <link>https://surfingthecode.com/2016/10/some-facts-about-wix/</link>
       <pubDate>Thu, 27 Oct 2016 22:20:54 +0200</pubDate>
       
-      <guid>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</guid>
+      <guid>https://surfingthecode.com/2016/10/some-facts-about-wix/</guid>
       <description>&lt;p&gt;Before we start, let me ask you a question: do you know what is the oldest still active open source .NET project?&lt;/p&gt;
 
 &lt;p&gt;Today I was again listening to awesome &lt;a href=&#34;https://www.dotnetrocks.com/&#34;&gt;.NET Rocks&lt;/a&gt; podcast and the guest was Rob Mensching, the guy behind &lt;a href=&#34;http://wixtoolset.org/&#34;&gt;Wix Toolset&lt;/a&gt;. WiX provides a bunch of tools to simplify the creation of MSI packages for Windows, and as far as I know, it is one of the most popular open-source implementations in that area. And it is also free! We use it for the product I am currently working on. Hell, even Microsoft is using it: &lt;a href=&#34;https://github.com/dotnet/cli/blob/rel/1.0.0/packaging/windows/clisdk/dotnet.wxs&#34;&gt;see for yourself&lt;/a&gt; that the current .NET Core installer is actually built with WiX! In fact, Rob Mensching used to work in Microsoft on setup and deployment for Office, Windows and Visual Studio. Obviously, he knows more about installers than most people do, enough to build a business around it. So he is now a CEO and a co-founder of &lt;a href=&#34;https://www.firegiant.com/&#34;&gt;Fire Giant&lt;/a&gt;, a company providing commercial support for WiX Toolset.&lt;/p&gt;

@@ -2,205 +2,225 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2017/02/coffee-and-links-5/</loc>
+    <loc>https://surfingthecode.com/2017/05/book-review-microservices-in-.net-core-by-christian-horsdal-gammelgaard/</loc>
+    <lastmod>2017-05-01T21:49:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://surfingthecode.com/2017/04/c-sharp7-deconstruction-demystified/</loc>
+    <lastmod>2017-04-02T13:22:56+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://surfingthecode.com/2017/03/coffee-and-links-6/</loc>
+    <lastmod>2017-03-11T18:11:53+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://surfingthecode.com/2017/02/abusing-dotnet-core-cli/</loc>
+    <lastmod>2017-02-18T14:35:25+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://surfingthecode.com/2017/02/coffee-and-links-5/</loc>
     <lastmod>2017-02-16T18:11:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2017/02/static-site-deployment-options/</loc>
+    <loc>https://surfingthecode.com/2017/02/static-site-deployment-options/</loc>
     <lastmod>2017-02-04T15:59:26+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-talks/</loc>
+    <loc>https://surfingthecode.com/2017/01/ndc-london-talks/</loc>
     <lastmod>2017-01-28T11:54:46+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2017/01/ndc-london-asp.net-core-workshop/</loc>
+    <loc>https://surfingthecode.com/2017/01/ndc-london-asp.net-core-workshop/</loc>
     <lastmod>2017-01-17T21:14:23+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2017/01/coffee-and-links-4/</loc>
+    <loc>https://surfingthecode.com/2017/01/coffee-and-links-4/</loc>
     <lastmod>2017-01-08T18:11:53+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</loc>
+    <loc>https://surfingthecode.com/2016/12/c-sharp-7.0-and-visual-studio-2017-rc/</loc>
     <lastmod>2016-12-25T12:58:59+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/12/coffee-and-links-3/</loc>
+    <loc>https://surfingthecode.com/2016/12/coffee-and-links-3/</loc>
     <lastmod>2016-12-16T21:40:04+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/12/practice-makes-perfect/</loc>
+    <loc>https://surfingthecode.com/2016/12/practice-makes-perfect/</loc>
     <lastmod>2016-12-06T21:50:43+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-2/</loc>
+    <loc>https://surfingthecode.com/2016/11/coffee-and-links-2/</loc>
     <lastmod>2016-11-19T14:17:47+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/11/coffee-and-links-1/</loc>
+    <loc>https://surfingthecode.com/2016/11/coffee-and-links-1/</loc>
     <lastmod>2016-11-12T15:00:54+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/10/some-facts-about-wix/</loc>
+    <loc>https://surfingthecode.com/2016/10/some-facts-about-wix/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/10/current-state-of-.net/</loc>
+    <loc>https://surfingthecode.com/2016/10/current-state-of-.net/</loc>
     <lastmod>2016-10-18T22:22:41+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/10/staying-up-to-date-with-software-development-trends/</loc>
+    <loc>https://surfingthecode.com/2016/10/staying-up-to-date-with-software-development-trends/</loc>
     <lastmod>2016-10-16T16:51:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</loc>
+    <loc>https://surfingthecode.com/2016/08/building-a-blog-with-hugo-github-travis-ci-and-digitalocean---part-1/</loc>
     <lastmod>2016-08-28T23:01:21+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/about/</loc>
+    <loc>https://surfingthecode.com/about/</loc>
     <lastmod>2016-06-17T23:00:45+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/2016/06/never-too-late/</loc>
+    <loc>https://surfingthecode.com/2016/06/never-too-late/</loc>
     <lastmod>2016-06-17T22:52:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/index.net/</loc>
+    <loc>https://surfingthecode.com/tags/index.net/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/index.net/</loc>
+    <loc>https://surfingthecode.com/categories/index.net/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/</loc>
+    <loc>https://surfingthecode.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/digitalocean/</loc>
+    <loc>https://surfingthecode.com/tags/digitalocean/</loc>
     <lastmod>2016-08-28T23:01:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/github/</loc>
+    <loc>https://surfingthecode.com/tags/github/</loc>
     <lastmod>2016-08-28T23:01:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/hugo/</loc>
+    <loc>https://surfingthecode.com/tags/hugo/</loc>
     <lastmod>2016-08-28T23:01:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/installer/</loc>
+    <loc>https://surfingthecode.com/tags/installer/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/installer/</loc>
+    <loc>https://surfingthecode.com/categories/installer/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/learning/</loc>
+    <loc>https://surfingthecode.com/tags/learning/</loc>
     <lastmod>2016-10-16T16:51:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/life/</loc>
+    <loc>https://surfingthecode.com/tags/life/</loc>
     <lastmod>2016-06-17T22:52:13+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/open-source/</loc>
+    <loc>https://surfingthecode.com/tags/open-source/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/open-source/</loc>
+    <loc>https://surfingthecode.com/categories/open-source/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/post/</loc>
-    <lastmod>2017-02-16T18:11:53+01:00</lastmod>
+    <loc>https://surfingthecode.com/post/</loc>
+    <lastmod>2017-05-01T21:49:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/software-development/</loc>
+    <loc>https://surfingthecode.com/tags/software-development/</loc>
     <lastmod>2016-10-18T22:22:41+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/software-development/</loc>
+    <loc>https://surfingthecode.com/categories/software-development/</loc>
     <lastmod>2016-10-18T22:22:41+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/</loc>
-    <lastmod>2017-02-16T18:11:53+01:00</lastmod>
+    <loc>https://surfingthecode.com/</loc>
+    <lastmod>2017-05-01T21:49:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/</loc>
+    <loc>https://surfingthecode.com/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/tech-lead/</loc>
+    <loc>https://surfingthecode.com/tags/tech-lead/</loc>
     <lastmod>2016-10-16T16:51:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/travis-ci/</loc>
+    <loc>https://surfingthecode.com/tags/travis-ci/</loc>
     <lastmod>2016-08-28T23:01:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/tags/wix/</loc>
+    <loc>https://surfingthecode.com/tags/wix/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://atsvetkov.github.io/tsvetkov.io/categories/wix/</loc>
+    <loc>https://surfingthecode.com/categories/wix/</loc>
     <lastmod>2016-10-27T22:20:54+02:00</lastmod>
     <priority>0</priority>
   </url>

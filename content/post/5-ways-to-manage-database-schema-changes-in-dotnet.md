@@ -1,5 +1,5 @@
 +++
-date = "2017-05-21T15:14:22+02:00"
+date = "2017-05-28T15:14:22+02:00"
 title = "5 ways to manage database schema changes in dotnet"
 displaytitle = "5 Ways To Manage Database Schema Changes in 2017 (in .NET)"
 Categories = []

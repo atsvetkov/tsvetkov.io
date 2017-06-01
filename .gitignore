@@ -236,5 +236,4 @@ _Pvt_Extensions
 .fake/
 
 # Hugo
-themes/
 public/

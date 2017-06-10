@@ -55,6 +55,8 @@ C# 6.0 introduced the [`nameof`](https://docs.microsoft.com/en-us/dotnet/csharp/
 
 Of course, you could say that passing the name this way could have been done from the very start, it would just have to be a hardcoded string (and ReSharper would even be smart enough to detect inconsistencies). But it is still not completely equivalent and, moreover, the expression-based approach is an evolutionary step in many other projects, so I guess it is not uncommon to eventually find yourself in such a situation.
 
+This approach seems pretty popular and is used in [the source code of .NET itself](https://github.com/dotnet/corefx/blob/master/src/Common/src/Microsoft/Internal/Requires.cs).
+
 ### Mass refactoring using ReSharper
 
 Alright, we have a better implementation now and we made a team agreement that all new code will use the non-allocating version. However, performance-wise we would still like to eliminate all existing usages of the allocating `NotNull` method. And this task, well, doesn't look very appealing:

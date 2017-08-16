@@ -83,7 +83,7 @@ As an example, I wanted to try out the built-in Redis implementation, so here ar
 
     I am by no means an expert in Redis, so if you want to know more about what, how and why, head over to the [official documentation](https://redis.io/documentation).
 
-2. Assuming that you already have a .NET Core 2.0 web application code open (if not, first [download and install .NET Core 2.0 Preview 2 SDK](https://www.microsoft.com/net/core/preview#windowscmd) and create a new web app with `dotnet new web` command), you should already have everything prepared for enabling distributed caching. But, didn't I say that there is a specific NuGet package needed for this? Right, however the .NET Core 2.0 web app template references the uber meta-package [`Microsoft.AspNetCore.All`](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), which already has this covered (this is a part of "sensible defaults" that I mentioned). You can easily see this if you download the package and look into the contents with [NuGet Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer):
+2. Assuming that you already have a .NET Core 2.0 web application code open (if not, first [download and install .NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd) and create a new web app with `dotnet new web` command), you should already have everything prepared for enabling distributed caching. But, didn't I say that there is a specific NuGet package needed for this? Right, however the .NET Core 2.0 web app template references the uber meta-package [`Microsoft.AspNetCore.All`](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), which already has this covered (this is a part of "sensible defaults" that I mentioned). You can easily see this if you download the package and look into the contents with [NuGet Package Explorer](https://github.com/NuGetPackageExplorer/NuGetPackageExplorer):
 
     {{< figure src="/images/microsoft-aspnetcore-all-package-contents.png" title="" >}}
 
@@ -199,3 +199,7 @@ Ironically, this class even relies on the same `StackExchange.Redis` package... 
 ### Conclusion
 
 With ASP.NET Core it's never been easier to start using distributed caching. There is built-in support for Redis and SQL Server and of course there are already plenty of community effort to implement support for other key-value stores. Redis implementation is very easy to use; however, as much as `IDistributedCache` abstracts away the internals of Redis and tries to define a "common denominator" of all key-value stores, the implementation details might still leak and require developers to dig into how Redis actually works. Which I personally don't mind at all, but would still prefer to have more consistency in the API's.
+
+---
+
+*Edit 2017-08-16: updated .NET Core 2.0 SDK link to the release version*

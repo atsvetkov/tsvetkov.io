@@ -5,9 +5,7 @@ Tags = []
 date = "2016-12-25T12:58:59+01:00"
 title = "C-Sharp 7.0 and Visual Studio 2017 RC"
 displaytitle = "C# 7.0 and Visual Studio 2017 RC"
-
 +++
-{{< figure src="/images/csharp_7_visual_studio_2017_rc.jpg" title="" >}}
 
 A new Release Candidate of Visual Studio 2017 [has been released recently](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes), featuring faster installation and solution loading, an updated project file format, improved IntelliSense, better navigation, and some new built-in refactoring actions covering a significant part of commonly used ReSharper functionality. In this post we will look briefly into these items and will also do a small coding exercise to demonstrate some cool features of C# 7.0.
 

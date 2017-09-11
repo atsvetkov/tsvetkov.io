@@ -80,7 +80,7 @@ public static class Features
 }
 ```
 
-Not the use of `DefaultToDisabledOnErrorDecorator` here: by design, `SimpleFeatureToggle` will throw if a corresponding setting is not defined in the configuration/settings file. This definitely makes it clean and very explicit, however, in some cases, when the deployment story is complicated and not polished yet, we found it safer to use this decorator and default to `false`. So, no configuration setting will mean feature toggle is off in this case.
+Note the use of `DefaultToDisabledOnErrorDecorator` here: by design, `SimpleFeatureToggle` will throw if a corresponding setting is not defined in the configuration/settings file. This definitely makes it clean and very explicit, however, in some cases, when the deployment story is complicated and not polished yet, we found it safer to use this decorator and default to `false`. So, no configuration setting will mean feature toggle is off in this case.
 
 The private nested class means that this type cannot be used outside, ensuring that this is the only way to work with toggles. Now the toggle-checking code looks more readable, in my opinion:
 ```

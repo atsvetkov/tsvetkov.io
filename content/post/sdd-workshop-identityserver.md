@@ -7,7 +7,7 @@ Categories = []
 
 +++
 
-A couple of weeks ago I finally got to learn [IdentityServer](https://identityserver.io/) from his creator, [Dominick Baier](https://leastprivilege.com/). A three-day workshop in London, as part of [SDD Deep Dive](https://sddconf.com/deep_dive_2017_workshops/), was indeed a *deep* dive into identity and access control in ASP.NET Core applications. It was a nice mix of presentations, live-coding, hands-on labs, and lots of cautionary tales based on Dominick's experience. Looking at the [current training schedule](https://identityserver.io/training/index.html), this 3-day version was a really unique chance to learn a lot and without a rush.
+A couple of weeks ago I finally got to learn [IdentityServer](https://identityserver.io/) from its creator, [Dominick Baier](https://leastprivilege.com/). A three-day workshop in London, as part of [SDD Deep Dive](https://sddconf.com/deep_dive_2017_workshops/), was indeed a *deep* dive into identity and access control in ASP.NET Core applications. It was a nice mix of presentations, live-coding, hands-on labs, and lots of cautionary tales based on Dominick's experience. Looking at the [current training schedule](https://identityserver.io/training/index.html), this 3-day version was a really unique chance to learn a lot and without a rush.
 
 ### Day 1
 

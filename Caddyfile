@@ -1,8 +1,0 @@
-tsvetkov.io {
-  redir https://surfingthecode.com{uri}
-}
-
-surfingthecode.com {
-  root /var/www/surfingthecode.com/html
-  gzip
-}
